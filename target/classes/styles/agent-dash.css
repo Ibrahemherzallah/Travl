@@ -1,0 +1,6 @@
+.side-bar, .nav-bar {
+    -fx-background-color: white;
+}
+.nav-bar-search {
+    -fx-min-height: 40px;
+}
