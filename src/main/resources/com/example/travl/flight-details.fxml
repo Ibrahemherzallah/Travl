@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="496.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.flightListing">
+   <children>
+      <Label layoutX="61.0" layoutY="86.0" prefHeight="17.0" prefWidth="107.0" text="Flight Details">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="61.0" layoutY="99.0" prefHeight="73.0" prefWidth="687.0">
+         <children>
+            <Slider layoutX="23.0" layoutY="24.0" style="-fx-color: #0000FF;" />
+            <ChoiceBox fx:id="ch1" layoutX="200.0" layoutY="29.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="ch2" layoutX="359.0" layoutY="29.0" prefWidth="150.0" />
+            <ChoiceBox fx:id="ch3" layoutX="517.0" layoutY="29.0" prefWidth="150.0" />
+            <Label layoutX="16.0" layoutY="42.0" text="0$" />
+            <Label layoutX="145.0" layoutY="42.0" text="2000$" />
+         </children>
+      </AnchorPane>
+      <Pane layoutX="61.0" layoutY="172.0" prefHeight="131.0" prefWidth="687.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
+         <children>
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="26.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/direct-flight.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="82.0" layoutY="27.0" prefHeight="17.0" prefWidth="107.0" text="Delta Airlines">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="47.0" text="Flight DL1234" textFill="#8b8989" />
+            <Label layoutX="40.0" layoutY="85.0" prefHeight="17.0" prefWidth="107.0" text="08:00 AM">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="104.0" text="NewYork (JFK)" textFill="#8b8989" />
+            <Label layoutX="204.0" layoutY="112.0" text="Driect" textFill="#8b8989" />
+            <Label layoutX="200.0" layoutY="86.0" text="2h 30m" textFill="#8b8989" />
+            <Separator layoutX="192.0" layoutY="104.0" prefHeight="17.0" prefWidth="55.0" />
+            <Label layoutX="328.0" layoutY="84.0" prefHeight="19.0" prefWidth="63.0" text="10:30AM">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="321.0" layoutY="105.0" text="Los Angeles (LAX)" textFill="#8b8989" />
+            <Separator layoutX="421.0" layoutY="30.0" orientation="VERTICAL" prefHeight="96.0" prefWidth="23.0" />
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="444.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/luggage.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="500.0" layoutY="58.0" prefHeight="19.0" prefWidth="138.0" text="Baggage Information">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="500.0" layoutY="78.0" text="2 x 23kg Checked Baggage" textFill="#8b8989" />
+            <Button layoutX="340.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #000000;" text="select price" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="61.0" layoutY="318.0" prefHeight="131.0" prefWidth="687.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
+         <children>
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="26.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/direct-flight.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="82.0" layoutY="27.0" prefHeight="17.0" prefWidth="107.0" text="Departure Flight">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="82.0" layoutY="47.0" text="Emirates EK203" textFill="#8b8989" />
+            <Label layoutX="40.0" layoutY="85.0" prefHeight="17.0" prefWidth="107.0" text="09:30 AM">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="41.0" layoutY="104.0" text="NewYork (JFK)" textFill="#8b8989" />
+            <Label layoutX="204.0" layoutY="112.0" text="Driect" textFill="#8b8989" />
+            <Label layoutX="200.0" layoutY="86.0" text="7h 30m" textFill="#8b8989" />
+            <Separator layoutX="192.0" layoutY="104.0" prefHeight="17.0" prefWidth="55.0" />
+            <Label layoutX="328.0" layoutY="84.0" prefHeight="19.0" prefWidth="63.0" text="17:05 PM">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="321.0" layoutY="105.0" text="London (LHR)" textFill="#8b8989" />
+            <Separator layoutX="421.0" layoutY="30.0" orientation="VERTICAL" prefHeight="96.0" prefWidth="23.0" />
+            <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="444.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/luggage.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="500.0" layoutY="58.0" prefHeight="19.0" prefWidth="138.0" text="Baggage Information">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="500.0" layoutY="78.0" text="2 x 23kg Checked Baggage" textFill="#8b8989" />
+            <Button layoutX="340.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #000000;" text="select price" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Button fx:id="backButton" layoutX="20.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #000000;" text="Back" textFill="WHITE" />
+   </children>
+</AnchorPane>
