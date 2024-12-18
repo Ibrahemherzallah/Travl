@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="775.0" prefWidth="1051.0" styleClass="root" stylesheets="@../../../styles/clients.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.ClientDetailsController">
+    <bottom>
+        <StackPane alignment="CENTER" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" maxWidth="600" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 0, 0);">
+                <ImageView fitHeight="247.0" fitWidth="594.0" pickOnBounds="true">
+                    <image>
+                        <Image url="@../../../images/as.jpg" />
+                    </image>
+                </ImageView>
+                <Label styleClass="form-title" text="Client Reservation Form" />
+                <GridPane alignment="CENTER" hgap="10" vgap="10">
+                    <Label styleClass="form-label" text="Full Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                    <TextField fx:id="firstNameField" promptText="First Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                    <TextField fx:id="lastNameField" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                    <Label styleClass="form-label" text="Address" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                    <TextField fx:id="addressField" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                    <Label styleClass="form-label" text="City" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                    <TextField fx:id="cityField" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                    <Label styleClass="form-label" text="Phone Number" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                    <Label styleClass="form-label" text="Email" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                    <TextField fx:id="phoneNumberField" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                    <Label styleClass="form-label" text="Number of Adults" GridPane.columnIndex="0" GridPane.rowIndex="8" />
+                    <Label styleClass="form-label" text="Number of Kids" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                    <TextField fx:id="numberOfAdultsField" GridPane.columnIndex="0" GridPane.rowIndex="9" />
+                    <TextField fx:id="numberOfKidsField" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                    <Label styleClass="form-label" text="Payment Method" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+                    <HBox spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="11">
+                        <CheckBox fx:id="paymentCheck" text="Check" />
+                        <CheckBox fx:id="paymentPaypal" text="Paypal" />
+                    </HBox>
+                    <Label styleClass="form-label" text="Special Requests" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+                    <TextArea fx:id="specialRequestField" prefHeight="80.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+                    <columnConstraints>
+                        <ColumnConstraints />
+                        <ColumnConstraints />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                        <RowConstraints />
+                    </rowConstraints>
+                </GridPane>
+                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="594.0" spacing="20">
+                    <children>
+                        <Button fx:id="bookButton" styleClass="submit-button" text="Book" />
+                    </children>
+                </HBox>
+
+
+            </VBox>
+        </StackPane>
+    </bottom>
+   <left>
+            <Button fx:id="backButton" onAction="#handleBackButton" prefHeight="28.0" prefWidth="72.0" styleClass="submit-button" text="Back" BorderPane.alignment="CENTER" />
+   </left>
+</BorderPane>
