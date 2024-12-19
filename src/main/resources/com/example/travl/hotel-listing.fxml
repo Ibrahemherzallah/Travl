@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="991.0" prefWidth="1484.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.HotelListing">
+   <children>
+      <Label layoutX="41.0" layoutY="70.0" prefHeight="27.0" prefWidth="84.0" text="Filter by ">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Pane layoutX="41.0" layoutY="104.0" prefHeight="619.0" prefWidth="200.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
+         <children>
+            <Slider layoutX="19.0" layoutY="30.0" prefHeight="27.0" prefWidth="163.0" />
+            <Label layoutX="34.0" layoutY="58.0" text="\$0" />
+            <Label layoutX="146.0" layoutY="58.0" prefHeight="17.0" prefWidth="41.0" text="\$1000" />
+            <Label layoutX="15.0" layoutY="7.0" text="Price Range">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="3.0" layoutY="89.0" text="Star Rating ">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <CheckBox layoutX="21.0" layoutY="119.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="5 star">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="21.0" layoutY="148.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="4 star">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="21.0" layoutY="174.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="3 star">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="21.0" layoutY="202.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="2 star">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="21.0" layoutY="233.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="1 star">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="8.0" layoutY="253.0" text="Amenities">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <CheckBox layoutX="20.0" layoutY="287.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="99.0" text="Free Wifi ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="20.0" layoutY="316.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="Pool">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="20.0" layoutY="342.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="107.0" text="Free Parking">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="20.0" layoutY="370.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="Gym">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="20.0" layoutY="401.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="102.0" text="Restaurent">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="25.0" layoutY="467.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="99.0" text="London">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="25.0" layoutY="496.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="84.0" text="Amman">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="25.0" layoutY="522.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="107.0" text="Cairo">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="25.0" layoutY="550.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="107.0" text="New York">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <CheckBox layoutX="25.0" layoutY="581.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="102.0" text="Istanbul ">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </CheckBox>
+            <Label layoutX="15.0" layoutY="436.0" text="location">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Pane layoutX="265.0" layoutY="115.0" prefHeight="129.0" prefWidth="595.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
+         <children>
+            <ImageView fitHeight="130.0" fitWidth="234.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-image">
+               <image>
+                  <Image url="@../../../images/FarahLocanda.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="219.0" layoutY="4.0" prefHeight="21.0" prefWidth="107.0" text="Farah Locanda">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="54.0" fitWidth="96.0" layoutX="223.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/rating5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="23.0" layoutX="220.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/maps-and-flags.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="245.0" layoutY="59.0" text="Ramallah,Palestine" textFill="#6e6969" />
+            <Label layoutX="543.0" layoutY="12.0" text="\$200">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="536.0" layoutY="37.0" text="Per night" textFill="#8b8888" />
+            <Button layoutX="223.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #000000;" text="View Details" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="265.0" layoutY="265.0" prefHeight="129.0" prefWidth="595.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
+         <children>
+            <ImageView fitHeight="130.0" fitWidth="200.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-image">
+               <image>
+                  <Image url="@../../../images/RamadaHotel.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="210.0" layoutY="4.0" prefHeight="21.0" prefWidth="107.0" text="Ramada Hotel">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="210.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/rating5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="23.0" layoutX="201.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/maps-and-flags.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="224.0" layoutY="57.0" text="Jerusalem,Palestine" textFill="#6e6969" />
+            <Label layoutX="539.0" layoutY="12.0" text="\$150">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="532.0" layoutY="47.0" text="Per night" textFill="#8b8888" />
+            <Button layoutX="214.0" layoutY="89.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #000000;" text="View Details" textFill="WHITE" />
+         </children>
+      </Pane>
+      <Pane layoutX="262.0" layoutY="424.0" prefHeight="129.0" prefWidth="595.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
+         <children>
+            <Label layoutX="206.0" layoutY="4.0" prefHeight="21.0" prefWidth="183.0" text="Hilton London Paddington">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="229.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/rating5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="23.0" layoutX="217.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/maps-and-flags.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="239.0" layoutY="56.0" text="London,UK" textFill="#6e6969" />
+            <Label layoutX="539.0" layoutY="24.0" text="\$100">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button layoutX="219.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #000000;" text="View Details" textFill="WHITE" />
+            <Label layoutX="532.0" layoutY="56.0" text="Per night" textFill="#8b8888" />
+            <ImageView fitHeight="130.0" fitWidth="234.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-image">
+               <image>
+                  <Image url="@../../../images/Hilton_London_Paddington4.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Pane layoutX="262.0" layoutY="586.0" prefHeight="129.0" prefWidth="595.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
+         <children>
+            <Label layoutX="206.0" layoutY="4.0" prefHeight="21.0" prefWidth="183.0" text="SonestaHotel">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="229.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/rating5.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="23.0" layoutX="217.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/maps-and-flags.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="239.0" layoutY="56.0" text="Amman, Jordan" textFill="#6e6969" />
+            <Label layoutX="539.0" layoutY="24.0" text="\$100">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Button layoutX="219.0" layoutY="90.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="99.0" style="-fx-background-color: #000000;" text="View Details" textFill="WHITE" />
+            <Label layoutX="532.0" layoutY="56.0" text="Per night" textFill="#8b8888" />
+            <ImageView fitHeight="130.0" fitWidth="196.0" pickOnBounds="true" preserveRatio="true" styleClass="rounded-image">
+               <image>
+                  <Image url="@../../../images/SonestaHotel.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </Pane>
+      <Button fx:id="backButton" layoutX="41.0" layoutY="22.0" mnemonicParsing="false" onAction="#handleBackButton" text="Back" />
+   </children>
+</AnchorPane>
