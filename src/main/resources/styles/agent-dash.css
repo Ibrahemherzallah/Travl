@@ -17,6 +17,7 @@
 -fx-background-color:transparent;
 
 }
+
 .sidebar-btn:hover{
 -fx-background-color:#258ED9;
 -fx-border-width:0px 0px 0px 2px;
@@ -28,18 +29,27 @@
 -fx-border-width:2px 2px 2px 2px;
 -fx-border-radius:15px;
 -fx-background-radius:15px;
-
-
-
 -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.5, 0, 1.5);
-
 }
 
-.details{
--fx-background-color:#125946;
--fx-background-radius:15px;
+.viewMoreBtn {
+    -fx-cursor: HAND;
 }
 
+.details {
+    -fx-background-color:#125946;
+    -fx-background-radius:15px;
+}
+
+.details:hover {
+    -fx-background-color: #1d6c57;
+    -fx-cursor: HAND;
+}
+
+.sideBarIcons:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: #f8f8f8;
+}
 
 .pane_card2{
 -fx-background-color:#125946;
@@ -49,7 +59,9 @@
 
 }
 
-
+.viewDetailsBtn:hover {
+    -fx-cursor: HAND;
+}
 
 @media screen and (max-width: 768px) {
     .parent {

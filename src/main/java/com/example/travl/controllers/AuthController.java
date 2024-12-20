@@ -18,6 +18,21 @@ public class AuthController {
     @FXML private Button backToLogInBtn;
 
     @FXML
+    private Button BackToLogin;
+    @FXML
+    private Button resetBtn;
+    @FXML
+    private Button btn1;  // Didn't receive the code
+    @FXML
+    private Button btn2; // Resent Code (30s)
+    @FXML
+    private Button resetPassBtn;
+    @FXML
+    private Button navigateToVerificationBtn;
+    @FXML
+    private Button newPassBtn;
+
+    @FXML
     private void handleMenuButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent newScene = null;
@@ -26,8 +41,14 @@ public class AuthController {
         } else if (event.getSource() == forgetPassButton) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/forget-password.fxml")));
         } else if (event.getSource() == resetPassCodeBtn) {
-            newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/reset-password-code.fxml")));
+            newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/reset-password.fxml")));
         } else if (event.getSource() == backToLogInBtn) {
+            newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/log-in.fxml")));
+        } else if (event.getSource() == navigateToVerificationBtn) {
+            newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/verification-code.fxml")));
+        } else if (event.getSource() == resetPassBtn) {
+            newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/reset-password.fxml")));
+        } else if (event.getSource() == newPassBtn) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/log-in.fxml")));
         }
         if (newScene != null) {

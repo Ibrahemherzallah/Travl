@@ -11,23 +11,13 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="496.0" prefWidth="871.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.flightListing">
+<AnchorPane prefHeight="800" prefWidth="1440" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.BookingController">
    <children>
       <Label layoutX="61.0" layoutY="86.0" prefHeight="17.0" prefWidth="107.0" text="Flight Details">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="61.0" layoutY="99.0" prefHeight="73.0" prefWidth="687.0">
-         <children>
-            <Slider layoutX="23.0" layoutY="24.0" style="-fx-color: #0000FF;" />
-            <ChoiceBox fx:id="ch1" layoutX="200.0" layoutY="29.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="ch2" layoutX="359.0" layoutY="29.0" prefWidth="150.0" />
-            <ChoiceBox fx:id="ch3" layoutX="517.0" layoutY="29.0" prefWidth="150.0" />
-            <Label layoutX="16.0" layoutY="42.0" text="0$" />
-            <Label layoutX="145.0" layoutY="42.0" text="2000$" />
-         </children>
-      </AnchorPane>
       <Pane layoutX="61.0" layoutY="172.0" prefHeight="131.0" prefWidth="687.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
          <children>
             <ImageView fitHeight="47.0" fitWidth="47.0" layoutX="26.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
@@ -114,6 +104,6 @@
             <Button layoutX="340.0" layoutY="32.0" mnemonicParsing="false" style="-fx-background-color: #000000;" text="select price" textFill="WHITE" />
          </children>
       </Pane>
-      <Button fx:id="backButton" layoutX="20.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #000000;" text="Back" textFill="WHITE" />
+      <Button fx:id="backFlightListingButton" layoutX="20.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" prefHeight="25.0" prefWidth="94.0" style="-fx-background-color: #000000;" text="Back" textFill="WHITE" />
    </children>
 </AnchorPane>

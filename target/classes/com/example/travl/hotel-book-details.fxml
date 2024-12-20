@@ -7,13 +7,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="com.example.travl.controllers.Booking" style="-fx-background-color: linear-gradient(to bottom, #f7f8fa, #e9ebee);"
+<AnchorPane prefHeight="800.0" prefWidth="1440.0" fx:controller="com.example.travl.controllers.BookingController" stylesheets="@../../../styles/style.css" style="-fx-background-color: linear-gradient(to bottom, #f7f8fa, #e9ebee);"
             xmlns="http://javafx.com/javafx/23.0.1"
             xmlns:fx="http://javafx.com/fxml/1">
 
     <children>
         <Button text="← Back to Bookings"
-                style="-fx-background-color: #e23429; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 20px;"
+                styleClass="backButton"
+                style="-fx-background-color: #111827; -fx-text-fill: white; -fx-font-size: 14px; -fx-padding: 10px 20px; -fx-background-radius: 20px;"
                 AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="25.0"
                 fx:id="backTOFromHotel" onAction="#handleMenuButtonAction"
         >

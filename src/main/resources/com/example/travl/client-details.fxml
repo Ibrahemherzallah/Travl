@@ -15,17 +15,17 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="775.0" prefWidth="1051.0" styleClass="root" stylesheets="@../../../styles/clients.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.ClientDetailsController">
+<BorderPane prefHeight="994.0" prefWidth="1051.0" styleClass="root" stylesheets="@../../../styles/clients.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.ClientDetailsController">
     <bottom>
-        <StackPane alignment="CENTER" BorderPane.alignment="CENTER">
-            <VBox alignment="CENTER" maxWidth="600" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 0, 0);">
+        <StackPane alignment="CENTER" prefHeight="962.0" prefWidth="1022.0" BorderPane.alignment="CENTER">
+            <VBox alignment="CENTER" maxWidth="605.0" prefHeight="952.0" prefWidth="592.0" spacing="20" style="-fx-background-color: #ffffff; -fx-padding: 20; -fx-border-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0.5, 0, 0);">
                 <ImageView fitHeight="247.0" fitWidth="594.0" pickOnBounds="true">
                     <image>
                         <Image url="@../../../images/as.jpg" />
                     </image>
                 </ImageView>
                 <Label styleClass="form-title" text="Client Reservation Form" />
-                <GridPane alignment="CENTER" hgap="10" vgap="10">
+                <GridPane alignment="CENTER" hgap="10" prefHeight="526.0" prefWidth="594.0" vgap="10">
                     <Label styleClass="form-label" text="Full Name" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                     <TextField fx:id="firstNameField" promptText="First Name" GridPane.columnIndex="0" GridPane.rowIndex="1" />
                     <TextField fx:id="lastNameField" promptText="Last Name" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -46,8 +46,8 @@
                         <CheckBox fx:id="paymentCheck" text="Check" />
                         <CheckBox fx:id="paymentPaypal" text="Paypal" />
                     </HBox>
-                    <Label styleClass="form-label" text="Special Requests" GridPane.columnIndex="0" GridPane.rowIndex="12" />
-                    <TextArea fx:id="specialRequestField" prefHeight="80.0" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="13" />
+                    <Label styleClass="form-label" text="Special Requests" GridPane.rowIndex="12" />
+                    <TextArea fx:id="specialRequestField" prefHeight="80.0" GridPane.columnSpan="2" GridPane.rowIndex="13" />
                     <columnConstraints>
                         <ColumnConstraints />
                         <ColumnConstraints />
@@ -80,6 +80,6 @@
         </StackPane>
     </bottom>
    <left>
-            <Button fx:id="backButton" onAction="#handleBackButton" prefHeight="28.0" prefWidth="72.0" styleClass="submit-button" text="Back" BorderPane.alignment="CENTER" />
+            <Button fx:id="backButton" onAction="#handleBackButton" prefHeight="19.0" prefWidth="88.0" styleClass="submit-button" text="Back" BorderPane.alignment="CENTER" />
    </left>
 </BorderPane>
