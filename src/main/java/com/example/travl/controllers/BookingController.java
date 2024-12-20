@@ -94,7 +94,7 @@ public class BookingController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/client-details.fxml"));
 
-            Stage stage = (Stage) historyIcon.getScene().getWindow();
+            Stage stage = (Stage) bookingBtn.getScene().getWindow();
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.setTitle("Flight details");

@@ -30,7 +30,7 @@
 }
 
 .submit-button {
-    -fx-background-color: #e23429;
+    -fx-background-color: #111827;;
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
     -fx-cursor: hand;
@@ -38,14 +38,16 @@
     -fx-border-radius: 5px;
 }
 .submit-button:hover {
-    -fx-background-color: #fb9f45;
+    -fx-background-color: #182135;;
 }
 .back-button{
-    -fx-background-color: #e23429;
+    -fx-background-color: #111827;;
     -fx-text-fill: #ffffff;
     -fx-font-weight: bold;
     -fx-cursor: hand;
     -fx-padding: 10px 20px;
     -fx-border-radius: 5px;
-
+}
+.back-button:hover{
+    -fx-background-color: #182135;;
 }
