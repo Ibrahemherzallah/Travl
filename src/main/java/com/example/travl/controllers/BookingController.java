@@ -19,14 +19,15 @@ public class BookingController {
     @FXML private Button backTOFromHotel;
     @FXML private Button backFlightListingButton;
     @FXML private Button backToHistoryListing;
+    @FXML private Button bookingBtn;
     @FXML private ImageView homeIcon;
     @FXML private ImageView flightIcon;
     @FXML private ImageView hotelIcon;
     @FXML private ImageView historyIcon;
     @FXML private Button selectFlightBtn;
     @FXML private Button viewHotelDetailsBtn;
-    @FXML
-    private Button backHotelListingButton;
+    @FXML private Button backHotelListingButton;
+
     @FXML
     protected void navigateHome(){
         try {
@@ -81,6 +82,22 @@ public class BookingController {
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+    }
+
+    @FXML
+    protected void navigateClient(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/client-details.fxml"));
+
+            Stage stage = (Stage) historyIcon.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Flight details");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
