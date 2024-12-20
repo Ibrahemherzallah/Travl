@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane prefHeight="800" prefWidth="1440" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.AuthController">
+    <children>
+        <VBox style="-fx-background-color: white;" alignment="CENTER" prefHeight="69.0" prefWidth="361.0" spacing="15.0">
+            <children>
+                <ImageView fitHeight="80.0" fitWidth="80.0" preserveRatio="true">
+                    <image>
+                        <Image url="@../../../images/padlock.png" />
+                    </image>
+                </ImageView>
+                <Label alignment="CENTER" text="Verification code">
+                    <font>
+                        <Font name="System Bold" size="28.0" />
+                    </font>
+                </Label>
+                <Label text="Enter the verification code sent to your email " textAlignment="CENTER" textFill="#5c5c5c" wrapText="true">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                    <padding>
+                        <Insets bottom="10.0" top="0.0" />
+                    </padding>
+                </Label>
+                <VBox alignment="CENTER" prefHeight="160.0" prefWidth="343.0" spacing="10.0">
+                    <children>
+                        <TextField maxWidth="400.0" />
+                        <Button fx:id="resetPassBtn" alignment="CENTER" maxWidth="200.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" prefHeight="28.0" prefWidth="105.0" style="-fx-background-color: #111827;" stylesheets="@../../../styles/style.css" text="Reset Password" textFill="WHITE">
+                            <padding>
+                                <Insets top="10.0" />
+                            </padding>
+                        </Button>
+                        <Button mnemonicParsing="false" styleClass="btn1" style="-fx-background-color: none" stylesheets="@../../../styles/style.css" text="Reset Code (30s) ?" />
+                        <Separator prefHeight="3.0" prefWidth="334.0" />
+                        <Button fx:id="rese" mnemonicParsing="false"  prefHeight="25.0" prefWidth="184.0" stylesheets="@../../../styles/style.css" text="Button" textFill="#efefef" />
+                    </children>
+                </VBox>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </padding>
+        </VBox>
+    </children>
+</StackPane>

@@ -2,17 +2,35 @@
     -fx-background-color: #000000;
 }
 
+.view-details-btn {
+    -fx-background-color: #000000;
+}
+
+.view-details-btn:hover {
+    -fx-background-color: #2c2a2a;
+}
+
 .flight_pane{
 
     -fx-background-color:#fff;
     -fx-border-width:2px 2px 2px 2px;
     -fx-border-radius:15px;
     -fx-background-radius:15px;
-
-
-
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.5, 0, 1.5);
-
+}
+.selectFlightBtn {
+    -fx-background-color: #111827;
+}
+.selectFlightBtn:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: #1f2a43;
+}
+.backButton {
+    -fx-background-color: #111827;
+}
+.backButton:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: #1f2a43;
 }
 
 .table{

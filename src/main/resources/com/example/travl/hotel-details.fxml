@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="572.0" prefWidth="989.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.HotelDetalis">
+<AnchorPane prefHeight="800.0" prefWidth="1440.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.BookingController">
    <children>
       <AnchorPane layoutX="62.0" layoutY="49.0" prefHeight="490.0" prefWidth="830.0" style="-fx-border-radius: 20px; -fx-background-color: #ffffff;">
          <children>
@@ -104,6 +104,6 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="backButton" layoutX="180.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleBackButton" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #000000;" text="Back" textFill="#fffcfc" />
+      <Button fx:id="backHotelListingButton" layoutX="180.0" layoutY="23.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" prefHeight="25.0" prefWidth="91.0" style="-fx-background-color: #000000;" text="Back" textFill="#fffcfc" />
    </children>
 </AnchorPane>

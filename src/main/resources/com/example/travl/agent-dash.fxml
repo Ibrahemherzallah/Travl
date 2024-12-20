@@ -3,276 +3,75 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:controller="com.example.travl.controllers.AgentDash" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="905.0" prefWidth="1069.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <HBox alignment="TOP_RIGHT" layoutX="800.0" prefHeight="55.0" prefWidth="142.0" spacing="20.0">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440.0" stylesheets="@../../../styles/agent-dash.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.AgentDash">
+   <left>
+      <AnchorPane prefHeight="905.0" prefWidth="69.0" styleClass="side-bar" stylesheets="@../../../styles/agent-dash.css" BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="62.0" prefWidth="214.0">
+            <Pane layoutX="16.0" layoutY="123.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+               <clip>
+                  <Circle centerX="20" centerY="20" radius="20" />
+               </clip>
                <children>
-                  <ImageView fitHeight="44.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <Pane fx:id="paneCard_1112" layoutX="86.0" layoutY="114.0" prefHeight="127.0" prefWidth="195.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <Label layoutX="74.0" layoutY="38.0" text="320.58.5">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="47.0" layoutY="75.0" text=" Agent number" textFill="#868686" />
-            <HBox alignment="CENTER" layoutX="14.0" layoutY="26.0" prefHeight="44.0" prefWidth="47.0">
-               <children>
-                  <ImageView fitHeight="37.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/403019_avatar_male_man_person_user_icon.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-      <Pane fx:id="paneCard_11123" layoutX="323.0" layoutY="114.0" prefHeight="127.0" prefWidth="195.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <Label layoutX="72.0" layoutY="40.0" text="320.58.5">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="52.0" layoutY="72.0" text="Booking number" textFill="#868686" />
-            <HBox alignment="CENTER" layoutX="21.0" layoutY="37.0" prefHeight="25.0" prefWidth="34.0">
-               <children>
-                  <ImageView fitHeight="31.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/61228_book_booking_icon.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-      <Pane layoutX="80.0" layoutY="429.0" prefHeight="44.0" prefWidth="184.0">
-         <children>
-            <Label layoutX="17.0" layoutY="5.0" prefHeight="31.0" prefWidth="150.0" stylesheets="@../../../styles/agent-dash.css" text="Latest booking">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="298.0" layoutY="485.0" prefHeight="120.0" prefWidth="642.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <Label layoutX="16.0" layoutY="14.0" text="Pal Hotel">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Circle fill="WHITE" layoutX="32.0" layoutY="72.0" radius="17.0" stroke="#5072f8" strokeType="INSIDE" />
-            <Label layoutX="57.0" layoutY="62.0" text="Bara Mhana" textFill="#5b5b5b">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="144.0" layoutY="64.0" text="2m ago" textFill="#868484" />
-            <Pane fx:id="details11" layoutX="537.0" layoutY="57.0" prefHeight="29.0" prefWidth="74.0" styleClass="details" stylesheets="@../../../styles/agent-dash.css">
-               <children>
-                  <Label layoutX="16.0" layoutY="5.0" text="details" textFill="#f5f5f5" textOverrun="CENTER_ELLIPSIS">
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
-      <Pane layoutX="298.0" layoutY="621.0" prefHeight="120.0" prefWidth="642.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <Label layoutX="16.0" layoutY="14.0" text="Karmel Flight">
-               <font>
-                  <Font name="System Bold" size="15.0" />
-               </font>
-            </Label>
-            <Circle fill="WHITE" layoutX="33.0" layoutY="72.0" radius="17.0" stroke="#143be8" strokeType="INSIDE" />
-            <Label layoutX="57.0" layoutY="62.0" text="Ibrahem Herzalleh" textFill="#5b5b5b">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="180.0" layoutY="64.0" text="1h ago" textFill="#868484" />
-            <Pane fx:id="details112" layoutX="538.0" layoutY="48.0" prefHeight="29.0" prefWidth="74.0" styleClass="details" stylesheets="@../../../styles/agent-dash.css">
-               <children>
-                  <Label layoutX="16.0" layoutY="5.0" text="details" textFill="#f5f5f5" textOverrun="CENTER_ELLIPSIS">
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-         </children>
-      </Pane>
-      <Label layoutX="527.0" layoutY="806.0" text="View More " textFill="#125946" />
-      <Pane fx:id="paneCard_11121" layoutX="844.0" layoutY="114.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="127.0" prefWidth="195.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css" AnchorPane.bottomAnchor="664.0" AnchorPane.leftAnchor="844.0">
-         <children>
-            <Label layoutX="76.0" layoutY="39.0" text="320.58.5">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="59.0" layoutY="69.0" text="Flight number" textFill="#868686" />
-            <HBox alignment="CENTER" layoutX="30.0" layoutY="26.0" prefHeight="44.0" prefWidth="21.0">
-               <children>
-                  <ImageView fitHeight="29.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/5725009_flight_route_tourism_transmit_travel_icon.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-      <Pane fx:id="paneCard_11122" layoutX="580.0" layoutY="114.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="127.0" prefWidth="201.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <Label layoutX="64.0" layoutY="38.0" text="320.58.5">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="53.0" layoutY="68.0" text="Hotel number" textFill="#868686" />
-            <HBox alignment="CENTER" layoutX="23.0" layoutY="36.0" prefHeight="5.0" prefWidth="5.0">
-               <children>
-                  <ImageView fitHeight="13.0" fitWidth="1.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="24.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../images/5452468_buildings_holidays_hotel_vacations_icon.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </HBox>
-         </children>
-      </Pane>
-      <Pane layoutX="86.0" layoutY="304.0" prefHeight="82.0" prefWidth="423.0" styleClass="pane_card2" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <ProgressBar layoutX="31.0" layoutY="52.0" prefHeight="13.0" prefWidth="360.0" progress="0.0" />
-            <Label layoutX="33.0" layoutY="14.0" text="Available Room Today " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="351.0" layoutY="14.0" text="650" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <Pane layoutX="575.0" layoutY="304.0" prefHeight="82.0" prefWidth="423.0" styleClass="pane_card2" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <ProgressBar layoutX="31.0" layoutY="52.0" prefHeight="13.0" prefWidth="360.0" progress="0.0" />
-            <Label layoutX="33.0" layoutY="14.0" text="Sold out Room Today " textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="12.0" />
-               </font>
-            </Label>
-            <Label layoutX="351.0" layoutY="14.0" text="650" textFill="WHITE">
-               <font>
-                  <Font name="System Bold Italic" size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </Pane>
-      <AnchorPane layoutX="48.0" prefHeight="81.0" prefWidth="1020.0" styleClass="nav-bar" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <Label layoutX="26.0" layoutY="33.0" styleClass="nav-bar-page-name" text="Dashboard">
-               <font>
-                  <Font size="20.0" />
-               </font>
-            </Label>
-            <TextField layoutX="417.0" layoutY="21.0" prefHeight="40.0" prefWidth="237.0" styleClass="nav-bar-search" stylesheets="@../../../styles/agent-dash.css" text="Search...">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </TextField>
-            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="909.0" layoutY="33.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../images/message-icon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="871.0" layoutY="33.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../images/gmail-icon.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="833.0" layoutY="33.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../images/notification-icon.png" />
-               </image>
-            </ImageView>
-            <Circle fill="WHITE" layoutX="970.0" layoutY="41.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
-            <ImageView blendMode="MULTIPLY" fitHeight="44.0" fitWidth="47.0" layoutX="947.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/prof-img.png" />
-               </image>
-            </ImageView>
-         </children>
-      </AnchorPane>
-      <AnchorPane prefHeight="905.0" prefWidth="69.0" styleClass="side-bar" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <Pane layoutX="16.0" layoutY="123.0" prefHeight="47.0" prefWidth="47.0">
-               <children>
-                  <ImageView fx:id="homeIcon" onMouseClicked="#handleMenuButtonAction" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0"
+                             onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/home-icon.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <ImageView fitHeight="47.0" fitWidth="54.0" layoutX="9.0" layoutY="18.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../images/icon.png" />
-               </image>
-            </ImageView>
-            <Pane layoutX="13.0" layoutY="207.0" prefHeight="47.0" prefWidth="47.0">
+            <Pane layoutX="13.0" layoutY="207.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+               <clip>
+                  <Circle centerX="20" centerY="20" radius="20" />
+               </clip>
                <children>
-                  <ImageView fx:id="flightIcon" onMouseClicked="#handleMenuButtonAction" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="flightIcon" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0" onMouseClicked="#navigateFlight" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/flight-icon.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="16.0" layoutY="275.0" prefHeight="47.0" prefWidth="47.0">
+            <Pane layoutX="16.0" layoutY="275.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+               <clip>
+                  <Circle centerX="20" centerY="20" radius="20" />
+               </clip>
                <children>
-                  <ImageView fx:id="hotelIcon"  onMouseClicked="#handleMenuButtonAction" fitHeight="25.0" fitWidth="29.0" layoutX="4.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="hotelIcon" fitHeight="25.0" fitWidth="29.0" layoutX="4.0" layoutY="13.0" onMouseClicked="#navigateHotel" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/hotel-icon.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="13.0" layoutY="358.0" prefHeight="47.0" prefWidth="47.0">
+            <Pane layoutX="13.0" layoutY="358.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+               <clip>
+                  <Circle centerX="20" centerY="20" radius="20" />
+               </clip>
                <children>
-                  <ImageView fx:id="historyIcon" onMouseClicked="#handleMenuButtonAction" fitHeight="34.0" fitWidth="37.0" layoutX="3.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="historyIcon" fitHeight="34.0" fitWidth="37.0" layoutX="3.0" layoutY="5.0" onMouseClicked="#navigateHistory" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/history-icon.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="13.0" layoutY="436.0" prefHeight="47.0" prefWidth="47.0">
+            <Pane layoutX="13.0" layoutY="436.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+               <clip>
+                  <Circle centerX="20" centerY="20" radius="20" />
+               </clip>
                <children>
                   <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="8.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -281,7 +80,10 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="11.0" layoutY="513.0" prefHeight="47.0" prefWidth="47.0">
+            <Pane layoutX="11.0" layoutY="513.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+               <clip>
+                  <Circle centerX="20" centerY="20" radius="20" />
+               </clip>
                <children>
                   <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="9.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -290,25 +92,315 @@
                   </ImageView>
                </children>
             </Pane>
+            <ImageView fx:id="homeIcon1" fitHeight="47.0" fitWidth="160.0" layoutX="13.0" layoutY="12.0" onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/icon.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <Pane layoutX="86.0" layoutY="485.0" prefHeight="120.0" prefWidth="175.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <ImageView fitHeight="107.0" fitWidth="175.0" layoutX="10.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/HotelPhotoDash.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane layoutX="86.0" layoutY="630.0" prefHeight="107.0" prefWidth="184.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
-         <children>
-            <ImageView fitHeight="94.0" fitWidth="164.0" layoutX="7.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../images/FlightPhotoDash.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-   </children>
-</AnchorPane>
+   </left>
+
+   <center>
+      <VBox alignment="TOP_CENTER" layoutX="10" prefHeight="863.0" prefWidth="1380.0" spacing="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+         <HBox alignment="CENTER" prefHeight="58.0" prefWidth="954.0" style="-fx-background-color: white;">
+            <children>
+               <AnchorPane prefHeight="58.0" prefWidth="606.0">
+                  <children>
+                     <HBox alignment="CENTER_LEFT" layoutY="2.0" prefHeight="70.0" prefWidth="261.0">
+                        <children>
+                           <Label prefHeight="54.0" prefWidth="120.0" text="Dashboard">
+                              <font>
+                                 <Font name="Franklin Gothic Heavy" size="21.0" />
+                              </font>
+                              <padding>
+                                 <Insets left="10.0" />
+                              </padding>
+                           </Label>
+                           <Separator maxHeight="20.0" orientation="VERTICAL" prefHeight="200.0">
+                              <padding>
+                                 <Insets left="10.0" />
+                              </padding></Separator>
+                        </children>
+                     </HBox>
+                  </children>
+               </AnchorPane>
+               <AnchorPane prefHeight="65.0" prefWidth="405.0">
+                  <children>
+                     <TextField alignment="CENTER" layoutY="12.0" prefHeight="39.0" prefWidth="211.0" />
+                  </children>
+               </AnchorPane>
+               <AnchorPane prefHeight="58.0" prefWidth="386.0">
+                  <children>
+                     <HBox alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="-1.0" prefHeight="65.0" prefWidth="385.0">
+                        <children>
+                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                              <HBox.margin>
+                                 <Insets right="10.0" />
+                              </HBox.margin>
+                              <image>
+                                 <Image url="@../../../images/message-icon.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                              <HBox.margin>
+                                 <Insets right="10.0" />
+                              </HBox.margin>
+                              <image>
+                                 <Image url="@../../../images/gmail-icon.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                              <HBox.margin>
+                                 <Insets right="20.0" />
+                              </HBox.margin>
+                              <image>
+                                 <Image url="@../../../images/notification-icon.png" />
+                              </image>
+                           </ImageView>
+                           <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                              <HBox.margin>
+                                 <Insets right="40.0" />
+                              </HBox.margin>
+                              <image>
+                                 <Image url="@../../../images/prof-img.png" />
+                              </image>
+                           </ImageView>
+                        </children>
+                     </HBox>
+                  </children>
+               </AnchorPane>
+            </children>
+         </HBox>
+         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="709.0" prefWidth="1380.0">
+            <children>
+               <HBox layoutX="58.0" layoutY="40.0" prefHeight="110.0" prefWidth="1252.0" stylesheets="@../../../styles/agent-dash.css">
+                  <children>
+                     <Pane fx:id="paneCard_1112" prefHeight="110.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
+                        <children>
+                           <Label layoutX="74.0" layoutY="38.0" text="320.58.5">
+                              <font>
+                                 <Font name="System Bold" size="14.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="47.0" layoutY="75.0" text=" Agent number" textFill="#868686" />
+                           <HBox alignment="CENTER" layoutX="14.0" layoutY="26.0" prefHeight="44.0" prefWidth="47.0">
+                              <children>
+                                 <ImageView fitHeight="37.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../../../images/avatarIcon.png" />
+                                    </image>
+                                 </ImageView>
+                              </children>
+                           </HBox>
+                        </children>
+                     </Pane>
+                     <Pane fx:id="paneCard_11123" prefHeight="110.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
+                        <children>
+                           <Label layoutX="72.0" layoutY="40.0" text="320.58.5">
+                              <font>
+                                 <Font name="System Bold" size="14.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="52.0" layoutY="72.0" text="Booking number" textFill="#868686" />
+                           <HBox alignment="CENTER" layoutX="21.0" layoutY="37.0" prefHeight="25.0" prefWidth="34.0">
+                              <children>
+                                 <ImageView fitHeight="31.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../../../images/bookIcon.png" />
+                                    </image>
+                                 </ImageView>
+                              </children>
+                           </HBox>
+                        </children>
+                        <HBox.margin>
+                           <Insets left="100.0" />
+                        </HBox.margin>
+                     </Pane>
+                     <Pane fx:id="paneCard_11121" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="110.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
+                        <children>
+                           <Label layoutX="76.0" layoutY="39.0" text="320.58.5">
+                              <font>
+                                 <Font name="System Bold" size="14.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="59.0" layoutY="69.0" text="Flight number" textFill="#868686" />
+                           <HBox alignment="CENTER" layoutX="30.0" layoutY="26.0" prefHeight="44.0" prefWidth="21.0">
+                              <children>
+                                 <ImageView fitHeight="29.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../../../images/flightIcone.png" />
+                                    </image>
+                                 </ImageView>
+                              </children>
+                           </HBox>
+                        </children>
+                        <HBox.margin>
+                           <Insets left="100.0" />
+                        </HBox.margin>
+                     </Pane>
+                     <Pane fx:id="paneCard_11122" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="105.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
+                        <children>
+                           <Label layoutX="64.0" layoutY="38.0" text="320.58.5">
+                              <font>
+                                 <Font name="System Bold" size="14.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="53.0" layoutY="68.0" text="Hotel number" textFill="#868686" />
+                           <HBox alignment="CENTER" layoutX="23.0" layoutY="36.0" prefHeight="5.0" prefWidth="5.0">
+                              <children>
+                                 <ImageView fitHeight="13.0" fitWidth="1.0" pickOnBounds="true" preserveRatio="true" />
+                                 <ImageView fitHeight="24.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../../../images/hotellIcone.png" />
+                                    </image>
+                                 </ImageView>
+                              </children>
+                           </HBox>
+                        </children>
+                        <HBox.margin>
+                           <Insets left="100.0" />
+                        </HBox.margin>
+                     </Pane>
+                  </children>
+               </HBox>
+               <HBox layoutX="227.0" layoutY="223.0" prefHeight="83.0" prefWidth="881.0">
+                  <children>
+                     <Pane prefHeight="83.0" prefWidth="413.0" styleClass="pane_card2" stylesheets="@../../../styles/agent-dash.css">
+                        <children>
+                           <ProgressBar layoutX="31.0" layoutY="52.0" prefHeight="13.0" prefWidth="360.0" progress="0.0" />
+                           <Label layoutX="33.0" layoutY="14.0" text="Available Room Today " textFill="WHITE">
+                              <font>
+                                 <Font name="System Bold" size="12.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="351.0" layoutY="14.0" text="650" textFill="WHITE">
+                              <font>
+                                 <Font name="System Bold Italic" size="14.0" />
+                              </font>
+                           </Label>
+                        </children>
+                     </Pane>
+                     <Pane prefHeight="83.0" prefWidth="413.0" styleClass="pane_card2" stylesheets="@../../../styles/agent-dash.css">
+                        <children>
+                           <ProgressBar layoutX="31.0" layoutY="52.0" prefHeight="13.0" prefWidth="360.0" progress="0.0" />
+                           <Label layoutX="33.0" layoutY="14.0" text="Available Room Today " textFill="WHITE">
+                              <font>
+                                 <Font name="System Bold" size="12.0" />
+                              </font>
+                           </Label>
+                           <Label layoutX="351.0" layoutY="14.0" text="650" textFill="WHITE">
+                              <font>
+                                 <Font name="System Bold Italic" size="14.0" />
+                              </font>
+                           </Label>
+                        </children>
+                        <HBox.margin>
+                           <Insets left="50.0" />
+                        </HBox.margin>
+                     </Pane>
+                  </children>
+               </HBox>
+               <VBox layoutX="63.0" layoutY="330.0" prefHeight="262.0" prefWidth="1242.0">
+                  <children>
+                     <Label prefHeight="31.0" prefWidth="150.0" stylesheets="@../../../styles/agent-dash.css" text="Latest booking">
+                        <font>
+                           <Font name="System Bold" size="18.0" />
+                        </font>
+                        <VBox.margin>
+                           <Insets bottom="10.0" />
+                        </VBox.margin>
+                     </Label>
+                     <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Pane prefHeight="100.0" prefWidth="170.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
+                              <children>
+                                 <ImageView fitHeight="88.0" fitWidth="142.0" layoutX="19.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../../../images/Hilton_London_Paddington4.jpg" />
+                                    </image>
+                                 </ImageView>
+                              </children>
+                           </Pane>
+                           <Pane prefHeight="120.0" prefWidth="642.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
+                              <children>
+                                 <Label layoutX="16.0" layoutY="14.0" text="Pal Hotel">
+                                    <font>
+                                       <Font name="System Bold" size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Circle fill="WHITE" layoutX="32.0" layoutY="72.0" radius="17.0" stroke="#5072f8" strokeType="INSIDE" />
+                                 <Label layoutX="57.0" layoutY="62.0" text="Bara Mhana" textFill="#5b5b5b">
+                                    <font>
+                                       <Font size="14.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="144.0" layoutY="64.0" text="2m ago" textFill="#868484" />
+                                 <Pane fx:id="details11" layoutX="537.0" layoutY="57.0" prefHeight="29.0" prefWidth="74.0" styleClass="details" stylesheets="@../../../styles/agent-dash.css">
+                                    <children>
+                                       <Label layoutX="16.0" fx:id="hotelDetailBtn" onMouseClicked="#navigateHotelBook" layoutY="5.0" text="details" textFill="#f5f5f5" textOverrun="CENTER_ELLIPSIS">
+                                          <font>
+                                             <Font name="System Bold Italic" size="12.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                 </Pane>
+                              </children>
+                              <HBox.margin>
+                                 <Insets left="50.0" />
+                              </HBox.margin>
+                           </Pane>
+                        </children>
+                     </HBox>
+                     <HBox prefHeight="100.0" prefWidth="200.0">
+                        <children>
+                           <Pane prefHeight="100.0" prefWidth="172.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
+                              <children>
+                                 <ImageView fitHeight="91.0" fitWidth="140.0" layoutX="21.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                       <Image url="@../../../images/HolidayExpress.jpg" />
+                                    </image>
+                                 </ImageView>
+                              </children>
+                           </Pane>
+                           <Pane prefHeight="120.0" prefWidth="642.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
+                              <children>
+                                 <Label layoutX="16.0" layoutY="14.0" text="Karmel Flight">
+                                    <font>
+                                       <Font name="System Bold" size="15.0" />
+                                    </font>
+                                 </Label>
+                                 <Circle fill="WHITE" layoutX="33.0" layoutY="72.0" radius="17.0" stroke="#143be8" strokeType="INSIDE" />
+                                 <Label layoutX="57.0" layoutY="62.0" text="Ibrahem Herzalleh" textFill="#5b5b5b">
+                                    <font>
+                                       <Font size="14.0" />
+                                    </font>
+                                 </Label>
+                                 <Label layoutX="180.0" layoutY="64.0" text="1h ago" textFill="#868484" />
+                                 <Pane fx:id="details112" layoutX="538.0" layoutY="48.0" prefHeight="29.0" prefWidth="74.0" styleClass="details" stylesheets="@../../../styles/agent-dash.css">
+                                    <children>
+                                       <Label layoutX="16.0" layoutY="5.0" text="details" textFill="#f5f5f5" textOverrun="CENTER_ELLIPSIS">
+                                          <font>
+                                             <Font name="System Bold Italic" size="12.0" />
+                                          </font>
+                                       </Label>
+                                    </children>
+                                 </Pane>
+                              </children>
+                              <HBox.margin>
+                                 <Insets left="50.0" />
+                              </HBox.margin>
+                           </Pane>
+                        </children>
+                        <VBox.margin>
+                           <Insets top="20.0" />
+                        </VBox.margin>
+                     </HBox>
+                  </children>
+               </VBox>
+               <Label fx:id="viewBookingListingBtn" onMouseClicked="#navigateBookingListing" styleClass="viewMoreBtn" alignment="CENTER" layoutX="635.0" layoutY="656.0" prefHeight="18.0" prefWidth="99.0" text="View more" />
+            </children>
+         </AnchorPane>
+      </VBox>
+   </center>
+</BorderPane>
