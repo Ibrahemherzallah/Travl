@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="801.0" prefWidth="1141.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.AddController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="801.0" prefWidth="1441.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.AddFlightController">
     <left>
         <AnchorPane prefHeight="557.0" prefWidth="86.0" styleClass="side-bar" BorderPane.alignment="CENTER">
             <children>
@@ -59,12 +59,12 @@
                         <Image url="@../../../images/icon.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="102.0" layoutY="29.0" styleClass="nav-bar-page-name" text="Dashboard">
+                <Label layoutX="135.0" layoutY="22.0" styleClass="nav-bar-page-name" text="Add Flight">
                     <font>
                         <Font size="20.0" />
                     </font>
                 </Label>
-                <TextField layoutX="417.0" layoutY="21.0" prefHeight="40.0" prefWidth="237.0" styleClass="nav-bar-search" text="Search...">
+                <TextField layoutX="658.0" layoutY="15.0" prefHeight="40.0" prefWidth="237.0" styleClass="nav-bar-search" text="Search...">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -72,22 +72,22 @@
                         <Font size="11.0" />
                     </font>
                 </TextField>
-                <ImageView fitHeight="48.0" fitWidth="56.0" layoutX="945.0" layoutY="17.0" pickOnBounds="true">
+                <ImageView fitHeight="48.0" fitWidth="56.0" layoutX="1344.0" layoutY="9.0" pickOnBounds="true">
                     <image>
                         <Image url="@../../../images/prof-img.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="909.0" layoutY="33.0" pickOnBounds="true">
+                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1284.0" layoutY="23.0" pickOnBounds="true">
                     <image>
                         <Image url="@../../../images/message-icon.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="871.0" layoutY="33.0" pickOnBounds="true">
+                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1245.0" layoutY="23.0" pickOnBounds="true">
                     <image>
                         <Image url="@../../../images/gmail-icon.png" />
                     </image>
                 </ImageView>
-                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="833.0" layoutY="33.0" pickOnBounds="true">
+                <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1201.0" layoutY="23.0" pickOnBounds="true">
                     <image>
                         <Image url="@../../../images/notification-icon.png" />
                     </image>
@@ -98,9 +98,9 @@
     <center>
         <AnchorPane minHeight="600.0" minWidth="600.0" prefHeight="791.0" prefWidth="1274.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
             <children>
-                <AnchorPane layoutX="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="812.0" prefWidth="1152.0" style="-fx-background-color: white;">
+                <AnchorPane layoutX="223.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="812.0" prefWidth="943.0" style="-fx-background-color: white;">
                     <children>
-                        <ImageView fitHeight="116.0" fitWidth="484.0" layoutX="246.0" layoutY="1.0" pickOnBounds="true">
+                        <ImageView fitHeight="122.0" fitWidth="484.0" layoutX="246.0" layoutY="-5.0" pickOnBounds="true">
                             <image>
                                 <Image url="@../../../images/sunset.jpg" />
                             </image>
@@ -199,8 +199,8 @@
                                 <Font name="System Bold Italic" size="15.0" />
                             </font>
                         </Label>
-                  <AnchorPane layoutX="-27.0" layoutY="-5.0" prefHeight="822.0" prefWidth="274.0" style="-fx-background-color: #f7e5e3;" />
-                  <AnchorPane layoutX="727.0" layoutY="-3.0" prefHeight="834.0" prefWidth="729.0" style="-fx-background-color: #f7e5e3;" />
+                  <AnchorPane layoutX="-225.0" layoutY="-5.0" prefHeight="822.0" prefWidth="472.0" style="-fx-background-color: #f7e5e3;" />
+                  <AnchorPane layoutX="730.0" layoutY="-3.0" prefHeight="820.0" prefWidth="552.0" style="-fx-background-color: #f7e5e3;" />
                     </children>
                     <cursor>
                         <Cursor fx:constant="DEFAULT" />

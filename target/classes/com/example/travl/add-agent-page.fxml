@@ -11,12 +11,12 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="815.0" prefWidth="1189.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.AddController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="936.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.AddAgentController">
 
     <center>
-        <AnchorPane prefHeight="714.0" prefWidth="1422.0" style="-fx-background-color: #f7e5e3;" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="794.0" prefWidth="1396.0" style="-fx-background-color: #f7e5e3;" BorderPane.alignment="CENTER">
             <children>
-                <AnchorPane layoutX="260.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="814.0" prefWidth="1161.0" style="-fx-background-color: white;">
+                <AnchorPane layoutX="265.0" layoutY="6.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="803.0" prefWidth="1162.0" style="-fx-background-color: white;">
                     <children>
                         <ImageView fitHeight="105.0" fitWidth="488.0" layoutX="251.0" layoutY="-1.0" pickOnBounds="true">
                             <image>
