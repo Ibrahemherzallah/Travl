@@ -63,7 +63,7 @@
 .table{
     -fx-background-color: #f8f8f8;
 }
-.box {
+.passBox {
     -fx-background-color: white;
     -fx-padding: 20;
     -fx-background-radius: 10;
