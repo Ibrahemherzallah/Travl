@@ -92,17 +92,7 @@ public class AddController {
         }
     }
 
-    @FXML
-    private void getImage2() {
-        JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "JPG & GIF & PNG Images", "jpg", "gif","png");
-        chooser.setFileFilter(filter);
-        int returnValue = chooser.showOpenDialog(null);
-        if (returnValue == JFileChooser.APPROVE_OPTION) {
-            img2.setImage(new Image(chooser.getSelectedFile().getAbsolutePath()));
-        }
-    }
+
 
     @FXML
     private void getImage1() {
@@ -140,42 +130,8 @@ public class AddController {
             stage.show();
         }
     }
-    @FXML
-    private CheckBox promotionCheckBox1;
-    @FXML
-    private CheckBox promotionCheckBox;
-    @FXML
-    private Label dis_lab;
-    @FXML
-    private Label dur_lab;
-    @FXML
-    private TextField dis_txt;
-    @FXML
-    private TextField dur_txt;
-    @FXML
-
-    private Label dis_lab1;
-    @FXML
-    private Label dur_lab1;
-    @FXML
-    private TextField dis_txt1;
-    @FXML
-    private TextField dur_txt1;
-    @FXML
 
 
-    private void setVisibilityHotel() {
-        dis_lab.setVisible(promotionCheckBox.isSelected());
-        dur_lab.setVisible(promotionCheckBox.isSelected());
-        dis_txt.setVisible(promotionCheckBox.isSelected());
-        dur_txt.setVisible(promotionCheckBox.isSelected());
 
-    }
-    @FXML
-    private void setVisibilityFlight() {
-        dis_lab1.setVisible(promotionCheckBox1.isSelected());
-        dur_lab1.setVisible(promotionCheckBox1.isSelected());
-        dis_txt1.setVisible(promotionCheckBox1.isSelected());
-        dur_txt1.setVisible(promotionCheckBox1.isSelected());
-    }
+
     }
