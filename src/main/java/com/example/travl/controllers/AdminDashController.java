@@ -16,6 +16,7 @@ public class AdminDashController {
     @FXML private ImageView addAgentAD;
     @FXML private ImageView addFlightAD;
     @FXML private ImageView addHotelAD;
+    @FXML private ImageView logoutIcon;
 
     @FXML protected void navigateHomeAD(){
         try {
@@ -31,11 +32,9 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-
-    @FXML
-    protected void navigateFlightAD(){
+    @FXML protected void navigateFlightAD(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/flight-listing.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/flight-listing-admin.fxml"));
 
             Stage stage = (Stage) flightIconAD.getScene().getWindow();
             Scene scene = new Scene(loader.load());
@@ -47,10 +46,9 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-    @FXML
-    protected void navigateHotelAD(){
+    @FXML protected void navigateHotelAD(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/hotel-listing.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/hotel-listing-admin.fxml"));
 
             Stage stage = (Stage) hotelIconAD.getScene().getWindow();
             Scene scene = new Scene(loader.load());
@@ -62,12 +60,7 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-
-
-
-
-    @FXML
-    protected void navigateAddAgentAD(){
+    @FXML protected void navigateAddAgentAD(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/add-agent-page.fxml"));
 
@@ -81,9 +74,7 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-
-    @FXML
-    protected void navigateAddFlightAD(){
+    @FXML protected void navigateAddFlightAD(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/add-flight.fxml"));
 
@@ -97,8 +88,7 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-    @FXML
-    protected void navigateAddHotelAD(){
+    @FXML protected void navigateAddHotelAD(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/add-hotel.fxml"));
 
@@ -112,31 +102,19 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
+    @FXML
+    protected void navigateLogout(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/log-in.fxml"));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            Stage stage = (Stage) logoutIcon.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+    }
 }

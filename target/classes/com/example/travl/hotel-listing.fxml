@@ -1,6 +1,4 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
@@ -20,7 +18,6 @@
 <?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440.0" stylesheets="@../../../styles/agent-dash.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.BookingController">
-
    <left>
       <AnchorPane prefHeight="905.0" prefWidth="69.0" styleClass="side-bar" stylesheets="@../../../styles/agent-dash.css" BorderPane.alignment="CENTER">
          <children>
@@ -102,7 +99,7 @@
                   <Circle centerX="20" centerY="20" radius="20" />
                </clip>
                <children>
-                  <ImageView fx:id="logoutIcon" onMousePressed="#navigateLogout" fitHeight="25.0" fitWidth="29.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#navigateFlight" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="logoutIcon" fitHeight="25.0" fitWidth="29.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#navigateLogout" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/logout-icon.png" />
                      </image>
