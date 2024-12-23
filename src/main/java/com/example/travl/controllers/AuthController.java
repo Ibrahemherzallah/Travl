@@ -16,24 +16,12 @@ public class AuthController {
     @FXML private Button forgetPassButton;
     @FXML private Button resetPassCodeBtn;
     @FXML private Button backToLogInBtn;
+    @FXML private Button resetPassBtn;
+    @FXML private Button navigateToVerificationBtn;
+    @FXML private Button newPassBtn;
 
     @FXML
-    private Button BackToLogin;
-    @FXML
-    private Button resetBtn;
-    @FXML
-    private Button btn1;  // Didn't receive the code
-    @FXML
-    private Button btn2; // Resent Code (30s)
-    @FXML
-    private Button resetPassBtn;
-    @FXML
-    private Button navigateToVerificationBtn;
-    @FXML
-    private Button newPassBtn;
-
-    @FXML
-    private void handleMenuButtonAction(ActionEvent event) throws IOException {
+    protected void handleMenuButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent newScene = null;
         if (event.getSource() == signInButton) {

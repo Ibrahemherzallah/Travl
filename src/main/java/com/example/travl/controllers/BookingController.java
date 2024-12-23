@@ -16,17 +16,22 @@ public class BookingController {
 
     @FXML private Button viewFlightBookBtn;
     @FXML private Button viewHotelBookBtn;
+    @FXML private Button viewHotelDetailsBtn1;
+    @FXML private Button viewHotelDetailsBtn2;
     @FXML private Button backTOFromHotel;
     @FXML private Button backFlightListingButton;
     @FXML private Button backToHistoryListing;
     @FXML private Button bookingBtn;
     @FXML private ImageView homeIcon;
+    @FXML private ImageView logoutIcon;
     @FXML private ImageView flightIcon;
     @FXML private ImageView hotelIcon;
     @FXML private ImageView historyIcon;
     @FXML private Button selectFlightBtn;
     @FXML private Button viewHotelDetailsBtn;
     @FXML private Button backHotelListingButton;
+    @FXML private Button viewFlightDetailsBtn1;
+    @FXML private Button viewFlightDetailsBtn2;
 
     @FXML
     protected void navigateHome(){
@@ -88,7 +93,21 @@ public class BookingController {
             System.out.println("Error");
         }
     }
+    @FXML
+    protected void navigateLogout(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/log-in.fxml"));
 
+            Stage stage = (Stage) logoutIcon.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+    }
     @FXML
     protected void navigateClient(){
         try {
@@ -109,13 +128,12 @@ public class BookingController {
     private void handleMenuButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent newScene = null;
-        if (event.getSource() == selectFlightBtn) {
+        if (event.getSource() == selectFlightBtn || event.getSource() == viewFlightDetailsBtn1 || event.getSource() == viewFlightDetailsBtn2) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-details.fxml")));
         }
-         else if (event.getSource() == viewHotelDetailsBtn) {
+         else if (event.getSource() == viewHotelDetailsBtn || event.getSource() == viewHotelDetailsBtn1 || event.getSource() == viewHotelDetailsBtn2) {
              newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-details.fxml")));
-       }
-        else if (event.getSource() == backFlightListingButton) {
+        } else if (event.getSource() == backFlightListingButton) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-listing.fxml")));
         }
         else if (event.getSource() == backTOFromHotel) {

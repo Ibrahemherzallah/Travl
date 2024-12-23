@@ -9,17 +9,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class AdminDashController {
-    @FXML
-    private ImageView homeIcon;
-    @FXML private ImageView flightIcon;
-    @FXML private ImageView hotelIcon;
-    @FXML private ImageView historyIcon;
-    @FXML
-    protected void navigateHome(){
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/agent-dash.fxml"));
 
-            Stage stage = (Stage) homeIcon.getScene().getWindow();
+    @FXML private ImageView homeIconAD;
+    @FXML private ImageView flightIconAD;
+    @FXML private ImageView hotelIconAD;
+    @FXML private ImageView addAgentAD;
+    @FXML private ImageView addFlightAD;
+    @FXML private ImageView addHotelAD;
+
+    @FXML protected void navigateHomeAD(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/admin-dash.fxml"));
+
+            Stage stage = (Stage) homeIconAD.getScene().getWindow();
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.setTitle("Login");
@@ -31,11 +33,11 @@ public class AdminDashController {
     }
 
     @FXML
-    protected void navigateFlight(){
+    protected void navigateFlightAD(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/flight-listing.fxml"));
 
-            Stage stage = (Stage) flightIcon.getScene().getWindow();
+            Stage stage = (Stage) flightIconAD.getScene().getWindow();
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.setTitle("Login");
@@ -46,11 +48,11 @@ public class AdminDashController {
         }
     }
     @FXML
-    protected void navigateHotel(){
+    protected void navigateHotelAD(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/hotel-listing.fxml"));
 
-            Stage stage = (Stage) hotelIcon.getScene().getWindow();
+            Stage stage = (Stage) hotelIconAD.getScene().getWindow();
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.setTitle("Login");
@@ -60,14 +62,16 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
+
+
 
 
     @FXML
-    protected void navigateHistory(){
+    protected void navigateAddAgentAD(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/all-history-booking.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/add-agent-page.fxml"));
 
-            Stage stage = (Stage) historyIcon.getScene().getWindow();
+            Stage stage = (Stage) addAgentAD.getScene().getWindow();
             Scene scene = new Scene(loader.load());
             stage.setScene(scene);
             stage.setTitle("Login");
@@ -77,4 +81,62 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
+
+    @FXML
+    protected void navigateAddFlightAD(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/add-flight.fxml"));
+
+            Stage stage = (Stage) addFlightAD.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+    }
+    @FXML
+    protected void navigateAddHotelAD(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/add-hotel.fxml"));
+
+            Stage stage = (Stage) addFlightAD.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
