@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
@@ -23,19 +24,20 @@
    <left>
       <AnchorPane prefHeight="905.0" prefWidth="69.0" styleClass="side-bar" stylesheets="@../../../styles/agent-dash.css" BorderPane.alignment="CENTER">
          <children>
-            <Pane layoutX="16.0" layoutY="123.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+            <Pane layoutX="16.0" layoutY="120.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                <clip>
                   <Circle centerX="20" centerY="20" radius="20" />
                </clip>
                <children>
-                  <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0" onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0"
+                             onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/home-icon.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="13.0" layoutY="207.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+            <Pane layoutX="13.0" layoutY="200.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                <clip>
                   <Circle centerX="20" centerY="20" radius="20" />
                </clip>
@@ -47,7 +49,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="16.0" layoutY="275.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+            <Pane layoutX="16.0" layoutY="280.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                <clip>
                   <Circle centerX="20" centerY="20" radius="20" />
                </clip>
@@ -59,7 +61,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="13.0" layoutY="358.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+            <Pane layoutX="13.0" layoutY="360.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                <clip>
                   <Circle centerX="20" centerY="20" radius="20" />
                </clip>
@@ -71,7 +73,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="13.0" layoutY="436.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+            <Pane layoutX="13.0" layoutY="440.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                <clip>
                   <Circle centerX="20" centerY="20" radius="20" />
                </clip>
@@ -83,7 +85,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="11.0" layoutY="513.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+            <Pane layoutX="13.0" layoutY="520.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                <clip>
                   <Circle centerX="20" centerY="20" radius="20" />
                </clip>
@@ -91,6 +93,18 @@
                   <ImageView fitHeight="25.0" fitWidth="29.0" layoutX="9.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/prof-icon.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="13.0" layoutY="600.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+               <clip>
+                  <Circle centerX="20" centerY="20" radius="20" />
+               </clip>
+               <children>
+                  <ImageView fx:id="logoutIcon" onMousePressed="#navigateLogout" fitHeight="25.0" fitWidth="29.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#navigateFlight" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../images/logout-icon.png" />
                      </image>
                   </ImageView>
                </children>
@@ -104,7 +118,8 @@
       </AnchorPane>
    </left>
 
-<center>
+
+   <center>
    <VBox alignment="TOP_CENTER" layoutX="10" spacing="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
       <HBox alignment="CENTER" prefHeight="58.0" prefWidth="954.0" style="-fx-background-color: white;">
          <children>
@@ -286,6 +301,9 @@
                      </font>
                   </Label>
                </children>
+                  <VBox.margin>
+                     <Insets top="10.0" />
+                  </VBox.margin>
             </Pane>
                <HBox.margin>
                   <Insets left="100.0" />
@@ -299,9 +317,9 @@
                         <Image url="@../../../images/FarahLocanda.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="219.0" layoutY="4.0" prefHeight="21.0" prefWidth="107.0" text="Farah Locanda">
+                  <Label layoutX="221.0" layoutY="4.0" prefHeight="21.0" prefWidth="107.0" text="Farah Locanda">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="54.0" fitWidth="96.0" layoutX="223.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
@@ -331,36 +349,36 @@
                         <Image url="@../../../images/RamadaHotel.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="210.0" layoutY="4.0" prefHeight="21.0" prefWidth="107.0" text="Ramada Hotel">
+                  <Label layoutX="225.0" layoutY="4.0" prefHeight="21.0" prefWidth="107.0" text="Ramada Hotel">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="210.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="225.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/rating5.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="23.0" layoutX="201.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="23.0" layoutX="221.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/maps-and-flags.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="224.0" layoutY="57.0" text="Jerusalem,Palestine" textFill="#6e6969" />
+                  <Label layoutX="247.0" layoutY="58.0" text="Jerusalem,Palestine" textFill="#6e6969" />
                   <Label layoutX="539.0" layoutY="12.0" text="\$150">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
                   <Label layoutX="532.0" layoutY="47.0" text="Per night" textFill="#8b8888" />
-                  <Button layoutX="214.0" layoutY="89.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" prefHeight="25.0" prefWidth="99.0" styleClass="view-details-btn" text="View Details" textFill="WHITE" />
+                  <Button layoutX="221.0" layoutY="88.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" prefHeight="25.0" prefWidth="99.0" styleClass="view-details-btn" text="View Details" textFill="WHITE" />
                </children>
             </Pane>
             <Pane layoutX="323.0" layoutY="428.0" prefHeight="129.0" prefWidth="595.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
                <children>
-                  <Label layoutX="206.0" layoutY="4.0" prefHeight="21.0" prefWidth="183.0" text="Hilton London Paddington">
+                  <Label layoutX="227.0" layoutY="4.0" prefHeight="21.0" prefWidth="191.0" text="Hilton London Paddington">
                      <font>
-                        <Font size="15.0" />
+                        <Font name="System Bold Italic" size="15.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="229.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
@@ -390,22 +408,17 @@
             </Pane>
             <Pane layoutX="323.0" layoutY="600.0" prefHeight="129.0" prefWidth="595.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
                <children>
-                  <Label layoutX="206.0" layoutY="4.0" prefHeight="21.0" prefWidth="183.0" text="SonestaHotel">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
                   <ImageView fitHeight="45.0" fitWidth="45.0" layoutX="229.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/rating5.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="40.0" fitWidth="23.0" layoutX="217.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="40.0" fitWidth="23.0" layoutX="222.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../images/maps-and-flags.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="239.0" layoutY="56.0" text="Amman, Jordan" textFill="#6e6969" />
+                  <Label layoutX="243.0" layoutY="56.0" text="Amman, Jordan" textFill="#6e6969" />
                   <Label layoutX="539.0" layoutY="24.0" text="\$100">
                      <font>
                         <Font size="16.0" />
@@ -418,17 +431,22 @@
                         <Image url="@../../../images/SonestaHotel.jpg" />
                      </image>
                   </ImageView>
+                     <Label layoutX="229.0" layoutY="6.0" prefHeight="21.0" prefWidth="107.0" text="SonestaHotel">
+                        <font>
+                           <Font name="System Bold Italic" size="15.0" />
+                        </font>
+                     </Label>
                </children>
             </Pane>
                <HBox.margin>
-                  <Insets left="100.0" />
+                  <Insets left="50.0" />
                </HBox.margin>
                <padding>
                   <Insets top="40.0" />
                </padding>
          </VBox>
             <Separator orientation="VERTICAL" prefHeight="655.0" prefWidth="41.0" />
-            <Pane prefHeight="655.0" prefWidth="333.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
+            <Pane prefHeight="614.0" prefWidth="334.0" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
                <children>
                   <Label layoutX="14.0" layoutY="14.0" text="Promation">
                      <font>
@@ -458,8 +476,8 @@
                      </font>
                   </Label>
                   <TextArea layoutX="42.0" layoutY="501.0" prefHeight="87.0" prefWidth="261.0" text="Experience the wonders of Cairo &#10;with a 5-day package including flights &#10;and a stay at a 5-star hotel near the Pyramids.&#10; Packages begin at $600 per person." />
-                  <Button layoutX="134.0" layoutY="302.0" mnemonicParsing="false" text="view offer" textFill="WHITE" />
-                  <Button layoutX="137.0" layoutY="597.0" mnemonicParsing="false" text="view offer" textFill="WHITE" />
+                  <Button fx:id="viewHotelDetailsBtn1" onAction="#handleMenuButtonAction" styleClass="viewHotelDetailsBtn" stylesheets="@../../../styles/style.css" layoutX="134.0" layoutY="302.0" mnemonicParsing="false" text="view offer" textFill="WHITE" />
+                  <Button fx:id="viewHotelDetailsBtn2" onAction="#handleMenuButtonAction" styleClass="viewHotelDetailsBtn" layoutX="137.0" layoutY="597.0" mnemonicParsing="false" text="view offer" textFill="WHITE" />
                </children>
             </Pane>
       </HBox>
