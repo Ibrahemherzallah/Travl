@@ -8,7 +8,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -32,6 +34,104 @@ public class BookingController {
     @FXML private Button backHotelListingButton;
     @FXML private Button viewFlightDetailsBtn1;
     @FXML private Button viewFlightDetailsBtn2;
+
+    @FXML private Label customerNameF;
+    @FXML private Label customerPhoneF;
+    @FXML private Label coustomerEmailF;
+    @FXML private Label customerAddF;
+    @FXML private Label checkinF;
+    @FXML private Label chekoutF;
+    @FXML private Label createAtF;
+    @FXML private Label NkidsF;
+    @FXML private Label paymentMF;
+    @FXML private Label statusF;
+    @FXML private Button editButton;
+
+    @FXML private TextField customerNameTextField, customerPhoneTextField, coustomerEmailTextField, customerAddTextField, checkinTextField, chekoutTextField, createAtTextField, NkidsTextField, paymentMTextField, statusTextField;
+    private boolean isEditing = false;
+
+    @FXML
+    public void handleEditButtonClick() {
+        if (isEditing) {
+            // Save changes from TextFields back to Labels
+            customerNameF.setText(customerNameTextField.getText());
+            customerPhoneF.setText(customerPhoneTextField.getText());
+            coustomerEmailF.setText(coustomerEmailTextField.getText());
+            customerAddF.setText(customerAddTextField.getText());
+            checkinF.setText(checkinTextField.getText());
+            chekoutF.setText(chekoutTextField.getText());
+            createAtF.setText(createAtTextField.getText());
+            NkidsF.setText(NkidsTextField.getText());
+            paymentMF.setText(paymentMTextField.getText());
+            statusF.setText(statusTextField.getText());
+
+            // Hide TextFields and show Labels again
+            customerNameTextField.setVisible(false);
+            customerPhoneTextField.setVisible(false);
+            coustomerEmailTextField.setVisible(false);
+            customerAddTextField.setVisible(false);
+            checkinTextField.setVisible(false);
+            chekoutTextField.setVisible(false);
+            createAtTextField.setVisible(false);
+            NkidsTextField.setVisible(false);
+            paymentMTextField.setVisible(false);
+            statusTextField.setVisible(false);
+
+            customerNameF.setVisible(true);
+            customerPhoneF.setVisible(true);
+            coustomerEmailF.setVisible(true);
+            customerAddF.setVisible(true);
+            checkinF.setVisible(true);
+            chekoutF.setVisible(true);
+            createAtF.setVisible(true);
+            NkidsF.setVisible(true);
+            paymentMF.setVisible(true);
+            statusF.setVisible(true);
+
+            editButton.setText("Edit");
+        } else {
+            // Show TextFields for editing
+            customerNameTextField.setText(customerNameF.getText());
+            customerPhoneTextField.setText(customerPhoneF.getText());
+            coustomerEmailTextField.setText(coustomerEmailF.getText());
+            customerAddTextField.setText(customerAddF.getText());
+            checkinTextField.setText(checkinF.getText());
+            chekoutTextField.setText(chekoutF.getText());
+            createAtTextField.setText(createAtF.getText());
+            NkidsTextField.setText(NkidsF.getText());
+            paymentMTextField.setText(paymentMF.getText());
+            statusTextField.setText(statusF.getText());
+
+            // Show TextFields and hide Labels
+            customerNameTextField.setVisible(true);
+            customerPhoneTextField.setVisible(true);
+            coustomerEmailTextField.setVisible(true);
+            customerAddTextField.setVisible(true);
+            checkinTextField.setVisible(true);
+            chekoutTextField.setVisible(true);
+            createAtTextField.setVisible(true);
+            NkidsTextField.setVisible(true);
+            paymentMTextField.setVisible(true);
+            statusTextField.setVisible(true);
+
+            customerNameF.setVisible(false);
+            customerPhoneF.setVisible(false);
+            coustomerEmailF.setVisible(false);
+            customerAddF.setVisible(false);
+            checkinF.setVisible(false);
+            chekoutF.setVisible(false);
+            createAtF.setVisible(false);
+            NkidsF.setVisible(false);
+            paymentMF.setVisible(false);
+            statusF.setVisible(false);
+
+            // Change button to "Save"
+            editButton.setText("Save");
+        }
+
+        // Toggle editing state
+        isEditing = !isEditing;
+    }
 
     @FXML
     protected void navigateHome(){
@@ -159,5 +259,8 @@ public class BookingController {
             stage.show();
         }
     }
+
+
+
 
 }
