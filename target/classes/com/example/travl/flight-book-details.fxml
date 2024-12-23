@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="800.0" prefWidth="1440.0" style="-fx-background-color: #ffffff;" stylesheets="@../../../styles/style.css" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="com.example.travl.controllers.BookingController" xmlns:fx="http://javafx.com/fxml/1">
+
+    <top>
+        <VBox alignment="CENTER_LEFT" spacing="10" style="-fx-padding: 10; -fx-background-color: #f7e5e3;">
+            <Button fx:id="backToHistoryListing" onAction="#handleMenuButtonAction" styleClass="backButton" style="-fx-padding: 10px; -fx-text-fill: white; -fx-background-radius: 10px;" text="← Back to Bookings" />
+        </VBox>
+    </top>
+
+    <center>
+        <VBox alignment="TOP_CENTER" prefHeight="521.0" prefWidth="538.0" spacing="20" style="-fx-padding: 20; -fx-background-color: #f7e5e3;">
+
+            <Label style="-fx-font-weight: bold;" text="Flight Details">
+                <font>
+                    <Font name="System Bold" size="18.0" />
+                </font>
+            </Label>
+
+            <Label style="-fx-font-weight: bold;" text="Booking #HD82947">
+                <font>
+                    <Font name="System Bold" size="14.0" />
+                </font>
+            </Label>
+
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="482.0" prefWidth="858.0" style="-fx-background-color: #ffffff; -fx-border-color: #e0e0e0; -fx-border-radius: 10px;">
+                <children>
+                    <GridPane hgap="20" layoutX="299.0" layoutY="8.0" prefHeight="465.0" prefWidth="155.0" style="-fx-padding: 10;" vgap="10">
+
+                        <Label style="-fx-font-weight: bold;" text="Route:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                        <Label style="-fx-font-weight: bold;" text="Date and Time:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                        <Label text="Airline:" GridPane.columnIndex="0" GridPane.rowIndex="2">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font></Label>
+                        <Label text="Flight Number:" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                        <Label text="Customer Name:" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                        <Label text="Status:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                        <Label text="Created At:" GridPane.columnIndex="0" GridPane.rowIndex="6" />
+                        <Label text="Phone:" GridPane.columnIndex="0" GridPane.rowIndex="7" />
+                        <Label text="Departure Time:" GridPane.columnIndex="0" GridPane.rowIndex="8">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font></Label>
+                        <Label text="Arrival Time:" GridPane.columnIndex="0" GridPane.rowIndex="9">
+                            <font>
+                                <Font name="System Bold" size="12.0" />
+                            </font></Label>
+                        <Label text="Price:" GridPane.columnIndex="0" GridPane.rowIndex="10" />
+                        <Label text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="11" />
+                        <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="12" />
+                        <Label text="Number of Adults:" GridPane.columnIndex="0" GridPane.rowIndex="13" />
+                        <Label text="Number of Kids:" GridPane.columnIndex="0" GridPane.rowIndex="14" />
+                        <Label text="Payment Method:" GridPane.columnIndex="0" GridPane.rowIndex="15" />
+
+                        <Label text="New York (JFK) to London (LHR)" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                        <Label text="Feb 20, 2025 • 10:30 AM - Feb 20, 2025 • 10:30 PM" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label text="British Airways" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="BA 178" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label text="Ahmed" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label style="-fx-text-fill: green;" text="Complete" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label text="Feb 22" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <Label text="0569969634" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <Label text="Feb 20, 2025 • 10:30 AM" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <Label text="Feb 20, 2025 • 10:30 PM" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <Label text="500$" textFill="#24a41e" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <Label text="123 Main St, NY" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <Label text="ahmed@email.com" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                        <Label text="2" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                        <Label text="1" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                        <Label text="Credit Card" textFill="#96a0af" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                        <columnConstraints>
+                            <ColumnConstraints maxWidth="200.80001220703124" minWidth="102.400048828125" prefWidth="200.80001220703124" />
+                            <ColumnConstraints maxWidth="263.999951171875" minWidth="165.59998779296876" prefWidth="165.59998779296876" />
+                        </columnConstraints>
+                        <rowConstraints>
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                            <RowConstraints />
+                        </rowConstraints>
+                    </GridPane>
+                </children>
+            </AnchorPane>
+        </VBox>
+    </center>
+
+</BorderPane>

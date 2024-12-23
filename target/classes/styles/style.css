@@ -1,0 +1,71 @@
+.button{
+    -fx-background-color: #000000;
+}
+
+.view-details-btn {
+    -fx-background-color: #111827;
+
+}
+
+.view-details-btn:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: #1f2a43;
+}
+
+.flight_pane{
+    -fx-background-color:#fff;
+    -fx-border-width:2px 2px 2px 2px;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.5, 0, 1.5);
+}
+
+.hotel_pane{
+    -fx-background-color:#fff;
+    -fx-border-width:2px 2px 2px 2px;
+    -fx-border-radius:15px;
+    -fx-background-radius:15px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 5, 0.5, 0, 1.5);
+}
+.backHotelsBtn {
+    -fx-background-color: #111827;;
+}
+.backHotelsBtn:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: #182135;;
+}
+.bookBtn {
+    -fx-background-color: #111827;;
+}
+.bookBtn:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: #182135;
+}
+
+.selectFlightBtn {
+    -fx-background-color: #111827;
+}
+.selectFlightBtn:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: #1f2a43;
+}
+.backButton {
+    -fx-background-color: #111827;
+}
+.addAgentBtn:hover {
+    -fx-cursor: HAND;
+}
+.backButton:hover {
+    -fx-cursor: HAND;
+    -fx-background-color: #1f2a43;
+}
+
+.table{
+    -fx-background-color: #f8f8f8;
+}
+.passBox {
+    -fx-background-color: white;
+    -fx-padding: 20;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 2, 0.5, 0, 1);
+}
