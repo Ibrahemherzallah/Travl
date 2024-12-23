@@ -63,6 +63,11 @@
     -fx-cursor: HAND;
 }
 
+.deleteButton {
+    -fx-background-color: #FF2E2E;
+    -fx-background-radius: 15px;
+}
+
 @media screen and (max-width: 768px) {
     .parent {
         -fx-padding: 10px;

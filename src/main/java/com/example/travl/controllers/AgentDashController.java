@@ -14,6 +14,7 @@ public class AgentDashController {
     @FXML private ImageView flightIcon;
     @FXML private ImageView hotelIcon;
     @FXML private ImageView historyIcon;
+    @FXML private ImageView logoutIcon;
     @FXML private Label hotelDetailBtn;
     @FXML private Label viewBookingListingBtn;
     @FXML
@@ -63,7 +64,6 @@ public class AgentDashController {
         }
     }
 
-
     @FXML
     protected void navigateHistory(){
         try {
@@ -79,7 +79,21 @@ public class AgentDashController {
             System.out.println("Error");
         }
     }
+    @FXML
+    protected void navigateLogout(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/log-in.fxml"));
 
+            Stage stage = (Stage) logoutIcon.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+    }
     @FXML
     protected void navigateHotelBook(){
         try {
