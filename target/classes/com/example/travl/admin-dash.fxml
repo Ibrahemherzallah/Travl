@@ -96,7 +96,7 @@
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
                     <children>
-                        <ImageView fx:id="logoutIcon" fitHeight="25.0" fitWidth="29.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#navigateLogout" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="logoutIcon" fitHeight="25.0" fitWidth="29.0" layoutX="8.0" layoutY="12.0" onMouseClicked="#navigateLogout" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../images/logout-icon.png" />
                             </image>
