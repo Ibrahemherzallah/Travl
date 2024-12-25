@@ -41,14 +41,47 @@ public class BookingController {
     @FXML private Label paymentMF;
     @FXML private Label statusF;
     @FXML private Button editButton;
-
+    ///
     @FXML private TextField customerNameTextField, customerPhoneTextField, coustomerEmailTextField, customerAddTextField, checkinTextField, chekoutTextField, createAtTextField, NkidsTextField, paymentMTextField, statusTextField;
     private boolean isEditing = false;
+
+    @FXML private Label flightRoute;
+    @FXML private Label flightTime;
+    @FXML private Label airlineName;
+    @FXML private Label flightNumber;
+    @FXML private Label passengerName;
+    @FXML private Label flightStatus;
+    @FXML private Label bookingDate;
+    @FXML private Label phoneNumber;
+    @FXML private Label checkinTime;
+    @FXML private Label checkoutTime;
+    @FXML private Label price;
+    @FXML private Label address;
+    @FXML private Label email;
+    @FXML private Label numAdults;
+    @FXML private Label numKids;
+    @FXML private Label paymentMethod;
+    ///
+    @FXML private TextField flightRouteF;
+    @FXML private TextField flightTimeF;
+    @FXML private TextField airlineNameF;
+    @FXML private TextField flightNumberF;
+    @FXML private TextField passengerNameF;
+    @FXML private TextField flightStatusF;
+    @FXML private TextField bookingDateF;
+    @FXML private TextField phoneNumberF;
+    @FXML private TextField checkinTimeF;
+    @FXML private TextField checkoutTimeF;
+    @FXML private TextField priceF;
+    @FXML private TextField addressF;
+    @FXML private TextField emailF;
+    @FXML private TextField numAdultsF;
+    @FXML private TextField numKidsF;
+    @FXML private TextField paymentMethodF;
 
     @FXML
     public void handleEditButtonClick() {
         if (isEditing) {
-            // Save changes from TextFields back to Labels
             customerNameF.setText(customerNameTextField.getText());
             customerPhoneF.setText(customerPhoneTextField.getText());
             coustomerEmailF.setText(coustomerEmailTextField.getText());
@@ -60,7 +93,6 @@ public class BookingController {
             paymentMF.setText(paymentMTextField.getText());
             statusF.setText(statusTextField.getText());
 
-            // Hide TextFields and show Labels again
             customerNameTextField.setVisible(false);
             customerPhoneTextField.setVisible(false);
             coustomerEmailTextField.setVisible(false);
@@ -85,7 +117,6 @@ public class BookingController {
 
             editButton.setText("Edit");
         } else {
-            // Show TextFields for editing
             customerNameTextField.setText(customerNameF.getText());
             customerPhoneTextField.setText(customerPhoneF.getText());
             coustomerEmailTextField.setText(coustomerEmailF.getText());
@@ -97,7 +128,6 @@ public class BookingController {
             paymentMTextField.setText(paymentMF.getText());
             statusTextField.setText(statusF.getText());
 
-            // Show TextFields and hide Labels
             customerNameTextField.setVisible(true);
             customerPhoneTextField.setVisible(true);
             coustomerEmailTextField.setVisible(true);
@@ -120,14 +150,108 @@ public class BookingController {
             paymentMF.setVisible(false);
             statusF.setVisible(false);
 
-            // Change button to "Save"
             editButton.setText("Save");
         }
 
-        // Toggle editing state
         isEditing = !isEditing;
     }
+    @FXML
+    public void handleEditButtonClickFly() {
+        if (isEditing) {
+            flightRoute.setText(flightRouteF.getText());
+            flightTime.setText(flightTimeF.getText());
+            airlineName.setText(airlineNameF.getText());
+            flightNumber.setText(flightNumberF.getText());
+            passengerName.setText(passengerNameF.getText());
+            flightStatus.setText(flightStatusF.getText());
+            bookingDate.setText(bookingDateF.getText());
+            phoneNumber.setText(phoneNumberF.getText());
+            checkinTime.setText(checkinTimeF.getText());
+            checkoutTime.setText(checkoutTimeF.getText());
+            price.setText(priceF.getText());
+            address.setText(addressF.getText());
+            email.setText(emailF.getText());
+            numAdults.setText(numAdultsF.getText());
+            numKids.setText(numKidsF.getText());
+            paymentMethod.setText(paymentMethodF.getText());
 
+            toggleVisibility(false);
+
+            editButton.setText("Edit");
+        } else {
+            flightRouteF.setText(flightRoute.getText());
+            flightTimeF.setText(flightTime.getText());
+            airlineNameF.setText(airlineName.getText());
+            flightNumberF.setText(flightNumber.getText());
+            passengerNameF.setText(passengerName.getText());
+            flightStatusF.setText(flightStatus.getText());
+            bookingDateF.setText(bookingDate.getText());
+            phoneNumberF.setText(phoneNumber.getText());
+            checkinTimeF.setText(checkinTime.getText());
+            checkoutTimeF.setText(checkoutTime.getText());
+            priceF.setText(price.getText());
+            addressF.setText(address.getText());
+            emailF.setText(email.getText());
+            numAdultsF.setText(numAdults.getText());
+            numKidsF.setText(numKids.getText());
+            paymentMethodF.setText(paymentMethod.getText());
+
+            toggleVisibility(true);
+
+            editButton.setText("Save");
+        }
+
+        isEditing = !isEditing;
+    }
+    private void toggleVisibility(boolean showTextFields) {
+        flightRoute.setVisible(!showTextFields);
+        flightRouteF.setVisible(showTextFields);
+
+        flightTime.setVisible(!showTextFields);
+        flightTimeF.setVisible(showTextFields);
+
+        airlineName.setVisible(!showTextFields);
+        airlineNameF.setVisible(showTextFields);
+
+        flightNumber.setVisible(!showTextFields);
+        flightNumberF.setVisible(showTextFields);
+
+        passengerName.setVisible(!showTextFields);
+        passengerNameF.setVisible(showTextFields);
+
+        flightStatus.setVisible(!showTextFields);
+        flightStatusF.setVisible(showTextFields);
+
+        bookingDate.setVisible(!showTextFields);
+        bookingDateF.setVisible(showTextFields);
+
+        phoneNumber.setVisible(!showTextFields);
+        phoneNumberF.setVisible(showTextFields);
+
+        checkinTime.setVisible(!showTextFields);
+        checkinTimeF.setVisible(showTextFields);
+
+        checkoutTime.setVisible(!showTextFields);
+        checkoutTimeF.setVisible(showTextFields);
+
+        price.setVisible(!showTextFields);
+        priceF.setVisible(showTextFields);
+
+        address.setVisible(!showTextFields);
+        addressF.setVisible(showTextFields);
+
+        email.setVisible(!showTextFields);
+        emailF.setVisible(showTextFields);
+
+        numAdults.setVisible(!showTextFields);
+        numAdultsF.setVisible(showTextFields);
+
+        numKids.setVisible(!showTextFields);
+        numKidsF.setVisible(showTextFields);
+
+        paymentMethod.setVisible(!showTextFields);
+        paymentMethodF.setVisible(showTextFields);
+    }
     @FXML
     protected void navigateHome(){
         try {
