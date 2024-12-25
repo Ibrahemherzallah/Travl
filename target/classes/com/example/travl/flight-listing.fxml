@@ -25,6 +25,7 @@
         <AnchorPane prefHeight="905.0" prefWidth="69.0" styleClass="side-bar" stylesheets="@../../../styles/agent-dash.css" BorderPane.alignment="CENTER">
             <children>
                 <Pane layoutX="16.0" layoutY="123.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -96,6 +97,18 @@
                         </ImageView>
                     </children>
                 </Pane>
+                <Pane layoutX="13.0" layoutY="600.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                    <clip>
+                        <Circle centerX="20" centerY="20" radius="20" />
+                    </clip>
+                    <children>
+                        <ImageView fx:id="logoutIcon" onMousePressed="#navigateLogout" fitHeight="25.0" fitWidth="29.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#navigateFlight" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../images/logout-icon.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
                 <ImageView fx:id="homeIcon1" fitHeight="47.0" fitWidth="160.0" layoutX="13.0" layoutY="12.0" onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true">
                     <image>
                         <Image url="@../../../images/icon.png" />
@@ -104,6 +117,7 @@
             </children>
         </AnchorPane>
     </left>
+
     <center>
         <VBox alignment="TOP_CENTER" layoutX="10" spacing="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
             <HBox alignment="CENTER" prefHeight="58.0" prefWidth="954.0" style="-fx-background-color: white;">
@@ -262,6 +276,19 @@
                </HBox.margin>
                 </VBox>
                 <VBox>
+                    <AnchorPane layoutX="336.0" layoutY="130.0" prefHeight="93.0" prefWidth="585.0" style="-fx-background-color: #fff;" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
+                        <children>
+                            <ChoiceBox fx:id="myChoiceBox" layoutX="349.0" layoutY="9.0" prefHeight="25.0" prefWidth="149.0" />
+                            <TextField layoutX="14.0" layoutY="9.0" prefHeight="25.0" prefWidth="150.0" promptText="From" />
+                            <TextField layoutX="177.0" layoutY="9.0" prefHeight="25.0" prefWidth="150.0" promptText="To" stylesheets="@../../../styles/style.css" />
+                            <DatePicker layoutX="14.0" layoutY="43.0" promptText="Date in" />
+                            <DatePicker layoutX="198.0" layoutY="43.0" promptText="Date out" />
+                            <Button layoutX="398.0" layoutY="43.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Search" textFill="WHITE" />
+                        </children>
+                  <VBox.margin>
+                     <Insets top="20.0" />
+                  </VBox.margin>
+                    </AnchorPane>
                     <AnchorPane layoutX="336.0" layoutY="241.0" prefHeight="213.0" prefWidth="586.0" style="-fx-background-color: #fff;" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
                         <children>
                             <ImageView fitHeight="33.0" fitWidth="150.0" layoutX="21.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
@@ -295,19 +322,6 @@
                             <Separator layoutX="200.0" layoutY="126.0" prefWidth="200.0" />
                             <Label layoutX="286.0" layoutY="102.0" text="4h 30m" />
                             <Label layoutX="287.0" layoutY="137.0" text=" 1 Stop" />
-                        </children>
-                  <VBox.margin>
-                     <Insets top="33.0" />
-                  </VBox.margin>
-                    </AnchorPane>
-                    <AnchorPane layoutX="336.0" layoutY="130.0" prefHeight="93.0" prefWidth="585.0" style="-fx-background-color: #fff;" styleClass="flight_pane" stylesheets="@../../../styles/style.css">
-                        <children>
-                            <ChoiceBox fx:id="myChoiceBox" layoutX="349.0" layoutY="9.0" prefHeight="25.0" prefWidth="149.0" />
-                            <TextField layoutX="14.0" layoutY="9.0" prefHeight="25.0" prefWidth="150.0" promptText="From" />
-                            <TextField layoutX="177.0" layoutY="9.0" prefHeight="25.0" prefWidth="150.0" promptText="To" stylesheets="@../../../styles/style.css" />
-                            <DatePicker layoutX="14.0" layoutY="43.0" promptText="Date in" />
-                            <DatePicker layoutX="198.0" layoutY="43.0" promptText="Date out" />
-                            <Button layoutX="398.0" layoutY="43.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="76.0" text="Search" textFill="WHITE" />
                         </children>
                   <VBox.margin>
                      <Insets top="20.0" />
@@ -352,7 +366,7 @@
                   </VBox.margin>
                     </AnchorPane>
                <HBox.margin>
-                  <Insets left="100.0" />
+                  <Insets left="50.0" top="10.0" />
                </HBox.margin>
                 </VBox>
             <Separator orientation="VERTICAL" prefHeight="607.0" prefWidth="51.0" />
@@ -388,6 +402,7 @@
                   <TextArea layoutX="42.0" layoutY="502.0" prefHeight="87.0" prefWidth="261.0" text="Spend 5 days in Rome with this package &#10;offering flights and accommodation at &#10;a 4-star hotel near the Colosseum. &#10;Starting at $850 per person." />
                   <Button layoutX="131.0" layoutY="598.0" mnemonicParsing="false" text="view offer" textFill="WHITE" />
                   <Button layoutX="131.0" layoutY="297.0" mnemonicParsing="false" text="view offer" textFill="WHITE" />
+
                </children>
             </Pane>
             </HBox>
@@ -396,3 +411,4 @@
     </center>
 
 </BorderPane>
+

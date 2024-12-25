@@ -57,6 +57,7 @@
 
 .sign-in-button:hover {
     -fx-background-color: #c2362d;
+    -fx-cursor: HAND;
 }
 
 .check-box {
