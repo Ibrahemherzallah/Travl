@@ -28,26 +28,19 @@ public class HotelBooking {
     @Column(name = "created_at")
     private String created_at;
 
-    @Column(name = "customer_address")
-    private String customer_address;
-
-    @Column(name = "customer_email")
-    private String customer_email;
-
-    @Column(name = "customer_phone")
-    private String customer_phone;
-
-    @Column(name = "customer_name")
-    private String customer_name;
-
     @Column(name = "payment_method")
     private String payment_method;
 
-    @Column(name = "customer_num_of_adults")
-    private String customer_num_of_adults;
+    @Column(name = "price")
+    private String price;
 
-    @Column(name = "customer_num_of_kids")
-    private String customer_num_of_kids;
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
 
     public int getBook_id() {
         return book_id;
@@ -105,38 +98,6 @@ public class HotelBooking {
         this.created_at = created_at;
     }
 
-    public String getCustomer_address() {
-        return customer_address;
-    }
-
-    public void setCustomer_address(String customer_address) {
-        this.customer_address = customer_address;
-    }
-
-    public String getCustomer_phone() {
-        return customer_phone;
-    }
-
-    public void setCustomer_phone(String customer_phone) {
-        this.customer_phone = customer_phone;
-    }
-
-    public String getCustomer_email() {
-        return customer_email;
-    }
-
-    public void setCustomer_email(String customer_email) {
-        this.customer_email = customer_email;
-    }
-
-    public String getCustomer_name() {
-        return customer_name;
-    }
-
-    public void setCustomer_name(String customer_name) {
-        this.customer_name = customer_name;
-    }
-
     public String getPayment_method() {
         return payment_method;
     }
@@ -145,20 +106,5 @@ public class HotelBooking {
         this.payment_method = payment_method;
     }
 
-    public String getCustomer_num_of_adults() {
-        return customer_num_of_adults;
-    }
-
-    public void setCustomer_num_of_adults(String customer_num_of_adults) {
-        this.customer_num_of_adults = customer_num_of_adults;
-    }
-
-    public String getCustomer_num_of_kids() {
-        return customer_num_of_kids;
-    }
-
-    public void setCustomer_num_of_kids(String customer_num_of_kids) {
-        this.customer_num_of_kids = customer_num_of_kids;
-    }
 }
 

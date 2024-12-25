@@ -17,6 +17,22 @@ public class Hotel {
     @Column(name = "location")
     private String location;
 
+    public int getPromotion_duration() {
+        return promotion_duration;
+    }
+
+    public void setPromotion_duration(int promotion_duration) {
+        this.promotion_duration = promotion_duration;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     @Column(name = "rating")
     private int rating;
 
@@ -24,10 +40,13 @@ public class Hotel {
     private int price_per_night;
 
     @Column(name = "created_at")
-    private int created_at;
+    private Date created_at;
+
+    @Column(name = "hotel_name")
+    private String hotel_name;
 
     @Column(name = "img")
-    private int img;
+    private String img;
 
     @Column(name = "promotion")
     private String promotion;
@@ -35,17 +54,14 @@ public class Hotel {
     @Column(name = "description_with_amenities")
     private String description_with_amenities;
 
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "promotion_duration")
+    private int promotion_duration;
+
     @Column(name = "discount_percent")
     private String discount_percent;
-
-    @Column(name = "start_date")
-    private Date start_date;
-
-    @Column(name = "end_date")
-    private Date end_date;
-
-    @Column(name = "hotel_name")
-    private String hotel_name;
 
     @Column(name = "available_rooms")
     private int available_rooms;
@@ -93,19 +109,19 @@ public class Hotel {
         this.rating = rating;
     }
 
-    public int getCreated_at() {
+    public Date getCreated_at() {
         return created_at;
     }
 
-    public void setCreated_at(int created_at) {
+    public void setCreated_at(Date created_at) {
         this.created_at = created_at;
     }
 
-    public int getImg() {
+    public String getImg() {
         return img;
     }
 
-    public void setImg(int img) {
+    public void setImg(String img) {
         this.img = img;
     }
 
@@ -131,22 +147,6 @@ public class Hotel {
 
     public void setDiscount_percent(String discount_percent) {
         this.discount_percent = discount_percent;
-    }
-
-    public Date getStart_date() {
-        return start_date;
-    }
-
-    public void setStart_date(Date start_date) {
-        this.start_date = start_date;
-    }
-
-    public Date getEnd_date() {
-        return end_date;
-    }
-
-    public void setEnd_date(Date end_date) {
-        this.end_date = end_date;
     }
 
     public String getHotel_name() {

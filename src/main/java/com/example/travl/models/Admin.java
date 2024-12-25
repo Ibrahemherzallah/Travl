@@ -2,6 +2,7 @@ package com.example.travl.models;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="admin")
@@ -9,8 +10,8 @@ public class Admin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "admin_id")
-    private int admin_id;
+    @Column(name = "id")
+    private int id;
 
     @Column(name = "admin_name")
     private String admin_name;
@@ -22,7 +23,7 @@ public class Admin {
     private String phone;
 
     @Column(name = "password")
-    private int password;//should encryption
+    private int password;
 
     @Column(name = "img")
     private String img;
@@ -84,11 +85,11 @@ public class Admin {
     }
 
     public int getAdmin_id() {
-        return admin_id;
+        return id;
     }
 
     public void setAdmin_id(int admin_id) {
-        this.admin_id = admin_id;
+        this.id = admin_id;
     }
 
 

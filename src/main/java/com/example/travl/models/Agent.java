@@ -1,6 +1,7 @@
 package com.example.travl.models;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 
 @Entity
@@ -10,6 +11,7 @@ public class Agent {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "agent_id")
     private int agent_id;
+
 
     @Column(name = "admin_id")
     private int admin_id;
@@ -35,8 +37,12 @@ public class Agent {
     @Column(name = "owner_address")
     private String owner_address;
 
+    @Column(name = "phone")
+    private String phone;
+
     @Column(name = "img")
     private String img;
+
 
     public int getAgent_id() {
         return agent_id;
