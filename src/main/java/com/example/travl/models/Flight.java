@@ -26,17 +26,17 @@ public class Flight {
     @Column(name = "destination")
     private String destination;
 
-    @Column(name = "date")
-    private Date date;
+    @Column(name = "Arrival_Date")
+    private Date Arrival_Date;
 
     @Column(name = "duration")
     private String duration;
 
-    @Column(name = "image")
-    private String image;
+    @Column(name = "created_at")
+    private Date created_at;
 
     @Column(name = "number_of_passengers")
-    private String number_of_passengers;
+    private int number_of_passengers;
 
     @Column(name = "stops")
     private String stops;
@@ -49,6 +49,17 @@ public class Flight {
 
     @Column(name = "discount")
     private String discount;
+
+    @Column(name = "promotion_duration")
+    private int promotion_duration;
+
+    public int getPromotion_duration() {
+        return promotion_duration;
+    }
+
+    public void setPromotion_duration(int promotion_duration) {
+        this.promotion_duration = promotion_duration;
+    }
 
     public int getFlight_id() {
         return flight_id;
@@ -98,22 +109,6 @@ public class Flight {
         this.destination = destination;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
     public String getDuration() {
         return duration;
     }
@@ -122,16 +117,24 @@ public class Flight {
         this.duration = duration;
     }
 
-    public String getNumber_of_passengers() {
+    public int getNumber_of_passengers() {
         return number_of_passengers;
     }
 
-    public void setNumber_of_passengers(String number_of_passengers) {
+    public void setNumber_of_passengers(int number_of_passengers) {
         this.number_of_passengers = number_of_passengers;
     }
 
     public String getStops() {
         return stops;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
     }
 
     public void setStops(String stops) {
@@ -160,5 +163,13 @@ public class Flight {
 
     public void setDiscount(String discount) {
         this.discount = discount;
+    }
+
+    public Date getArrival_Date() {
+        return Arrival_Date;
+    }
+
+    public void setArrival_Date(Date arrival_Date) {
+        Arrival_Date = arrival_Date;
     }
 }

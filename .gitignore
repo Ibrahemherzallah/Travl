@@ -23,3 +23,10 @@ hs_err_pid*
 replay_pid*
 HibernateUtil.java
 /.idea/
+
+
+# Ignore hibernate configuration file
+hibernate.cfg.xml
+
+# Ignore target folder
+/target/
