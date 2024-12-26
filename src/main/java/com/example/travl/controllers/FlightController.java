@@ -1,59 +1,59 @@
-package com.example.travl.models;
+package com.example.travl.controllers;
 
-import javax.persistence.*;
-import java.awt.*;
+import com.example.travl.models.Images;
+import com.example.travl.models.User;
+
+import javax.persistence.Column;
 import java.util.Date;
 import java.util.List;
 
-@Entity
-@Table(name = "flight")
-public class Flight {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+public class FlightController {
+
     private int id;
-
-    @Column(name = "flight_name")
     private String flightName;
-
-    @Column(name = "airline")
     private String airline;
-
-    @Column(name = "ticket_price")
     private int ticketPrice;
-
-    @Column(name = "departure_date")
     private Date DepartureDate;
-
-    @Column(name = "arrival_date")
     private Date arrivalDate;
-
-    @Column(name = "stops")
     private String stops;
-
-    @Column(name = "destination")
     private String destination;
-
-    @Column(name = "duration")
     private String duration;
-
-    @Column(name = "created_at")
     private Date createdAt;
-
-    @Column(name = "number_of_passengers")
     private int numberOfPassengers;
-
-    @Column(name = "promotion")
     private boolean promotion;
-
-    @Column(name = "discount")
     private String discount;
-
-    @Column(name = "promotion_duration")
     private int promotionDuration;
+    private UserController userController;
+    private List<Images> images;
 
-//    @OneToMany
-//    private List<Image>
+    public void addFlight(){}
+    public void deleteFlight(){}
+    public void editFlight(){}
+    public FlightController getFlight(int id){
+        return null;
+    }
+
+    public void addUser(){}
+    public List<User> getUsers(){
+        return null;
+    }
+    public void deleteUser(int id){}
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<Images> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Images> images) {
+        this.images = images;
+    }
 
     public int getPromotionDuration() {
         return promotionDuration;
@@ -63,12 +63,12 @@ public class Flight {
         this.promotionDuration = promotionDuration;
     }
 
-    public boolean isPromotion() {
-        return promotion;
+    public UserController getUserController() {
+        return userController;
     }
 
-    public void setPromotion(boolean promotion) {
-        this.promotion = promotion;
+    public void setUserController(UserController userController) {
+        this.userController = userController;
     }
 
     public String getDiscount() {
@@ -77,6 +77,14 @@ public class Flight {
 
     public void setDiscount(String discount) {
         this.discount = discount;
+    }
+
+    public boolean isPromotion() {
+        return promotion;
+    }
+
+    public void setPromotion(boolean promotion) {
+        this.promotion = promotion;
     }
 
     public int getNumberOfPassengers() {
@@ -157,13 +165,5 @@ public class Flight {
 
     public void setFlightName(String flightName) {
         this.flightName = flightName;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }

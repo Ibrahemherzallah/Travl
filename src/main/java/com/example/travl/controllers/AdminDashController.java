@@ -62,7 +62,7 @@ public class AdminDashController {
     }
     @FXML protected void navigateAddAgentAD(){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/add-agent-page.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/agent-list.fxml"));
 
             Stage stage = (Stage) addAgentAD.getScene().getWindow();
             Scene scene = new Scene(loader.load());

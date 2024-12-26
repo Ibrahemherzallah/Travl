@@ -1,52 +1,40 @@
-package com.example.travl.models;
+package com.example.travl.controllers;
 
-import javax.persistence.*;
+import com.example.travl.models.Images;
+import com.example.travl.models.User;
+
+import javax.persistence.Column;
+import java.awt.*;
 import java.util.Date;
+import java.util.List;
 
-@Entity
-@Table(name = "hotel")
-public class Hotel {
+public class HotelController {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
-
-    @Column(name = "hotel_name")
     private String hotelName;
-
-    @Column(name = "location")
     private String location;
-
-    @Column(name = "num_of_star")
     private int numOfStar;
-
-    @Column(name = "hotel_chain")
     private String hotelChain;
-
-    @Column(name = "available_rooms")
     private int availableRooms;
-
-    @Column(name = "description_with_amenities")
     private String descriptionWithAmenities;
-
-    @Column(name = "phone")
     private String phone;
-
-    @Column(name = "created_at")
     private Date created_at;
-
-    @Column(name = "promotion")
     private boolean promotion;
-
-    @Column(name = "discount")
     private String discount;
-
-    @Column(name = "promotion_duration")
     private int promotionDuration;
+    private List<Images> images;
+    private List<User> users;
 
-    //    @OneToMany
-    //    private List<Image>
+
+    public void addHotel(){}
+    public void deleteHotel(){}
+    public void editHotel(){}
+    public FlightController getHotel(int id){
+        return null;
+    }
+
+    public void addUser(){}
+    public void deleteUser(int id){}
 
 
     public int getId() {
@@ -129,6 +117,22 @@ public class Hotel {
         this.promotion = promotion;
     }
 
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public List<Images> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Images> images) {
+        this.images = images;
+    }
+
     public int getPromotionDuration() {
         return promotionDuration;
     }
@@ -137,11 +141,11 @@ public class Hotel {
         this.promotionDuration = promotionDuration;
     }
 
-    public String getDiscount() {
-        return discount;
+    public List<User> getUsers() {
+        return users;
     }
 
-    public void setDiscount(String discount) {
-        this.discount = discount;
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
