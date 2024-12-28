@@ -1,26 +1,41 @@
 package com.example.travl.controllers;
+import com.example.travl.models.Agent;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.IOException;
+import java.sql.*;
+import java.util.List;
 import java.util.Objects;
 
+
+
+
 public class AddController {
+
     @FXML
-    private ImageView img2;
+    private TableView<Agent> agentTable;
+
+    @FXML
+    private TableColumn<Agent, String> nameColumn;
+
+    @FXML
+    private TableColumn<Agent, String> emailColumn;
+
+    @FXML
+    private TableColumn<Agent, String> phoneColumn;
+
     @FXML
     private ImageView img1;
     @FXML private ImageView homeIcon;
@@ -33,6 +48,51 @@ public class AddController {
     @FXML private ImageView addAgentAD;
     @FXML private ImageView addFlightAD;
     @FXML private ImageView addHotelAD;
+
+    public void initialize() {
+        // Set up table columns
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<>("email"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("owner_address"));
+
+        // Load data into the TableView
+        loadAgentData();
+    }
+    private void loadAgentData() {
+        ObservableList<Agent> agentList = FXCollections.observableArrayList();
+
+        // Database connection parameters
+        String jdbcURL = "jdbc:mysql://localhost:3306/travl_db";
+        String username = "root";
+        String password = "@@@Dy123321";
+
+        String query = "SELECT name, email, owner_address FROM agent";
+
+        try (Connection connection = DriverManager.getConnection(jdbcURL, username, password);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            while (resultSet.next()) {
+                String name = resultSet.getString("name");
+                String email = resultSet.getString("email");
+                String ownerAddress = resultSet.getString("owner_address");
+
+                Agent agent = new Agent();
+                agent.setName(name);
+                agent.setEmail(email);
+                agent.setOwner_address(ownerAddress);
+
+                agentList.add(agent);
+            }
+
+            agentTable.setItems(agentList);
+
+        } catch (SQLException e) {
+            System.err.println("Error fetching agent data: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
 
     @FXML protected void navigateHomeAD(){
         try {
