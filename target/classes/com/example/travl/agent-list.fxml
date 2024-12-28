@@ -17,7 +17,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" stylesheets="@../../../styles/style.css" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.AddController">
+<BorderPane maxHeight="-Infinity" stylesheets="@../../../styles/style.css" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1440" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.travl.controllers.UserController">
     <left>
         <AnchorPane prefHeight="905.0" prefWidth="69.0" styleClass="side-bar" stylesheets="@../../../styles/agent-dash.css" BorderPane.alignment="CENTER">
             <children>
@@ -181,7 +181,7 @@
                         </font>
                     </Label>
 
-                    <TableView fx:id="agentTable" layoutX="374.0" layoutY="173.0" prefHeight="378.0" prefWidth="622.0" AnchorPane.topAnchor="173.0">
+                    <TableView fx:id="userTable" layoutX="374.0" layoutY="173.0" prefHeight="378.0" prefWidth="622.0" AnchorPane.topAnchor="173.0">
                         <columns>
                             <TableColumn fx:id="nameColumn" text="Name" prefWidth="180.8" />
                             <TableColumn fx:id="emailColumn" text="E-mail" prefWidth="268.8" />
@@ -189,7 +189,7 @@
                         </columns>
                     </TableView>
 
-                    <Button layoutX="636.0" layoutY="566.0" mnemonicParsing="false" onAction="#showAddAgent" styleClass="addAgentBtn" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color:#111827; " text="Add Agent" textFill="WHITE">
+                    <Button layoutX="636.0" layoutY="566.0" mnemonicParsing="false" onAction="#showAddUser" styleClass="addAgentBtn" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color:#111827; " text="Add Agent" textFill="WHITE">
                         <font>
                             <Font name="System Bold" size="12.0" />
                         </font>
