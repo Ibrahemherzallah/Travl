@@ -91,7 +91,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="600.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                <Pane layoutX="13.0" layoutY="600.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -188,7 +188,7 @@
                         <children>
                             <Pane fx:id="paneCard_1112" prefHeight="110.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                 <children>
-                                    <Label layoutX="74.0" layoutY="38.0" text="320.58.5">
+                                    <Label fx:id="userCountLabel" layoutX="74.0" layoutY="38.0" text="320.58.5">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
@@ -207,7 +207,7 @@
                             </Pane>
                             <Pane fx:id="paneCard_11123" prefHeight="110.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                 <children>
-                                    <Label layoutX="72.0" layoutY="40.0" text="320.58.5">
+                                    <Label fx:id="bookingCountLabel" layoutX="72.0" layoutY="40.0" text="320.58.5">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
@@ -229,7 +229,7 @@
                             </Pane>
                             <Pane fx:id="paneCard_11121" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="110.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                 <children>
-                                    <Label layoutX="76.0" layoutY="39.0" text="320.58.5">
+                                    <Label fx:id="flightCountLabel" layoutX="76.0" layoutY="39.0" text="320.58.5">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
@@ -251,7 +251,7 @@
                             </Pane>
                             <Pane fx:id="paneCard_11122" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="105.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                 <children>
-                                    <Label layoutX="64.0" layoutY="38.0" text="320.58.5">
+                                    <Label fx:id="hotelCountLabel" layoutX="64.0" layoutY="38.0" text="320.58.5">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>

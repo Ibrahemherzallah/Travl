@@ -17,6 +17,7 @@ module com.example.travl {
     requires mysql.connector.java;
     requires com.google.protobuf;
     requires java.desktop;
+    requires antlr;
     opens com.example.travl.controllers;
     opens com.example.travl.models;
     opens com.example.travl to javafx.fxml;

@@ -12,7 +12,7 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("admin-dash.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
-        stage.setFullScreen(true);
+//        stage.setFullScreen(true);
         stage.setScene(scene);
         stage.show();
     }
