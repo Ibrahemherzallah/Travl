@@ -23,6 +23,13 @@ public class Role {
     @Column(name = "permission")
     private String permission;
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 //    @oneToMany
 //    @Column(name = "")
 //    List<PermissionController>
