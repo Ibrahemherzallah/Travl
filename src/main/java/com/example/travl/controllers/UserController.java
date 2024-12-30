@@ -1,11 +1,11 @@
 package com.example.travl.controllers;
 
+import com.example.travl.models.Permission;
 import com.example.travl.models.Role;
-
-import javax.persistence.Column;
 import java.util.Date;
 
 public class UserController {
+
     private int id;
     private String firstName;
     private String lastName;
@@ -19,12 +19,9 @@ public class UserController {
 //   copy constructor
 
 
+
     public Role getUserRole() {
         return userRole;
-    }
-
-    public void setUserRole(Role userRole) {
-        this.userRole = userRole;
     }
 
     public int getId() {
@@ -87,5 +84,8 @@ public class UserController {
     public void removeUser() {}
     public void updateUser() {}
     public void getUser() {}
+    public boolean userHasPermission(Permission permission){
+        return true;
+    }
 
 }

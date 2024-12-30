@@ -1,9 +1,7 @@
 package com.example.travl.controllers;
 
-import com.example.travl.models.Images;
 import com.example.travl.models.User;
 
-import javax.persistence.Column;
 import java.awt.*;
 import java.util.Date;
 import java.util.List;
@@ -22,7 +20,6 @@ public class HotelController {
     private boolean promotion;
     private String discount;
     private int promotionDuration;
-    private List<Images> images;
     private List<User> users;
 
 
@@ -123,14 +120,6 @@ public class HotelController {
 
     public void setDiscount(String discount) {
         this.discount = discount;
-    }
-
-    public List<Images> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Images> images) {
-        this.images = images;
     }
 
     public int getPromotionDuration() {

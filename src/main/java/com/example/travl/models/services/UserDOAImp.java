@@ -37,7 +37,9 @@ public class UserDOAImp implements UserDOA {
 
     @Override
     public List<User> getAll() {
-        return List.of();
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
+        return session.createQuery("select u from User u").list();
     }
 
     @Override

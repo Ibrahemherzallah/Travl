@@ -10,7 +10,6 @@ public class RoleController {
     private String value;
     private List<PermissionController> permissions;
 
-//copy constructor
 
 
     public List<PermissionController> getPermissions() {

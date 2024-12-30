@@ -8,7 +8,6 @@ module com.example.travl {
     requires net.synedra.validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    //requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires java.persistence;
     requires org.hibernate.orm.core;

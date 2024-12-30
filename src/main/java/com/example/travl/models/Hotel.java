@@ -2,6 +2,7 @@ package com.example.travl.models;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "hotel")
@@ -45,8 +46,8 @@ public class Hotel {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
-    //    @OneToMany
-    //    private List<Image>
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BookingService> bookingServices;
 
 
     public int getId() {
@@ -144,4 +145,12 @@ public class Hotel {
     public void setDiscount(String discount) {
         this.discount = discount;
     }
+
+    public void addHotel(){}
+    public void deleteHotel(){}
+    public void editHotel(){}
+    public Hotel getHotel(){return this;}
+    public void getUser(){}
+    public void deleteUser(int id){}
+
 }

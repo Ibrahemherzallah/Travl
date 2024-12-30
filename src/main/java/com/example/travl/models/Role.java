@@ -20,10 +20,11 @@ public class Role {
     @Column(name = "description")
     private String value;
 
-    @Column(name = "permission")
-    private String permission;
-
-//    @oneToMany
-//    @Column(name = "")
-//    List<PermissionController>
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "role_permission",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id")
+    )
+    private List<Permission> permissions;
 }

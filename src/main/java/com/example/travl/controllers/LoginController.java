@@ -1,5 +1,7 @@
 package com.example.travl.controllers;
 
+import com.example.travl.models.User;
+import com.example.travl.models.services.UserDOAImp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +11,9 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 public class LoginController {
@@ -30,6 +35,13 @@ public class LoginController {
     public void initialize() {
         signInButton.setOnAction(this::handleSignIn);
         signUpLink.setOnAction(this::handleForgetPassword);
+    }
+
+    @FXML
+    void test(){
+        UserDOAImp userDOAImp = new UserDOAImp();
+        List<User> all_users = userDOAImp.getAll();
+        all_users.forEach(e -> System.out.println(e.getFirstName() + e.getLastName()));
     }
 
     private void handleSignIn(ActionEvent event) {
