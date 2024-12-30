@@ -40,8 +40,3 @@ public class Role {
         this.user = user;
     }
 }
-
-//    @oneToMany
-//    @Column(name = "")
-//    List<PermissionController>
-
