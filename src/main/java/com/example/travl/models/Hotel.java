@@ -1,6 +1,9 @@
 package com.example.travl.models;
 
 import javax.persistence.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -48,7 +51,20 @@ public class Hotel {
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookingService> bookingServices;
+    @Column(name = "price_per_night")
+    private double pricePerNight;
 
+    @Lob
+    @Column(name = "image")
+    private byte[] img;
+
+
+
+    public void setImg(InputStream inputStream) throws IOException {
+
+        this.img = inputStream.readAllBytes();
+
+    }
 
     public int getId() {
         return id;
@@ -153,4 +169,7 @@ public class Hotel {
     public void getUser(){}
     public void deleteUser(int id){}
 
+    public byte[] getImg() {
+        return img;
+    }
 }

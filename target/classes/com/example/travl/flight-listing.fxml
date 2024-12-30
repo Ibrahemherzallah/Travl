@@ -24,20 +24,20 @@
     <left>
         <AnchorPane prefHeight="905.0" prefWidth="69.0" styleClass="side-bar" stylesheets="@../../../styles/agent-dash.css" BorderPane.alignment="CENTER">
             <children>
-                <Pane layoutX="16.0" layoutY="123.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
-
+                <Pane layoutX="16.0" layoutY="120.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
                     <children>
-                        <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0" onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0"
+                                   onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../images/home-icon.png" />
                             </image>
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="207.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+                <Pane layoutX="13.0" layoutY="200.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -49,7 +49,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="16.0" layoutY="275.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+                <Pane layoutX="16.0" layoutY="280.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -61,7 +61,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="358.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+                <Pane layoutX="13.0" layoutY="360.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -73,7 +73,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="436.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+                <Pane layoutX="13.0" layoutY="440.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -85,7 +85,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="11.0" layoutY="513.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
+                <Pane layoutX="13.0" layoutY="520.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -400,9 +400,8 @@
                      </font>
                   </Label>
                   <TextArea layoutX="42.0" layoutY="502.0" prefHeight="87.0" prefWidth="261.0" text="Spend 5 days in Rome with this package &#10;offering flights and accommodation at &#10;a 4-star hotel near the Colosseum. &#10;Starting at $850 per person." />
-                  <Button layoutX="131.0" layoutY="598.0" mnemonicParsing="false" text="view offer" textFill="WHITE" />
-                  <Button layoutX="131.0" layoutY="297.0" mnemonicParsing="false" text="view offer" textFill="WHITE" />
-
+                  <Button fx:id="viewFlightDetailsBtn1" layoutX="131.0" layoutY="598.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" styleClass="viewHotelDetailsBtn" text="view offer" textFill="WHITE" />
+                  <Button fx:id="viewFlightDetailsBtn2" layoutX="131.0" layoutY="297.0" mnemonicParsing="false" onAction="#handleMenuButtonAction" styleClass="viewHotelDetailsBtn" text="view offer" textFill="WHITE" />
                </children>
             </Pane>
             </HBox>

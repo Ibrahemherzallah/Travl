@@ -99,8 +99,8 @@
                                 <Font name="System Bold Italic" size="15.0" />
                             </font>
                         </Label>
-                        <AnchorPane layoutX="739.0" layoutY="-1.0" prefHeight="815.0" prefWidth="434.0" style="-fx-background-color: #F5F5F5;" />
-                        <AnchorPane layoutX="-7.0" layoutY="-1.0" prefHeight="817.0" prefWidth="258.0" style="-fx-background-color: #F5F5F5;" />
+                  <AnchorPane layoutX="739.0" layoutY="-1.0" prefHeight="815.0" prefWidth="434.0" style="-fx-background-color: #F5F5F5;" />
+                  <AnchorPane layoutX="-7.0" layoutY="-1.0" prefHeight="817.0" prefWidth="258.0" style="-fx-background-color: #F5F5F5;" />
                     </children>
                     <cursor>
                         <Cursor fx:constant="DEFAULT" />

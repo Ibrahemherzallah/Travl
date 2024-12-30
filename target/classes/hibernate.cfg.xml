@@ -11,5 +11,7 @@
         <property name="connection.password"></property>
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
+        <mapping class="com.example.travl.models.User"/>
+        <mapping class="com.example.travl.models.Role"/>
     </session-factory>
 </hibernate-configuration>

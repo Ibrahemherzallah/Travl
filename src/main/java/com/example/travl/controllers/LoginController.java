@@ -2,10 +2,14 @@ package com.example.travl.controllers;
 
 import com.example.travl.models.User;
 import com.example.travl.models.services.UserDOAImp;
+
+import com.example.travl.models.Role;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -16,9 +20,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
+
 public class LoginController {
 
-    public CheckBox rememberMeCheckBox;
     @FXML
     private TextField emailField;
 
@@ -28,44 +32,80 @@ public class LoginController {
     @FXML
     private Button signInButton;
 
-    @FXML
-    private Hyperlink signUpLink;
+    private static SessionFactory sessionFactory;
 
     @FXML
     public void initialize() {
-        signInButton.setOnAction(this::handleSignIn);
-        signUpLink.setOnAction(this::handleForgetPassword);
-    }
+        try {
+            sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Error", "Unable to initialize Hibernate.", Alert.AlertType.ERROR);
+        }
 
-    @FXML
-    void test(){
-        UserDOAImp userDOAImp = new UserDOAImp();
-        List<User> all_users = userDOAImp.getAll();
-        all_users.forEach(e -> System.out.println(e.getFirstName() + e.getLastName()));
+        signInButton.setOnAction(this::handleSignIn);
     }
 
     private void handleSignIn(ActionEvent event) {
-        try {
-            Parent dashboardRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/agent-dash.fxml")));
-            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(dashboardRoot));
-            stage.setTitle("Dashboard");
-            stage.show();
-        } catch (IOException e) {
+        String email = emailField.getText().trim();
+        String password = passwordField.getText().trim();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            showAlert("Error", "Email and Password must not be empty.", Alert.AlertType.ERROR);
+            return;
+        }
+
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "SELECT r.name FROM User u JOIN u.role r WHERE u.email = :email AND u.password = :password";
+            String roleName = session.createQuery(hql, String.class)
+                    .setParameter("email", email)
+                    .setParameter("password", password)
+                    .uniqueResult();
+
+            if (roleName != null) {
+                navigateToDashboard(event, roleName);
+            } else {
+                showAlert("Error", "Invalid email or password.", Alert.AlertType.ERROR);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
-            System.err.println("Error loading Dashboard page.");
+            showAlert("Error", "An error occurred during login.", Alert.AlertType.ERROR);
         }
     }
-    private void handleForgetPassword(ActionEvent event) {
+
+    @FXML
+    protected void navigateToDashboard(ActionEvent event, String roleName) {
         try {
-            Parent forgetPasswordRoot = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/forget-password.fxml")));
-            Stage stage = (Stage) ((Hyperlink) event.getSource()).getScene().getWindow();
-            stage.setScene(new Scene(forgetPasswordRoot));
-            stage.setTitle("Forget Password");
+            FXMLLoader loader = null;
+            String fxmlPath = "";
+
+            if ("Admin".equalsIgnoreCase(roleName)) {
+                fxmlPath = "/com/example/travl/admin-dash.fxml";
+            } else if ("Agent".equalsIgnoreCase(roleName)) {
+                fxmlPath = "/com/example/travl/agent-dash.fxml";
+            } else {
+                showAlert("Error", "Unknown role: " + roleName, Alert.AlertType.ERROR);
+                return;
+            }
+
+            loader = new FXMLLoader(getClass().getResource(fxmlPath));
+
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Dashboard - " + roleName);
             stage.show();
+
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error loading Forget Password page.");
+            showAlert("Error", "Unable to navigate to the dashboard.", Alert.AlertType.ERROR);
         }
+    }
+
+    private void showAlert(String title, String message, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }
