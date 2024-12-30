@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "hotel")
@@ -48,6 +49,8 @@ public class Hotel {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
+    @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BookingService> bookingServices;
     @Column(name = "price_per_night")
     private double pricePerNight;
 
@@ -55,8 +58,7 @@ public class Hotel {
     @Column(name = "image")
     private byte[] img;
 
-    //    @OneToMany
-    //    private List<Image>
+
 
     public void setImg(InputStream inputStream) throws IOException {
 
@@ -159,6 +161,13 @@ public class Hotel {
     public void setDiscount(String discount) {
         this.discount = discount;
     }
+
+    public void addHotel(){}
+    public void deleteHotel(){}
+    public void editHotel(){}
+    public Hotel getHotel(){return this;}
+    public void getUser(){}
+    public void deleteUser(int id){}
 
     public byte[] getImg() {
         return img;

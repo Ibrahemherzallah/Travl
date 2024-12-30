@@ -1,6 +1,4 @@
 package com.example.travl.controllers;
-
-import com.example.travl.models.Images;
 import com.example.travl.models.User;
 
 import javax.persistence.Column;
@@ -24,7 +22,6 @@ public class FlightController {
     private String discount;
     private int promotionDuration;
     private UserController userController;
-    private List<Images> images;
 
     public void addFlight(){}
     public void deleteFlight(){}
@@ -45,14 +42,6 @@ public class FlightController {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public List<Images> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Images> images) {
-        this.images = images;
     }
 
     public int getPromotionDuration() {

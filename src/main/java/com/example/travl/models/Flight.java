@@ -52,6 +52,9 @@ public class Flight {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
+    @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<BookingService> bookingServices;
+
 
     public int getPromotionDuration() {
         return promotionDuration;

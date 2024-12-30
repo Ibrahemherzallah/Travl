@@ -1,7 +1,6 @@
 package com.example.travl.models.interfaces;
 
 import com.example.travl.models.Flight;
-import com.example.travl.models.FlightBooking;
 
 import java.util.List;
 

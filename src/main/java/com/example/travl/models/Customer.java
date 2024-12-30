@@ -5,98 +5,104 @@ import javax.persistence.*;
 @Entity
 @Table(name = "customer")
 public class Customer {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
-    private int customerId;
+    @GeneratedValue
+    @Column(name = "id")
+    private int id;
 
-    @Column(name = "customer_email")
-    private String customerEmail;
+    @Column(name = "first_name")
+    private String first_name;
 
-    @Column(name = "customer_address")
-    private String customerAddress;
+    @Column(name = "last_name")
+    private String last_name;
 
-    @Column(name = "customer_name")
-    private String customerName;
+    @Column(name = "address")
+    private String address;
 
-    public BOOK_TYPE getBookType() {
-        return bookType;
+    @Column(name = "city")
+    private String city;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "num_of_kids")
+    private int num_of_kids;
+
+    @Column(name = "num_of_adults")
+    private int num_of_adults;
+
+    public int getId() {
+        return id;
     }
 
-    public void setBookType(BOOK_TYPE bookType) {
-        this.bookType = bookType;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getCustomerPhone() {
-        return customerPhone;
+    public String getFirst_name() {
+        return first_name;
     }
 
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
     }
 
-    public String getCustomerNumOfKids() {
-        return customerNumOfKids;
+    public String getLast_name() {
+        return last_name;
     }
 
-    public void setCustomerNumOfKids(String customerNumOfKids) {
-        this.customerNumOfKids = customerNumOfKids;
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
     }
 
-    public String getCustomerNumOfAdults() {
-        return customerNumOfAdults;
+    public String getAddress() {
+        return address;
     }
 
-    public void setCustomerNumOfAdults(String customerNumOfAdults) {
-        this.customerNumOfAdults = customerNumOfAdults;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
-    public String getCustomerName() {
-        return customerName;
+    public String getCity() {
+        return city;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public String getCustomerAddress() {
-        return customerAddress;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public String getCustomerEmail() {
-        return customerEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getNum_of_adults() {
+        return num_of_adults;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setNum_of_adults(int num_of_adults) {
+        this.num_of_adults = num_of_adults;
     }
 
-    @Column(name = "customer_num_of_adults")
-    private String customerNumOfAdults;
+    public int getNum_of_kids() {
+        return num_of_kids;
+    }
 
-    @Column(name = "customer_num_of_kids")
-    private String customerNumOfKids;
-
-    @Column(name = "customer_phone")
-    private String customerPhone;
-
-    @Column(name = "book_type")
-    private BOOK_TYPE bookType;
-
-}
-enum BOOK_TYPE {
-    FLIGHT,HOTEL
+    public void setNum_of_kids(int num_of_kids) {
+        this.num_of_kids = num_of_kids;
+    }
 }
