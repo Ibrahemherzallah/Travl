@@ -3,25 +3,26 @@ package com.example.travl.models;
 import com.example.travl.controllers.PermissionController;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "role")
 public class Role {
 
     @Id
-    @GeneratedValue
-    @Column(name = "id")
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
-    private String value;
+    @OneToOne(mappedBy = "role")
+    private User user;
 
-    @Column(name = "permission")
-    private String permission;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -30,7 +31,17 @@ public class Role {
     public void setName(String name) {
         this.name = name;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+}
+
 //    @oneToMany
 //    @Column(name = "")
 //    List<PermissionController>
-}
+
