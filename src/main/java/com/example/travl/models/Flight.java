@@ -52,8 +52,6 @@ public class Flight {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
-//    @OneToMany
-//    private List<Image>
 
     public int getPromotionDuration() {
         return promotionDuration;

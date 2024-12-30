@@ -1,5 +1,11 @@
 package com.example.travl.controllers;
 
+import com.example.travl.models.User;
+import com.example.travl.models.Role;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,10 +14,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 public class LoginController {
 
@@ -24,18 +26,15 @@ public class LoginController {
     @FXML
     private Button signInButton;
 
-    private Connection connection;
+    private static SessionFactory sessionFactory;
 
     @FXML
     public void initialize() {
         try {
-            String url = "jdbc:mysql://localhost:3308/ahmedadelddb";
-            String user = "root";
-            String password = "root";
-            connection = DriverManager.getConnection(url, user, password);
+            sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
         } catch (Exception e) {
             e.printStackTrace();
-            showAlert("Error", "Unable to connect to the database.", Alert.AlertType.ERROR);
+            showAlert("Error", "Unable to initialize Hibernate.", Alert.AlertType.ERROR);
         }
 
         signInButton.setOnAction(this::handleSignIn);
@@ -50,25 +49,18 @@ public class LoginController {
             return;
         }
 
-        try {
-            String query = "SELECT r.name AS role_name FROM user u " +
-                    "JOIN user_roles ur ON u.id = ur.user_id " +
-                    "JOIN role r ON ur.role_id = r.id " +
-                    "WHERE u.email = ? AND u.password = ?";
+        try (Session session = sessionFactory.openSession()) {
+            String hql = "SELECT r.name FROM User u JOIN u.role r WHERE u.email = :email AND u.password = :password";
+            String roleName = session.createQuery(hql, String.class)
+                    .setParameter("email", email)
+                    .setParameter("password", password)
+                    .uniqueResult();
 
-            PreparedStatement preparedStatement = connection.prepareStatement(query);
-            preparedStatement.setString(1, email);
-            preparedStatement.setString(2, password);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                String roleName = resultSet.getString("role_name");
+            if (roleName != null) {
                 navigateToDashboard(event, roleName);
             } else {
                 showAlert("Error", "Invalid email or password.", Alert.AlertType.ERROR);
             }
-
         } catch (Exception e) {
             e.printStackTrace();
             showAlert("Error", "An error occurred during login.", Alert.AlertType.ERROR);
@@ -83,7 +75,7 @@ public class LoginController {
 
             if ("Admin".equalsIgnoreCase(roleName)) {
                 fxmlPath = "/com/example/travl/admin-dash.fxml";
-            } else if ("Employee".equalsIgnoreCase(roleName)) {
+            } else if ("Agent".equalsIgnoreCase(roleName)) {
                 fxmlPath = "/com/example/travl/agent-dash.fxml";
             } else {
                 showAlert("Error", "Unknown role: " + roleName, Alert.AlertType.ERROR);
@@ -103,6 +95,7 @@ public class LoginController {
             showAlert("Error", "Unable to navigate to the dashboard.", Alert.AlertType.ERROR);
         }
     }
+
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);
         alert.setTitle(title);

@@ -55,10 +55,17 @@ public class UserController {
     }
     private void loadUserData() {
         ObservableList<User> userList = FXCollections.observableArrayList();
-        String jdbcURL = "jdbc:mysql://localhost:3306/travl_db";
+
+        String jdbcURL = "jdbc:mysql://localhost:3306/newDB";
         String username = "root";
-        String password = "@@@Dy123321";
-        String query = "SELECT first_name, last_name, email, phone, address FROM users WHERE role_id = 3";
+        String password = "";
+
+        String query = """
+    SELECT u.first_name, u.last_name, u.email, u.phone, u.address
+    FROM newDB.user u
+    JOIN role r ON u.role_id = r.id
+    WHERE r.name = 'Agent'
+""";
 
         try (Connection connection = DriverManager.getConnection(jdbcURL, username, password);
              Statement statement = connection.createStatement();
@@ -70,12 +77,14 @@ public class UserController {
                 String email = resultSet.getString("email");
                 String phone = resultSet.getString("phone");
                 String address = resultSet.getString("address");
+
                 User user = new User();
                 user.setFirstName(firstName);
                 user.setLastName(lastName);
                 user.setEmail(email);
                 user.setPhone(phone);
                 user.setAddress(address);
+
                 userList.add(user);
             }
 
@@ -86,7 +95,6 @@ public class UserController {
             e.printStackTrace();
         }
     }
-
     @FXML
     private void showAddUser(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();

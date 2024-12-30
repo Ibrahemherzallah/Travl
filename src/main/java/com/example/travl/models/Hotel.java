@@ -48,8 +48,11 @@ public class Hotel {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
+    @Column(name = "price_per_night")
+    private double pricePerNight;
+
     @Lob
-    @Column(name = "image",columnDefinition="BLOB")
+    @Column(name = "image")
     private byte[] img;
 
     //    @OneToMany

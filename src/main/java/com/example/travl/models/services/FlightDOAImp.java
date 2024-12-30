@@ -10,19 +10,15 @@ import java.util.List;
 
 public class FlightDOAImp implements FlightDOA {
 
-    HibernateUtil hibernateUtil;
-    SessionFactory sessionFactory;
-    public FlightDOAImp() {
-        hibernateUtil = HibernateUtil.getInstance();
-        sessionFactory = HibernateUtil.getSessionFactory();
-    }
+
     @Override
     public void insert(Flight flight) {
-        Session session=sessionFactory.openSession();
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(flight);
         session.getTransaction().commit();
-        session.close();
+        sessionFactory.openSession().close();
     }
 
     @Override

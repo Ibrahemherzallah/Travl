@@ -102,8 +102,7 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-    @FXML
-    protected void navigateLogout(){
+    @FXML protected void navigateLogout(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/log-in.fxml"));
 
