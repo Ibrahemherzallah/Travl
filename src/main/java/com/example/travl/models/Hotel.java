@@ -1,6 +1,9 @@
 package com.example.travl.models;
 
 import javax.persistence.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
 
 @Entity
@@ -45,9 +48,18 @@ public class Hotel {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
+    @Lob
+    @Column(name = "image",columnDefinition="BLOB")
+    private byte[] img;
+
     //    @OneToMany
     //    private List<Image>
 
+    public void setImg(InputStream inputStream) throws IOException {
+
+        this.img = inputStream.readAllBytes();
+
+    }
 
     public int getId() {
         return id;
@@ -143,5 +155,9 @@ public class Hotel {
 
     public void setDiscount(String discount) {
         this.discount = discount;
+    }
+
+    public byte[] getImg() {
+        return img;
     }
 }

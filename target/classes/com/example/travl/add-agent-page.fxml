@@ -18,7 +18,7 @@
             <children>
                 <AnchorPane layoutX="260.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="814.0" prefWidth="1162.0" style="-fx-background-color: white;">
                     <children>
-                        <ImageView fitHeight="140.0" fitWidth="488.0" layoutX="251.0" layoutY="-18.0" pickOnBounds="true">
+                        <ImageView fitHeight="123.0" fitWidth="489.0" layoutX="251.0" layoutY="-2.0" pickOnBounds="true">
                             <image>
                                 <Image url="@../../../images/agent-image.png" />
                             </image>
@@ -99,8 +99,8 @@
                                 <Font name="System Bold Italic" size="15.0" />
                             </font>
                         </Label>
-                  <AnchorPane layoutX="739.0" layoutY="-1.0" prefHeight="815.0" prefWidth="434.0" />
-                  <AnchorPane layoutX="-7.0" layoutY="-1.0" prefHeight="817.0" prefWidth="258.0" />
+                  <AnchorPane layoutX="739.0" layoutY="-1.0" prefHeight="815.0" prefWidth="434.0" style="-fx-background-color: #F5F5F5;" />
+                  <AnchorPane layoutX="-7.0" layoutY="-1.0" prefHeight="817.0" prefWidth="258.0" style="-fx-background-color: #F5F5F5;" />
                     </children>
                     <cursor>
                         <Cursor fx:constant="DEFAULT" />
