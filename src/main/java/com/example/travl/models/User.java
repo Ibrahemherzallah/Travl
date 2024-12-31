@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "user")
 public class User {
 
     @Id
@@ -32,16 +33,16 @@ public class User {
     @Column(name = "password")
     private String password;
 
-//    @OneToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "role_id", referencedColumnName = "id")
-//    private Role role;
-//    public Role getRole() {
-//        return role;
-//    }
-//
-//    public void setRole(Role role) {
-//        this.role = role;
-//    }
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "role_id", referencedColumnName = "id")
+    private Role role;
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
 
     public String getFirstName() {
         return firstName;
