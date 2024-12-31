@@ -32,31 +32,31 @@
       </AnchorPane>
    </top>
    <center>
-        <VBox maxWidth="484.0" prefHeight="567.0" prefWidth="484.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+      <VBox maxWidth="484.0" prefHeight="567.0" prefWidth="484.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
-                   <ImageView fitHeight="116.0" fitWidth="484.0" pickOnBounds="true">
-                       <image>
-                           <Image url="@../../../images/travel-image.jpeg" />
-                       </image>
-                   </ImageView>
-                   <Label alignment="CENTER" prefHeight="42.0" prefWidth="488.0" text="Add Flight">
-                       <font>
-                           <Font name="System Bold Italic" size="15.0" />
-                       </font>
+            <ImageView fitHeight="116.0" fitWidth="484.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../../../images/travel-image.jpeg" />
+               </image>
+            </ImageView>
+            <Label alignment="CENTER" prefHeight="42.0" prefWidth="488.0" text="Add Flight">
+               <font>
+                  <Font name="System Bold Italic" size="15.0" />
+               </font>
                <VBox.margin>
                   <Insets />
                </VBox.margin>
-                   </Label>
+            </Label>
             <HBox prefHeight="67.0" prefWidth="484.0">
                <children>
                   <VBox prefHeight="66.0" prefWidth="238.0">
                      <children>
-                               <Label text="Flight Name">
-                                   <font>
-                                       <Font name="System Bold" size="12.0" />
-                                   </font>
-                               </Label>
-                               <TextField fx:id="flightNameField" maxWidth="179.0" prefHeight="26.0" prefWidth="179.0" />
+                        <Label text="Flight Name">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="flightNameField" maxWidth="179.0" prefHeight="26.0" prefWidth="179.0" />
                      </children>
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -64,12 +64,12 @@
                   </VBox>
                   <VBox alignment="TOP_RIGHT" prefHeight="66.0" prefWidth="256.0">
                      <children>
-                               <Label prefHeight="18.0" prefWidth="178.0" text="Air Line">
-                                   <font>
-                                       <Font name="System Bold" size="12.0" />
-                                   </font>
-                               </Label>
-                               <TextField fx:id="airlineField" maxWidth="179.0" prefHeight="26.0" prefWidth="210.0" />
+                        <Label prefHeight="18.0" prefWidth="178.0" text="Air Line">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="airlineField" maxWidth="179.0" prefHeight="26.0" prefWidth="210.0" />
                      </children>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -212,12 +212,12 @@
                            </font>
                         </Label>
                         <CheckBox fx:id="promotionCheckBox1" mnemonicParsing="false" onAction="#setVisibilityFlight" text="YES" />
-                               <Label fx:id="dis_lab1" text="Discount" visible="false">
-                                   <font>
-                                       <Font name="System Bold" size="12.0" />
-                                   </font>
-                               </Label>
-                               <TextField fx:id="dis_txt1" prefHeight="26.0" prefWidth="177.0" visible="false" />
+                        <Label fx:id="dis_lab1" text="Discount" visible="false">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="dis_txt1" prefHeight="26.0" prefWidth="177.0" visible="false" />
                      </children>
                      <HBox.margin>
                         <Insets left="20.0" />
@@ -225,12 +225,12 @@
                   </VBox>
                   <AnchorPane prefHeight="122.0" prefWidth="229.0">
                      <children>
-                               <Label fx:id="dur_lab1" layoutX="84.0" layoutY="30.0" text="Duration" visible="false">
-                                   <font>
-                                       <Font name="System Bold" size="12.0" />
-                                   </font>
-                               </Label>
-                               <TextField fx:id="dur_txt1" layoutX="84.0" layoutY="51.0" prefHeight="26.0" prefWidth="173.0" visible="false" />
+                        <Label fx:id="dur_lab1" layoutX="84.0" layoutY="30.0" text="Duration" visible="false">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="dur_txt1" layoutX="84.0" layoutY="51.0" prefHeight="26.0" prefWidth="173.0" visible="false" />
                      </children>
                   </AnchorPane>
                </children>
@@ -251,6 +251,6 @@
                </children>
             </HBox>
          </children>
-        </VBox>
+      </VBox>
    </center>
 </BorderPane>

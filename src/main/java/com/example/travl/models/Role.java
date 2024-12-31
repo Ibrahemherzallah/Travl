@@ -5,16 +5,17 @@ import com.example.travl.controllers.PermissionController;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "role")
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
+    @Column(name = "name")
     private String name;
 
-//    @OneToOne(mappedBy = "role")
-//    private User user;
 
     public Long getId() {
         return id;
@@ -32,11 +33,4 @@ public class Role {
         this.name = name;
     }
 
-//    public User getUser() {
-//        return user;
-//    }
-//
-//    public void setUser(User user) {
-//        this.user = user;
-//    }
 }
