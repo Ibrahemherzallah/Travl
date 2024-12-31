@@ -53,7 +53,6 @@
                 <HBox alignment="CENTER" spacing="5">
                     <Hyperlink fx:id="signUpLink" text="forget your password" styleClass="signup-link" />
                 </HBox>
-                <Button onAction="#test"/>
             </VBox>
         </StackPane>
     </center>

@@ -27,9 +27,9 @@ public class AddFlightController {
             JOptionPane.showMessageDialog(null, " Air Line should not be Integers or Empty");
         }
 
-       else if(!destinationField.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ]+$")){
-           JOptionPane.showMessageDialog(null, "Destination should not be Integers or Empty");
-       }
+        else if(!destinationField.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ]+$")){
+            JOptionPane.showMessageDialog(null, "Destination should not be Integers or Empty");
+        }
         else if(durationField.getText().isEmpty()){
             JOptionPane.showMessageDialog(null, " Flight Duration should not be Empty");
         }
@@ -43,49 +43,49 @@ public class AddFlightController {
             JOptionPane.showMessageDialog(null, "Please enter a  number between 1 and 100 in Stops Field");
         }
 
-       else if (arrivalDateField.getValue()== null ||departureDateField.getValue()== null ||creatAtField.getValue()==null) {
-           JOptionPane.showMessageDialog(null, "Dates cant be empty ");
-       }
+        else if (arrivalDateField.getValue()== null ||departureDateField.getValue()== null ||creatAtField.getValue()==null) {
+            JOptionPane.showMessageDialog(null, "Dates cant be empty ");
+        }
 
-       else if(departureDateField.getValue().isAfter(arrivalDateField.getValue())){
-           JOptionPane.showMessageDialog(null, "Departure Date cant be after Arrival Date ");
-       }
-       else if(creatAtField.getValue().isAfter(departureDateField.getValue())){
-           JOptionPane.showMessageDialog(null, "Creation Date cant be after Departure Date ");
+        else if(departureDateField.getValue().isAfter(arrivalDateField.getValue())){
+            JOptionPane.showMessageDialog(null, "Departure Date cant be after Arrival Date ");
+        }
+        else if(creatAtField.getValue().isAfter(departureDateField.getValue())){
+            JOptionPane.showMessageDialog(null, "Creation Date cant be after Departure Date ");
 
-       }
-       else {
-           Flight flight = new Flight();
-           flight.setFlightName(flightNameField.getText());
-           flight.setAirline(airlineField.getText());
-           flight.setDestination(destinationField.getText());
-           flight.setDuration(durationField.getText());
-           flight.setNumberOfPassengers(Integer.parseInt(numberOfPassengersField.getText()));
-           flight.setStops(stopField.getText());
-           flight.setArrivalDate(java.sql.Date.valueOf(arrivalDateField.getValue()));
-           flight.setDepartureDate(java.sql.Date.valueOf(departureDateField.getValue()));
-           flight.setCreatedAt(java.sql.Date.valueOf(creatAtField.getValue()));
-           flight.setTicketPrice(Integer.parseInt(priceField.getText()));
-           flight.setPromotion(promotionCheckBox1.isSelected());
+        }
+        else {
+            Flight flight = new Flight();
+            flight.setFlightName(flightNameField.getText());
+            flight.setAirline(airlineField.getText());
+            flight.setDestination(destinationField.getText());
+            flight.setDuration(durationField.getText());
+            flight.setNumberOfPassengers(Integer.parseInt(numberOfPassengersField.getText()));
+            flight.setStops(stopField.getText());
+            flight.setArrivalDate(java.sql.Date.valueOf(arrivalDateField.getValue()));
+            flight.setDepartureDate(java.sql.Date.valueOf(departureDateField.getValue()));
+            flight.setCreatedAt(java.sql.Date.valueOf(creatAtField.getValue()));
+            flight.setTicketPrice(Integer.parseInt(priceField.getText()));
+            flight.setPromotion(promotionCheckBox1.isSelected());
 
-           if ((promotionCheckBox1.isSelected())) {
-               if (!dis_txt1.getText().matches("^[1-9][0-9]?$")) {
-                   JOptionPane.showMessageDialog(null, "Please enter a  number between 1 and 99 in Discount Field");
-                   return;
-               }
-               flight.setDiscount(dis_txt1.getText());
+            if ((promotionCheckBox1.isSelected())) {
+                if (!dis_txt1.getText().matches("^[1-9][0-9]?$")) {
+                    JOptionPane.showMessageDialog(null, "Please enter a  number between 1 and 99 in Discount Field");
+                    return;
+                }
+                flight.setDiscount(dis_txt1.getText());
 
-               if (!dur_txt1.getText().matches("^(100|[1-9]?[0-9])$")) {
-                   JOptionPane.showMessageDialog(null, "Please enter a  number between 1 and 100 in Duration Field");
-                   return;
-               }
-               flight.setPromotionDuration(Integer.parseInt(dur_txt1.getText()));
+                if (!dur_txt1.getText().matches("^(100|[1-9]?[0-9])$")) {
+                    JOptionPane.showMessageDialog(null, "Please enter a  number between 1 and 100 in Duration Field");
+                    return;
+                }
+                flight.setPromotionDuration(Integer.parseInt(dur_txt1.getText()));
 
-           }
+            }
 
-           flightDOAImp.insert(flight);
-           goBackToAdminDash(event);
-       }
+            flightDOAImp.insert(flight);
+            goBackToAdminDash(event);
+        }
 
     }
 

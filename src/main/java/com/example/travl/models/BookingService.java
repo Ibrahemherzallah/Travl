@@ -16,13 +16,17 @@ public class BookingService {
     private String booking_type;
 
     @ManyToOne
-    @JoinColumn(name = "hotel_id", nullable = false)
+    @JoinColumn(name = "hotel_id")
     private Hotel hotel;
 
 
     @ManyToOne
-    @JoinColumn(name = "flight_id", nullable = false)
+    @JoinColumn(name = "flight_id")
     private Flight flight;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
     public Flight getFlight() {

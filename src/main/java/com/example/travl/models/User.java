@@ -17,13 +17,31 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    public Role getRole() {
-        return role;
-    }
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
 
-    public void setRole(Role role) {
-        this.role = role;
-    }
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "phone")
+    private String phone;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "password")
+    private String password;
+
+//    @OneToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "role_id", referencedColumnName = "id")
+//    private Role role;
+//    public Role getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(Role role) {
+//        this.role = role;
+//    }
 
     public String getFirstName() {
         return firstName;
@@ -65,24 +83,7 @@ public class User {
         this.dateOfBirth = dateOfBirth;
     }
 
-    @Column(name = "date_of_birth")
-    private Date dateOfBirth;
 
-    @Column(name = "email")
-    private String email;
-
-    @Column(name = "phone")
-    private String phone;
-
-    @Column(name = "address")
-    private String address;
-
-    @Column(name = "password")
-    private String password;
-
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "role_id", referencedColumnName = "id")
-    private Role role;
 
     public Long getId() {
         return id;
