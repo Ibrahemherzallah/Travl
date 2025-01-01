@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
@@ -53,17 +52,17 @@ public class AdminDashController {
     @FXML
     private Label hotelNameLabel;
 
-    @FXML
-    private Label agentName;
+
 
     @FXML
     private Label flightName;
 
     @FXML
-    private Label agentNameTwo;
-
+    private Label lastAgentBooking;
     @FXML
-    private Label agentNameThree;
+    private Label lastAgentBookingOfHotel;
+    @FXML
+    private Label lastAgentBookingOfFlight;
 
     @FXML
     private ImageView img1;
@@ -187,14 +186,14 @@ public class AdminDashController {
     }
 
     private void loadUserCount() {
-        String query = "SELECT COUNT(*) AS user_count FROM user";
+        String query = "select COUNT(*) AS agent_count from user where role_id = 2";
 
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()) {
 
             if (resultSet.next()) {
-                int userCount = resultSet.getInt("user_count");
+                int userCount = resultSet.getInt("agent_count");
                 userCountLabel.setText(String.valueOf(userCount));
             } else {
                 userCountLabel.setText("0");
@@ -290,7 +289,7 @@ public class AdminDashController {
     }
 
     private void loadAvailableHotel() {
-        String query = "SELECT COUNT(available_rooms) AS available_rooms FROM hotel";
+        String query = "SELECT COUNT(available_rooms) AS available_rooms FROM hotel WHERE available_rooms > 0  ";
         try( Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME,DB_PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(query);
              ResultSet resultSet = preparedStatement.executeQuery()){
@@ -309,7 +308,11 @@ public class AdminDashController {
     }
 
     private void loadHotelName() {
-        String query = "SELECT hotel_name AS hotel_name FROM hotel ORDER BY RAND() LIMIT 1;";
+        String query = "SELECT hotel.hotel_name " +
+                "FROM booking_services " +
+                "INNER JOIN hotel ON booking_services.hotel_id = hotel.id " +
+                "ORDER BY booking_services.created_at DESC " +
+                "LIMIT 1;";
 
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -327,9 +330,12 @@ public class AdminDashController {
         }
     }
 
-
     private void loadFlightName() {
-        String query = "SELECT flight_name AS flight_name FROM flight ORDER BY RAND() LIMIT 1;";
+        String query = "SELECT flight.flight_name " +
+                "FROM booking_services " +
+                "INNER JOIN flight ON booking_services.flight_id = flight.id " +
+                "ORDER BY booking_services.created_at DESC " +
+                "LIMIT 1;";
 
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(query);
@@ -347,60 +353,26 @@ public class AdminDashController {
         }
     }
 
+    private void loadLastAgentBooking(Label agentName){
+        String query = "SELECT CONCAT(user.first_name,' ', user.last_name )AS agent_name FROM booking_services " +
+                "INNER JOIN user ON booking_services.user_id = user.id " +
+                "ORDER BY booking_services.created_at DESC LIMIT 1";
 
-
-    private void loadAgentName(){
-        String query = "SELECT CONCAT(first_name,' ',last_name )AS agent_name FROM user ORDER BY RAND() LIMIT 1;";
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(query);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
+             ResultSet resultSet = preparedStatement.executeQuery()){
             if (resultSet.next()) {
                 String agent_name = resultSet.getString("agent_name");
-                agentName.setText(agent_name != null ? agent_name : "Unknown");
-            } else {
-                agentName.setText("No Hotels Found");
+                lastAgentBooking.setText(agent_name != null ? agent_name : "Unknown");
+            }else {
+                lastAgentBooking.setText("No Hotels Found");
             }
-        } catch (Exception e) {
+
+        }catch (Exception e) {
             System.err.println("Error fetching hotel name: " + e.getMessage());
             e.printStackTrace();
             agentName.setText("Error");
-        }
 
-    }
-
-    private void loadAgentNameTwo(){
-        String query = "SELECT CONCAT(first_name,' ',last_name )AS agent_name FROM user ORDER BY RAND() LIMIT 1;";
-        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-            if (resultSet.next()) {
-                String agent_name = resultSet.getString("agent_name");
-                agentNameTwo.setText(agent_name != null ? agent_name : "Unknown");
-            } else {
-                agentNameTwo.setText("No Hotels Found");
-            }
-        } catch (Exception e) {
-            System.err.println("Error fetching hotel name: " + e.getMessage());
-            e.printStackTrace();
-            agentNameTwo.setText("Error");
-        }
-    }
-
-    private void loadAgentNameThree(){
-        String query = "SELECT CONCAT(first_name,' ',last_name )AS agent_name FROM user ORDER BY RAND() LIMIT 1;";
-        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
-             PreparedStatement preparedStatement = connection.prepareStatement(query);
-             ResultSet resultSet = preparedStatement.executeQuery()) {
-            if (resultSet.next()) {
-                String agent_name = resultSet.getString("agent_name");
-                agentNameThree.setText(agent_name != null ? agent_name : "Unknown");
-            } else {
-                agentNameThree.setText("No Hotels Found");
-            }
-        } catch (Exception e) {
-            System.err.println("Error fetching hotel name: " + e.getMessage());
-            e.printStackTrace();
-            agentNameThree.setText("Error");
         }
     }
 
@@ -413,10 +385,9 @@ public class AdminDashController {
         loadAvailableHotel();
         loadHotelName();
         loadFlightName();
-        loadAgentName();
-        loadAgentNameTwo();
-        loadAgentNameThree();
-
+        loadLastAgentBooking(lastAgentBookingOfHotel);
+        loadLastAgentBooking(lastAgentBookingOfFlight);
+        loadLastAgentBooking(lastAgentBooking);
     }
 
 }

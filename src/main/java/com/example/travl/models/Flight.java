@@ -52,10 +52,13 @@ public class Flight {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
+    @Column(name = "available_flight")
+    private int availableFlight;
 
 
     @Column(name = "des_from")
     private String des_from;
+
 
     @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookingService> bookingServices;
