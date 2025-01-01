@@ -14,9 +14,9 @@ import java.sql.*;
 
 public class AdminDashController {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/tayara_Db";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/forms";
     private final String DB_USERNAME = "root";
-    private final String DB_PASSWORD = "123456789";
+    private final String DB_PASSWORD = "";
     @FXML
     private ImageView homeIconAD;
     @FXML
@@ -309,7 +309,7 @@ public class AdminDashController {
     }
 
     private void loadHotelName() {
-        String query = "SELECT name AS hotel_name FROM hotel ORDER BY RAND() LIMIT 1;";
+        String query = "SELECT hotel_name AS hotel_name FROM hotel ORDER BY RAND() LIMIT 1;";
 
         try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
              PreparedStatement preparedStatement = connection.prepareStatement(query);
