@@ -71,6 +71,7 @@ public class AddHotelController {
         hotel.setNumOfStar(Integer.parseInt(ratingField.getText()));
         hotel.setAvailableRooms(Integer.parseInt(availableRoomsField.getText()));
         hotel.setPhone(phoneField.getText());
+        hotel.setPricePerNight(Integer.parseInt(pricePerNightField.getText()));
         hotel.setDescriptionWithAmenities(descriptionField.getText());
         hotel.setCreated_at(java.sql.Date.valueOf(creatAtField.getValue()));
         hotel.setPromotion(promotionCheckBox.isSelected());
