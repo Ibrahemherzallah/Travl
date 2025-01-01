@@ -13,9 +13,9 @@ import java.sql.*;
 
 public class AdminDashController {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/tayara_Db";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/forms";
     private final String DB_USERNAME = "root";
-    private final String DB_PASSWORD = "123456789";
+    private final String DB_PASSWORD = "";
     @FXML
     private ImageView homeIconAD;
     @FXML
