@@ -66,6 +66,14 @@ public class Hotel {
 
     }
 
+    public double getPricePerNight() {
+        return pricePerNight;
+    }
+
+    public void setPricePerNight(double pricePerNight) {
+        this.pricePerNight = pricePerNight;
+    }
+
     public int getId() {
         return id;
     }
