@@ -7,15 +7,55 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.awt.*;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.Objects;
+import javafx.scene.image.Image;
 
 public class BookingController {
 
+    @FXML
+    public ImageView imageOfPromo_p2;
+    public ImageView imageOfPromo_p1;
+    @FXML
+    private Label price_h1 ;
+    @FXML
+    private Label price_h2 ;
+    @FXML
+    private Label price_h3 ;
+    @FXML
+    private Label price_h4 ;
+
+    @FXML
+    private ImageView image_h1, image_h2, image_h3, image_h4;
+
+    @FXML
+    private Label nameOfHotel_h1, nameOfHotel_h2, nameOfHotel_h3, nameOfHotel_h4;
+
+    @FXML
+    private Label location_h1, location_h2, location_h3, location_h4;
+
+    @FXML
+    private VBox promotionList;
+
+    @FXML
+    private ImageView image_p1, image_p2;
+
+    @FXML
+    private Label nameOfPromo_p1, nameOfPromo_p2;
+
+    @FXML
+    private Label descriptionOfPromo_p1,  descriptionOfPromo_p2;
     @FXML private Button viewFlightBookBtn;
     @FXML private Button viewHotelBookBtn;
     @FXML private Button viewHotelDetailsBtn1;
@@ -83,6 +123,246 @@ public class BookingController {
     @FXML private TextField numAdultsF;
     @FXML private TextField numKidsF;
     @FXML private TextField paymentMethodF;
+    @FXML
+    private Label airlineName_a1;
+    @FXML
+    private Label ticketNo_a1;
+    @FXML
+    private Label takeoffTime_a1;
+    @FXML
+    private Label takeoffPlace_a1;
+    @FXML
+    private Label arrivalTime_a1;
+    @FXML
+    private Label destination_a1;
+    @FXML
+    private Label timeToLand_a1;
+    @FXML
+    private Label Stops_a1;
+
+    @FXML
+    private Label airlineName_a2;
+    @FXML
+    private Label ticketNo_a2;
+    @FXML
+    private Label takeoffTime_a2;
+    @FXML
+    private Label takeoffPlace_a2;
+    @FXML
+    private Label arrivalTime_a2;
+    @FXML
+    private Label destination_a2;
+    @FXML
+    private Label timeToLand_a2;
+    @FXML
+    private Label Stops_a2;
+
+    @FXML
+    private Label promoPlace_p1;
+    @FXML
+    private ImageView promoImage_p1;
+    @FXML
+    private Label promoPlace_p2;
+    @FXML
+    private ImageView promoImage_p2;
+
+    private final String JDBC_URL = "jdbc:mysql://localhost:3306/travl_db";
+    private final String DB_USERNAME = "root";
+    private final String DB_PASSWORD = "@@@Dy123321";
+
+    @FXML
+    public void initialize() {
+        loadHotelData();
+        loadPromotionData();
+        loadFlightData();
+        loadFlightPromotionData();
+    }
+    private void loadFlightData() {
+        String query = "SELECT * FROM flights";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("id"); // Assuming the ID column is named "id"
+                String airlineName = resultSet.getString("airline_name");
+                String ticketNo = resultSet.getString("ticket_no");
+                String takeoffTime = resultSet.getString("takeoff_time");
+                String takeoffPlace = resultSet.getString("takeoff_place");
+                String arrivalTime = resultSet.getString("arrival_time");
+                String destination = resultSet.getString("destination");
+                String timeToLand = resultSet.getString("time_to_land");
+                String stops = resultSet.getString("stops");
+
+                switch (id) {
+                    case "1":
+                        airlineName_a1.setText(airlineName);
+                        ticketNo_a1.setText(ticketNo);
+                        takeoffTime_a1.setText(takeoffTime);
+                        takeoffPlace_a1.setText(takeoffPlace);
+                        arrivalTime_a1.setText(arrivalTime);
+                        destination_a1.setText(destination);
+                        timeToLand_a1.setText(timeToLand);
+                        Stops_a1.setText(stops);
+                        break;
+                    case "2":
+                        airlineName_a2.setText(airlineName);
+                        ticketNo_a2.setText(ticketNo);
+                        takeoffTime_a2.setText(takeoffTime);
+                        takeoffPlace_a2.setText(takeoffPlace);
+                        arrivalTime_a2.setText(arrivalTime);
+                        destination_a2.setText(destination);
+                        timeToLand_a2.setText(timeToLand);
+                        Stops_a2.setText(stops);
+                        break;
+                    default:
+                        System.err.println("No matching UI element for flight ID: " + id);
+                        break;
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error loading flight data: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void loadFlightPromotionData() {
+        String query = "SELECT * FROM flight_promotions";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String promoImageUrl = resultSet.getString("promo_image_url");
+                String promoPlace = resultSet.getString("promo_place");
+
+                try {
+                    Image promoImage = new Image(promoImageUrl, true);
+
+                    switch (id) {
+                        case "1":
+                            promoPlace_p1.setText(promoPlace);
+                            promoImage_p1.setImage(promoImage);
+                            break;
+                        case "2":
+                            promoPlace_p2.setText(promoPlace);
+                            promoImage_p2.setImage(promoImage);
+                            break;
+                        default:
+                            System.err.println("No matching element for  ID: " + id);
+                            break;
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Invalid promo image URL for  ID " + id + ": " + promoImageUrl);
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error loading flight  data: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private void loadHotelData() {
+        String query = "SELECT * FROM hotels";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                String location = resultSet.getString("location");
+                String imageUrl = resultSet.getString("image_url");
+                double pricePerNight = resultSet.getDouble("price_per_night");
+
+                try {
+                    Image image = new Image(imageUrl, true);
+
+                    switch (id) {
+                        case "1":
+                            nameOfHotel_h1.setText(name);
+                            location_h1.setText(location);
+                            price_h1.setText("$" + pricePerNight);
+                            image_h1.setImage(image);
+                            break;
+                        case "2":
+                            nameOfHotel_h2.setText(name);
+                            location_h2.setText(location);
+                            price_h2.setText("$" + pricePerNight);
+                            image_h2.setImage(image);
+                            break;
+                        case "3":
+                            nameOfHotel_h3.setText(name);
+                            location_h3.setText(location);
+                            price_h3.setText("$" + pricePerNight);
+                            image_h3.setImage(image);
+                            break;
+                        case "4":
+                            nameOfHotel_h4.setText(name);
+                            location_h4.setText(location);
+                            price_h4.setText("$" + pricePerNight);
+                            image_h4.setImage(image);
+                            break;
+                        default:
+                            System.err.println("No  element for hotel ID: " + id);
+                            break;
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Invalid image URL ID " + id + ": " + imageUrl);
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error loading hotel data: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+    private void loadPromotionData() {
+        String query = "SELECT * FROM promotions";
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            while (resultSet.next()) {
+                String id = resultSet.getString("id");
+                String promoImageUrl = resultSet.getString("image_url");
+                String promoPlace = resultSet.getString("city_name");
+
+                try {
+                    Image promoImage = new Image(promoImageUrl, true);
+
+                    switch (id) {
+                        case "1":
+                            nameOfPromo_p1.setText(promoPlace);
+                            imageOfPromo_p1.setImage(promoImage);
+                            break;
+                        case "2":
+                            nameOfPromo_p2.setText(promoPlace);
+                            imageOfPromo_p2.setImage(promoImage);
+                            break;
+                        default:
+                            System.err.println("No matching ID: " + id);
+                            break;
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.err.println("Invalid promo image  ID " + id + ": " + promoImageUrl);
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error loading  data: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 
     @FXML
     public void handleEditButtonClick() {
@@ -347,7 +627,6 @@ public class BookingController {
             System.out.println("Error");
         }
     }
-
     @FXML
     private void handleMenuButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
@@ -355,8 +634,8 @@ public class BookingController {
         if (event.getSource() == selectFlightBtn || event.getSource() == viewFlightDetailsBtn1 || event.getSource() == viewFlightDetailsBtn2) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-details.fxml")));
         }
-         else if (event.getSource() == viewHotelDetailsBtn || event.getSource() == viewHotelDetailsBtn1 || event.getSource() == viewHotelDetailsBtn2) {
-             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-details.fxml")));
+        else if (event.getSource() == viewHotelDetailsBtn || event.getSource() == viewHotelDetailsBtn1 || event.getSource() == viewHotelDetailsBtn2) {
+            newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-details.fxml")));
         } else if (event.getSource() == backFlightListingButton) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-listing.fxml")));
         }
@@ -383,6 +662,7 @@ public class BookingController {
             stage.show();
         }
     }
+
 
 
 
