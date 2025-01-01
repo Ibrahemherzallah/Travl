@@ -1,24 +1,79 @@
 package com.example.travl.controllers;
 
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.*;
 
 public class AdminDashController {
 
-    @FXML private ImageView homeIconAD;
-    @FXML private ImageView flightIconAD;
-    @FXML private ImageView hotelIconAD;
-    @FXML private ImageView addAgentAD;
-    @FXML private ImageView addFlightAD;
-    @FXML private ImageView addHotelAD;
-    @FXML private ImageView logoutIcon;
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/tayara_Db";
+    private final String DB_USERNAME = "root";
+    private final String DB_PASSWORD = "123456789";
+    @FXML
+    private ImageView homeIconAD;
+    @FXML
+    private ImageView flightIconAD;
+    @FXML
+    private ImageView hotelIconAD;
+    @FXML
+    private ImageView addAgentAD;
+    @FXML
+    private ImageView addFlightAD;
+    @FXML
+    private ImageView addHotelAD;
+    @FXML
+    private ImageView logoutIcon;
 
-    @FXML protected void navigateHomeAD(){
+    @FXML
+    private Label userCountLabel;
+
+    @FXML
+    private Label bookingCountLabel;
+
+    @FXML
+    private Label hotelCountLabel;
+
+    @FXML
+    private Label flightCountLabel;
+
+    @FXML
+    private Label availableFlight;
+
+    @FXML
+    private Label availableHotel;
+
+    @FXML
+    private Label hotelNameLabel;
+
+    @FXML
+    private Label agentName;
+
+    @FXML
+    private Label flightName;
+
+    @FXML
+    private Label agentNameTwo;
+
+    @FXML
+    private Label agentNameThree;
+
+    @FXML
+    private ImageView img1;
+
+    @FXML
+    private ImageView img2;
+
+
+    @FXML
+    protected void navigateHomeAD() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/admin-dash.fxml"));
 
@@ -32,7 +87,9 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-    @FXML protected void navigateFlightAD(){
+
+    @FXML
+    protected void navigateFlightAD() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/flight-listing-admin.fxml"));
 
@@ -46,7 +103,9 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-    @FXML protected void navigateHotelAD(){
+
+    @FXML
+    protected void navigateHotelAD() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/hotel-listing-admin.fxml"));
 
@@ -60,7 +119,9 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-    @FXML protected void navigateAddAgentAD(){
+
+    @FXML
+    protected void navigateAddAgentAD() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/agent-list.fxml"));
 
@@ -74,7 +135,9 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-    @FXML protected void navigateAddFlightAD(){
+
+    @FXML
+    protected void navigateAddFlightAD() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/add-flight.fxml"));
 
@@ -88,7 +151,9 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-    @FXML protected void navigateAddHotelAD(){
+
+    @FXML
+    protected void navigateAddHotelAD() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/add-hotel.fxml"));
 
@@ -102,7 +167,9 @@ public class AdminDashController {
             System.out.println("Error");
         }
     }
-    @FXML protected void navigateLogout(){
+
+    @FXML
+    protected void navigateLogout() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/log-in.fxml"));
 
@@ -115,5 +182,241 @@ public class AdminDashController {
             e.printStackTrace();
             System.out.println("Error");
         }
+
+
     }
+
+    private void loadUserCount() {
+        String query = "SELECT COUNT(*) AS user_count FROM user";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            if (resultSet.next()) {
+                int userCount = resultSet.getInt("user_count");
+                userCountLabel.setText(String.valueOf(userCount));
+            } else {
+                userCountLabel.setText("0");
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching user count: " + e.getMessage());
+            e.printStackTrace();
+            userCountLabel.setText("Error");
+        }
+    }
+
+    private void loadBookingCount() {
+        String query = "SELECT COUNT(*) AS booking_count FROM booking_services";
+        try (Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME,DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+
+            if (resultSet.next()) {
+                int bookingCount = resultSet.getInt("booking_count");
+                bookingCountLabel.setText(String.valueOf(bookingCount));
+            } else {
+                bookingCountLabel.setText("0");
+            }
+        }catch (Exception e) {
+            System.err.println("Error fetching user count: " + e.getMessage());
+            e.printStackTrace();
+            userCountLabel.setText("Error");
+        }
+
+    }
+
+    private void loadHotelCount() {
+        String query = "SELECT COUNT(*) AS hotel_count FROM hotel";
+        try(Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME,DB_PASSWORD);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery()){
+
+
+            if (resultSet.next()) {
+                int hotelCount = resultSet.getInt("hotel_count");
+                hotelCountLabel.setText(String.valueOf(hotelCount));
+
+            } else {
+                hotelCountLabel.setText("0");
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching user count: " + e.getMessage());
+            e.printStackTrace();
+            hotelCountLabel.setText("Error");
+        }
+    }
+
+    private void loadFlightCount() {
+        String query = "SELECT COUNT(*) AS flight_count FROM flight";
+
+        try( Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME,DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()){
+            if (resultSet.next()) {
+                int flightCount = resultSet.getInt("flight_count");
+                flightCountLabel.setText(String.valueOf(flightCount));
+
+            }else {
+                flightCountLabel.setText("0");
+            }
+        }catch (Exception e) {
+            System.err.println("Error fetching user count: " + e.getMessage());
+            e.printStackTrace();
+            flightCountLabel.setText("Error");
+        }
+    }
+
+    private void loadAvailableFlight() {
+        String query = "SELECT COUNT(available_flight ) AS available_flight FROM flight WHERE available_flight = TRUE";
+
+        try( Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME,DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()){
+            if (resultSet.next()) {
+                int flightCount = resultSet.getInt("available_flight");
+                availableFlight.setText(String.valueOf(flightCount));
+
+            }else {
+                availableFlight.setText("0");
+            }
+        }catch (Exception e) {
+            System.err.println("Error fetching user count: " + e.getMessage());
+            e.printStackTrace();
+            availableFlight.setText("Error");
+        }
+
+
+    }
+
+    private void loadAvailableHotel() {
+        String query = "SELECT COUNT(available_rooms) AS available_rooms FROM hotel";
+        try( Connection connection = DriverManager.getConnection(DB_URL,DB_USERNAME,DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()){
+            if (resultSet.next()) {
+                int flightCount = resultSet.getInt("available_rooms");
+                availableHotel.setText(String.valueOf(flightCount));
+
+            }else {
+                availableHotel.setText("0");
+            }
+        }catch (Exception e) {
+            System.err.println("Error fetching user count: " + e.getMessage());
+            e.printStackTrace();
+            availableHotel.setText("Error");
+        }
+    }
+
+    private void loadHotelName() {
+        String query = "SELECT name AS hotel_name FROM hotel ORDER BY RAND() LIMIT 1;";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                String hotelName = resultSet.getString("hotel_name");
+                hotelNameLabel.setText(hotelName != null ? hotelName : "Unknown");
+            } else {
+                hotelNameLabel.setText("No Hotels Found");
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching hotel name: " + e.getMessage());
+            e.printStackTrace();
+            hotelNameLabel.setText("Error");
+        }
+    }
+
+
+    private void loadFlightName() {
+        String query = "SELECT flight_name AS flight_name FROM flight ORDER BY RAND() LIMIT 1;";
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                String flight_Name = resultSet.getString("flight_name");
+                flightName.setText(flight_Name != null ? flight_Name : "Unknown");
+            } else {
+                flightName.setText("No Hotels Found");
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching hotel name: " + e.getMessage());
+            e.printStackTrace();
+            flightName.setText("Error");
+        }
+    }
+
+
+
+    private void loadAgentName(){
+        String query = "SELECT CONCAT(first_name,' ',last_name )AS agent_name FROM user ORDER BY RAND() LIMIT 1;";
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                String agent_name = resultSet.getString("agent_name");
+                agentName.setText(agent_name != null ? agent_name : "Unknown");
+            } else {
+                agentName.setText("No Hotels Found");
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching hotel name: " + e.getMessage());
+            e.printStackTrace();
+            agentName.setText("Error");
+        }
+
+    }
+
+    private void loadAgentNameTwo(){
+        String query = "SELECT CONCAT(first_name,' ',last_name )AS agent_name FROM user ORDER BY RAND() LIMIT 1;";
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                String agent_name = resultSet.getString("agent_name");
+                agentNameTwo.setText(agent_name != null ? agent_name : "Unknown");
+            } else {
+                agentNameTwo.setText("No Hotels Found");
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching hotel name: " + e.getMessage());
+            e.printStackTrace();
+            agentNameTwo.setText("Error");
+        }
+    }
+
+    private void loadAgentNameThree(){
+        String query = "SELECT CONCAT(first_name,' ',last_name )AS agent_name FROM user ORDER BY RAND() LIMIT 1;";
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            if (resultSet.next()) {
+                String agent_name = resultSet.getString("agent_name");
+                agentNameThree.setText(agent_name != null ? agent_name : "Unknown");
+            } else {
+                agentNameThree.setText("No Hotels Found");
+            }
+        } catch (Exception e) {
+            System.err.println("Error fetching hotel name: " + e.getMessage());
+            e.printStackTrace();
+            agentNameThree.setText("Error");
+        }
+    }
+
+    public void initialize() {
+        loadUserCount();
+        loadBookingCount();
+        loadHotelCount();
+        loadFlightCount();
+        loadAvailableFlight();
+        loadAvailableHotel();
+        loadHotelName();
+        loadFlightName();
+        loadAgentName();
+        loadAgentNameTwo();
+        loadAgentNameThree();
+
+    }
+
 }
