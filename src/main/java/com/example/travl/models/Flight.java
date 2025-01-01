@@ -52,6 +52,11 @@ public class Flight {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
+
+
+    @Column(name = "des_from")
+    private String des_from;
+
     @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookingService> bookingServices;
 
@@ -59,7 +64,13 @@ public class Flight {
     public int getPromotionDuration() {
         return promotionDuration;
     }
+    public String getFrom() {
+        return des_from;
+    }
 
+    public void setFrom(String from) {
+        this.des_from = from;
+    }
     public void setPromotionDuration(int promotionDuration) {
         this.promotionDuration = promotionDuration;
     }

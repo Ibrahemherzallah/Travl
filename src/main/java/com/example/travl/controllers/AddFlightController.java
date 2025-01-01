@@ -20,19 +20,26 @@ public class AddFlightController {
     @FXML
     protected void onSubmitButtonClick(ActionEvent event) throws IOException {
         try {
+            System.out.println("the form text is" + des_from.getText());
             if (!flightNameField.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ]+$")) {
                 JOptionPane.showMessageDialog(null, "Flight Name should not be Integers or Empty");
             }
-            else if (!airlineField.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ]+$")) {
+            else if (!airlineField.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ,]+$")) {
                 JOptionPane.showMessageDialog(null, " Air Line should not be Integers or Empty");
             }
 
-            else if(!destinationField.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ]+$")){
+            else if(!destinationField.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ,]+$")){
+                JOptionPane.showMessageDialog(null, "Destination should not be Integers or Empty");
+            }
+
+
+            else if(!des_from.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ,]+$")){
                 JOptionPane.showMessageDialog(null, "Destination should not be Integers or Empty");
             }
             else if(durationField.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, " Flight Duration should not be Empty");
             }
+
             else  if(!priceField.getText().matches("^(50000|[1-4]?[0-9]{1,4})$")){
                 JOptionPane.showMessageDialog(null, "Please enter a  number between 1 and 50000 in Price Field");
             }
@@ -59,6 +66,7 @@ public class AddFlightController {
                 flight.setFlightName(flightNameField.getText());
                 flight.setAirline(airlineField.getText());
                 flight.setDestination(destinationField.getText());
+                flight.setFrom(des_from.getText());
                 flight.setDuration(durationField.getText());
                 flight.setNumberOfPassengers(Integer.parseInt(numberOfPassengersField.getText()));
                 flight.setStops(stopField.getText());
@@ -115,7 +123,8 @@ public class AddFlightController {
     private DatePicker creatAtField;
     @FXML
     private TextField stopField;
-
+@FXML
+private TextField des_from;
     @FXML
     private CheckBox promotionCheckBox1;
     @FXML

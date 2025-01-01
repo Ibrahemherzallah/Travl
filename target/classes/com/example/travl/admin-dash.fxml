@@ -325,7 +325,7 @@
                                 <children>
                                     <Pane prefHeight="100.0" prefWidth="170.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                         <children>
-                                            <ImageView fx:id="img2" fitHeight="88.0" fitWidth="142.0" layoutX="19.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                            <ImageView fx:id="img1" fitHeight="88.0" fitWidth="142.0" layoutX="19.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                 <image>
                                                     <Image url="@../../../images/Hilton_London_Paddington4.jpg" />
                                                 </image>
@@ -371,7 +371,7 @@
                                 <children>
                                     <Pane prefHeight="100.0" prefWidth="172.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                         <children>
-                                            <ImageView fitHeight="91.0" fitWidth="140.0" layoutX="21.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                            <ImageView fx:id="img2" fitHeight="91.0" fitWidth="140.0" layoutX="21.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                                                 <image>
                                                     <Image url="@../../../images/HolidayExpress.jpg" />
                                                 </image>

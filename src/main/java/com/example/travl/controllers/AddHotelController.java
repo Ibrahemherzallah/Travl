@@ -33,7 +33,7 @@ public class AddHotelController {
             JOptionPane.showMessageDialog(null, " Hotel Chain should not be Integers ");
         }
 
-        else if (!locationField.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ]+$")){
+        else if (!locationField.getText().matches("^(?=.*[a-zA-Z])[a-zA-Z0-9 ,]+$")){
             JOptionPane.showMessageDialog(null, "Hotel Location should not be Integers or Empty");
         }
 
