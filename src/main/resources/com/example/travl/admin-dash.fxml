@@ -91,7 +91,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="600.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                <Pane layoutX="13.0" layoutY="600.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -188,7 +188,7 @@
                         <children>
                             <Pane fx:id="paneCard_1112" prefHeight="110.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                 <children>
-                                    <Label layoutX="74.0" layoutY="38.0" text="320.58.5">
+                                    <Label fx:id="userCountLabel" layoutX="74.0" layoutY="38.0" text="320.58.5">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
@@ -207,7 +207,7 @@
                             </Pane>
                             <Pane fx:id="paneCard_11123" prefHeight="110.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                 <children>
-                                    <Label layoutX="72.0" layoutY="40.0" text="320.58.5">
+                                    <Label fx:id="bookingCountLabel" layoutX="72.0" layoutY="40.0" text="320.58.5">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
@@ -229,7 +229,7 @@
                             </Pane>
                             <Pane fx:id="paneCard_11121" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="110.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                 <children>
-                                    <Label layoutX="76.0" layoutY="39.0" text="320.58.5">
+                                    <Label fx:id="hotelCountLabel" layoutX="76.0" layoutY="39.0" text="320.58.5">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
@@ -251,7 +251,7 @@
                             </Pane>
                             <Pane fx:id="paneCard_11122" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="105.0" prefWidth="230.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                 <children>
-                                    <Label layoutX="64.0" layoutY="38.0" text="320.58.5">
+                                    <Label fx:id="flightCountLabel" layoutX="64.0" layoutY="38.0" text="320.58.5">
                                         <font>
                                             <Font name="System Bold" size="14.0" />
                                         </font>
@@ -284,7 +284,7 @@
                                             <Font name="System Bold" size="12.0" />
                                         </font>
                                     </Label>
-                                    <Label layoutX="351.0" layoutY="14.0" text="650" textFill="WHITE">
+                                    <Label fx:id="availableFlight" layoutX="351.0" layoutY="14.0" text="650" textFill="WHITE">
                                         <font>
                                             <Font name="System Bold Italic" size="14.0" />
                                         </font>
@@ -299,7 +299,7 @@
                                             <Font name="System Bold" size="12.0" />
                                         </font>
                                     </Label>
-                                    <Label layoutX="351.0" layoutY="14.0" text="650" textFill="WHITE">
+                                    <Label fx:id="availableHotel" layoutX="351.0" layoutY="14.0" text="650" textFill="WHITE">
                                         <font>
                                             <Font name="System Bold Italic" size="14.0" />
                                         </font>
@@ -325,7 +325,7 @@
                                 <children>
                                     <Pane prefHeight="100.0" prefWidth="170.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                         <children>
-                                            <ImageView fitHeight="88.0" fitWidth="142.0" layoutX="19.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                                            <ImageView fx:id="img1" fitHeight="88.0" fitWidth="142.0" layoutX="19.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                                                 <image>
                                                     <Image url="@../../../images/Hilton_London_Paddington4.jpg" />
                                                 </image>
@@ -334,13 +334,13 @@
                                     </Pane>
                                     <Pane prefHeight="120.0" prefWidth="642.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                         <children>
-                                            <Label layoutX="16.0" layoutY="14.0" text="Pal Hotel">
+                                            <Label fx:id="hotelNameLabel" layoutX="16.0" layoutY="14.0" text="Pal Hotel">
                                                 <font>
                                                     <Font name="System Bold" size="15.0" />
                                                 </font>
                                             </Label>
                                             <Circle fill="WHITE" layoutX="32.0" layoutY="72.0" radius="17.0" stroke="#5072f8" strokeType="INSIDE" />
-                                            <Label layoutX="57.0" layoutY="62.0" text="Bara Mhana" textFill="#5b5b5b">
+                                            <Label fx:id="agentNameTwo" layoutX="57.0" layoutY="62.0" text="Bara Mhana" textFill="#5b5b5b">
                                                 <font>
                                                     <Font size="14.0" />
                                                 </font>
@@ -371,7 +371,7 @@
                                 <children>
                                     <Pane prefHeight="100.0" prefWidth="172.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                         <children>
-                                            <ImageView fitHeight="91.0" fitWidth="140.0" layoutX="21.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                                            <ImageView fx:id="img2" fitHeight="91.0" fitWidth="140.0" layoutX="21.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                                                 <image>
                                                     <Image url="@../../../images/HolidayExpress.jpg" />
                                                 </image>
@@ -380,13 +380,13 @@
                                     </Pane>
                                     <Pane prefHeight="120.0" prefWidth="642.0" styleClass="paneCard_1" stylesheets="@../../../styles/agent-dash.css">
                                         <children>
-                                            <Label layoutX="16.0" layoutY="14.0" text="Karmel Flight">
+                                            <Label fx:id="flightName" layoutX="16.0" layoutY="14.0" text="Karmel Flight">
                                                 <font>
                                                     <Font name="System Bold" size="15.0" />
                                                 </font>
                                             </Label>
                                             <Circle fill="WHITE" layoutX="33.0" layoutY="72.0" radius="17.0" stroke="#143be8" strokeType="INSIDE" />
-                                            <Label layoutX="57.0" layoutY="62.0" text="Ibrahem Herzalleh" textFill="#5b5b5b">
+                                            <Label fx:id="agentName" layoutX="57.0" layoutY="62.0" text="Ibrahem Herzalleh" textFill="#5b5b5b">
                                                 <font>
                                                     <Font size="14.0" />
                                                 </font>
@@ -495,7 +495,7 @@
                                     <Font name="System Bold" size="18.0" />
                                 </font>
                             </Label>
-                            <Label layoutX="60.0" layoutY="129.0" text="Bara Mhana" textFill="#5b5b5b">
+                            <Label fx:id="agentNameThree" layoutX="60.0" layoutY="129.0" text="Bara Mhana" textFill="#5b5b5b">
                                 <font>
                                     <Font size="14.0" />
                                 </font>
