@@ -13,7 +13,7 @@ import java.sql.*;
 
 public class AdminDashController {
 
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/forms";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/newDB";
     private final String DB_USERNAME = "root";
     private final String DB_PASSWORD = "";
     @FXML
