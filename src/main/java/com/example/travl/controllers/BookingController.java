@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -164,18 +165,23 @@ public class BookingController {
     @FXML
     private Label promoPlace_p2;
     @FXML
+    private ChoiceBox<String> myChoiceBox;
+
+    @FXML
     private ImageView promoImage_p2;
 
     private final String JDBC_URL = "jdbc:mysql://localhost:3306/travl_db";
     private final String DB_USERNAME = "root";
     private final String DB_PASSWORD = "@@@Dy123321";
+    private String[] priceSorted = {"High to Low " , "Low to High"};
 
     @FXML
     public void initialize() {
         loadHotelData();
         loadPromotionData();
         loadFlightData();
-        loadFlightPromotionData();
+       loadFlightPromotionData();
+        loadChoiceBox();
     }
     private void loadFlightData() {
         String query = "SELECT * FROM flights";
@@ -662,6 +668,13 @@ public class BookingController {
             stage.show();
         }
     }
+
+
+    private void loadChoiceBox(){
+        myChoiceBox.getItems().addAll(priceSorted);
+        myChoiceBox.setValue("Price");
+    }
+
 
 
 

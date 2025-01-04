@@ -9,7 +9,7 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         UserController user = new UserController();
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hotel-listing.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("flight-listing.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
         stage.setFullScreen(true);
