@@ -54,29 +54,12 @@ public class Hotel {
     @Column(name = "price_per_night")
     private double pricePerNight;
 
-
     @Lob
     @Column(name = "image")
-    private byte[] image;
-
-    @Column(name = "image_id")
-    private int imageId;
-
-    public double getPricePerNight() {
-        return pricePerNight;
-    }
-
-    public void setPricePerNight(double pricePerNight) {
-        this.pricePerNight = pricePerNight;
-    }
+    private byte[] img;
 
 
-    public List<BookingService> getBookingServices() {
-        return bookingServices;
-    }
 
-    public void setBookingServices(List<BookingService> bookingServices) {
-        this.bookingServices = bookingServices;
     public void setImg(InputStream inputStream) throws IOException {
         this.img = inputStream.readAllBytes();
     }
@@ -192,16 +175,7 @@ public class Hotel {
     public void getUser(){}
     public void deleteUser(int id){}
 
-
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
-
-    public void setImg(FileInputStream inputSteam) {
+    public byte[] getImg() {
+        return img;
     }
 }
