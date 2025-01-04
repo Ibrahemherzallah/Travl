@@ -14,11 +14,14 @@ import javafx.scene.control.TextField;
 import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import javafx.scene.image.Image;
 
@@ -86,7 +89,6 @@ public class BookingController {
     @FXML private Label paymentMF;
     @FXML private Label statusF;
     @FXML private Button editButton;
-    ///
     @FXML private TextField customerNameTextField, customerPhoneTextField, coustomerEmailTextField, customerAddTextField, checkinTextField, chekoutTextField, createAtTextField, NkidsTextField, paymentMTextField, statusTextField;
     private boolean isEditing = false;
 
@@ -123,6 +125,11 @@ public class BookingController {
     @FXML private TextField numAdultsF;
     @FXML private TextField numKidsF;
     @FXML private TextField paymentMethodF;
+    @FXML
+    private ImageView imagePromo1 ;
+    @FXML private ImageView imagePromo2 ;
+    @FXML private Label namePromo1;
+    @FXML private Label namePromo2;
     @FXML
     private Label airlineName_a1;
     @FXML
@@ -165,55 +172,74 @@ public class BookingController {
     private Label promoPlace_p2;
     @FXML
     private ImageView promoImage_p2;
-
-    private final String JDBC_URL = "jdbc:mysql://localhost:3306/travl_db";
+    private Map<Integer, Label> nameLabels = new HashMap<>();
+    private Map<Integer, Label> locationLabels = new HashMap<>();
+    private Map<Integer, Label> priceLabels = new HashMap<>();
+    private Map<Integer, ImageView> imageViews = new HashMap<>();
+    private final String JDBC_URL = "jdbc:mysql://localhost:3306/newDB";
     private final String DB_USERNAME = "root";
-    private final String DB_PASSWORD = "@@@Dy123321";
+    private final String DB_PASSWORD = "";
 
     @FXML
     public void initialize() {
+        nameLabels.put(1, nameOfHotel_h1);
+        nameLabels.put(2, nameOfHotel_h2);
+        nameLabels.put(3, nameOfHotel_h3);
+        nameLabels.put(4, nameOfHotel_h4);
+        locationLabels.put(1, location_h1);
+        locationLabels.put(2, location_h2);
+        locationLabels.put(3, location_h3);
+        locationLabels.put(4, location_h4);
+        priceLabels.put(1, price_h1);
+        priceLabels.put(2, price_h2);
+        priceLabels.put(3, price_h3);
+        priceLabels.put(4, price_h4);
+        imageViews.put(1, image_h1);
+        imageViews.put(2, image_h2);
+        imageViews.put(3, image_h3);
+        imageViews.put(4, image_h4);
         loadHotelData();
-        loadPromotionData();
+        loadHotelPromotionData();
         loadFlightData();
         loadFlightPromotionData();
     }
     private void loadFlightData() {
-        String query = "SELECT * FROM flights";
+        String query = "SELECT * FROM flight";
 
         try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
             while (resultSet.next()) {
-                String id = resultSet.getString("id"); // Assuming the ID column is named "id"
-                String airlineName = resultSet.getString("airline_name");
-                String ticketNo = resultSet.getString("ticket_no");
-                String takeoffTime = resultSet.getString("takeoff_time");
-                String takeoffPlace = resultSet.getString("takeoff_place");
-                String arrivalTime = resultSet.getString("arrival_time");
-                String destination = resultSet.getString("destination");
-                String timeToLand = resultSet.getString("time_to_land");
+                String id = resultSet.getString("id");
+                String flightName = resultSet.getString("flight_name");
+                String airline = resultSet.getString("airline");
+                int ticketPrice = resultSet.getInt("ticket_price");
+                String departureDate = resultSet.getString("departure_date");
+                String arrivalDate = resultSet.getString("arrival_date");
                 String stops = resultSet.getString("stops");
+                String destination = resultSet.getString("destination");
+                String duration = resultSet.getString("duration");
 
                 switch (id) {
                     case "1":
-                        airlineName_a1.setText(airlineName);
-                        ticketNo_a1.setText(ticketNo);
-                        takeoffTime_a1.setText(takeoffTime);
-                        takeoffPlace_a1.setText(takeoffPlace);
-                        arrivalTime_a1.setText(arrivalTime);
+                        airlineName_a1.setText(airline);
+                        ticketNo_a1.setText(flightName + " - $" + ticketPrice);
+                        takeoffTime_a1.setText(departureDate);
+                        takeoffPlace_a1.setText("");
+                        arrivalTime_a1.setText(arrivalDate);
                         destination_a1.setText(destination);
-                        timeToLand_a1.setText(timeToLand);
+                        timeToLand_a1.setText(duration);
                         Stops_a1.setText(stops);
                         break;
                     case "2":
-                        airlineName_a2.setText(airlineName);
-                        ticketNo_a2.setText(ticketNo);
-                        takeoffTime_a2.setText(takeoffTime);
-                        takeoffPlace_a2.setText(takeoffPlace);
-                        arrivalTime_a2.setText(arrivalTime);
+                        airlineName_a2.setText(airline);
+                        ticketNo_a2.setText(flightName + " - $" + ticketPrice);
+                        takeoffTime_a2.setText(departureDate);
+                        takeoffPlace_a2.setText("");
+                        arrivalTime_a2.setText(arrivalDate);
                         destination_a2.setText(destination);
-                        timeToLand_a2.setText(timeToLand);
+                        timeToLand_a2.setText(duration);
                         Stops_a2.setText(stops);
                         break;
                     default:
@@ -227,92 +253,92 @@ public class BookingController {
         }
     }
 
+
     private void loadFlightPromotionData() {
-        String query = "SELECT * FROM flight_promotions";
+        String query = "SELECT flight_name, image FROM flight WHERE promotion = true";
 
         try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
-            while (resultSet.next()) {
-                String id = resultSet.getString("id");
-                String promoImageUrl = resultSet.getString("promo_image_url");
-                String promoPlace = resultSet.getString("promo_place");
+            int promoIndex = 1;
+            while (resultSet.next() && promoIndex <= 2) {
+                String flightName = resultSet.getString("flight_name");
+                byte[] imageBytes = resultSet.getBytes("image");
+
+
+                System.out.println("Flight Name: " + flightName);
+                System.out.println("Image Bytes Length: " + (imageBytes != null ? imageBytes.length : "No Image"));
 
                 try {
-                    Image promoImage = new Image(promoImageUrl, true);
 
-                    switch (id) {
-                        case "1":
-                            promoPlace_p1.setText(promoPlace);
-                            promoImage_p1.setImage(promoImage);
+                    Image promoImage = (imageBytes != null) ? new Image(new ByteArrayInputStream(imageBytes)) : null;
+
+                    switch (promoIndex) {
+                        case 1:
+                            namePromo1.setText(flightName);
+                            if (promoImage != null) {
+                                imagePromo1.setImage(promoImage);
+                            } else {
+                                imagePromo1.setImage(new Image(""));
+                            }
                             break;
-                        case "2":
-                            promoPlace_p2.setText(promoPlace);
-                            promoImage_p2.setImage(promoImage);
+
+                        case 2:
+                            namePromo2.setText(flightName);
+                            if (promoImage != null) {
+                                imagePromo2.setImage(promoImage);
+                            } else {
+                                imagePromo2.setImage(new Image(""));
+                            }
                             break;
+
                         default:
-                            System.err.println("No matching element for  ID: " + id);
+                            System.err.println("No matching promotion UI element for index: " + promoIndex);
                             break;
                     }
                 } catch (IllegalArgumentException e) {
-                    System.err.println("Invalid promo image URL for  ID " + id + ": " + promoImageUrl);
+                    System.err.println("Error loading promotion image for index " + promoIndex + ": " + e.getMessage());
                 }
+
+                promoIndex++;
             }
+
         } catch (Exception e) {
-            System.err.println("Error loading flight  data: " + e.getMessage());
+            System.err.println("Error loading flight promotion data: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
     private void loadHotelData() {
-        String query = "SELECT * FROM hotels";
+        String query = "SELECT * FROM hotel";
 
         try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
-
             while (resultSet.next()) {
-                String id = resultSet.getString("id");
-                String name = resultSet.getString("name");
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("hotel_name");
                 String location = resultSet.getString("location");
-                String imageUrl = resultSet.getString("image_url");
                 double pricePerNight = resultSet.getDouble("price_per_night");
+                byte[] imageBytes = resultSet.getBytes("image");
 
                 try {
-                    Image image = new Image(imageUrl, true);
 
-                    switch (id) {
-                        case "1":
-                            nameOfHotel_h1.setText(name);
-                            location_h1.setText(location);
-                            price_h1.setText("$" + pricePerNight);
-                            image_h1.setImage(image);
-                            break;
-                        case "2":
-                            nameOfHotel_h2.setText(name);
-                            location_h2.setText(location);
-                            price_h2.setText("$" + pricePerNight);
-                            image_h2.setImage(image);
-                            break;
-                        case "3":
-                            nameOfHotel_h3.setText(name);
-                            location_h3.setText(location);
-                            price_h3.setText("$" + pricePerNight);
-                            image_h3.setImage(image);
-                            break;
-                        case "4":
-                            nameOfHotel_h4.setText(name);
-                            location_h4.setText(location);
-                            price_h4.setText("$" + pricePerNight);
-                            image_h4.setImage(image);
-                            break;
-                        default:
-                            System.err.println("No  element for hotel ID: " + id);
-                            break;
+                    Image image = (imageBytes != null) ? new Image(new ByteArrayInputStream(imageBytes)) : null;
+
+                    if (nameLabels.containsKey(id)) {
+                        nameLabels.get(id).setText(name);
+                        locationLabels.get(id).setText(location);
+                        priceLabels.get(id).setText("$" + pricePerNight);
+                        if (image != null) {
+                            imageViews.get(id).setImage(image);
+                        }
+                    } else {
+                        System.err.println("No matching  hotel ID: " + id);
                     }
                 } catch (IllegalArgumentException e) {
-                    System.err.println("Invalid image URL ID " + id + ": " + imageUrl);
+                    System.err.println("Error loading image ID " + id + ": " + e.getMessage());
                 }
             }
         } catch (Exception e) {
@@ -321,44 +347,64 @@ public class BookingController {
         }
     }
 
-
-    private void loadPromotionData() {
-        String query = "SELECT * FROM promotions";
+    private void loadHotelPromotionData() {
+        String query = "SELECT hotel_name, location, image FROM hotel WHERE promotion = true";
 
         try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
              Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(query)) {
 
-            while (resultSet.next()) {
-                String id = resultSet.getString("id");
-                String promoImageUrl = resultSet.getString("image_url");
-                String promoPlace = resultSet.getString("city_name");
+            int promoIndex = 1;
+            while (resultSet.next() && promoIndex <= 2) {
+                String hotelName = resultSet.getString("hotel_name");
+                String location = resultSet.getString("location");
+                byte[] imageBytes = resultSet.getBytes("image");
+
+
+                System.out.println("Hotel Name: " + hotelName);
+                System.out.println("Location: " + location);
+                System.out.println("Image Bytes: " + (imageBytes != null ? imageBytes.length : "No Image"));
 
                 try {
-                    Image promoImage = new Image(promoImageUrl, true);
 
-                    switch (id) {
-                        case "1":
-                            nameOfPromo_p1.setText(promoPlace);
-                            imageOfPromo_p1.setImage(promoImage);
+                    Image promoImage = (imageBytes != null) ? new Image(new ByteArrayInputStream(imageBytes)) : null;
+
+                    switch (promoIndex) {
+                        case 1:
+                            nameOfPromo_p1.setText(hotelName);
+                            if (promoImage != null) {
+                                imageOfPromo_p1.setImage(promoImage);
+                            }
+
                             break;
-                        case "2":
-                            nameOfPromo_p2.setText(promoPlace);
-                            imageOfPromo_p2.setImage(promoImage);
+
+                        case 2:
+                            nameOfPromo_p2.setText(hotelName);
+                            if (promoImage != null) {
+                                imageOfPromo_p2.setImage(promoImage);
+                            }
+
+
                             break;
+
                         default:
-                            System.err.println("No matching ID: " + id);
+                            System.err.println("No matching promotion UI element : " + promoIndex);
                             break;
                     }
                 } catch (IllegalArgumentException e) {
-                    System.err.println("Invalid promo image  ID " + id + ": " + promoImageUrl);
+                    System.err.println("Error loading promotion image for index " + promoIndex + ": " + e.getMessage());
                 }
+
+                promoIndex++;
             }
+
         } catch (Exception e) {
             System.err.println("Error loading  data: " + e.getMessage());
             e.printStackTrace();
         }
     }
+
+
 
 
 
@@ -662,9 +708,5 @@ public class BookingController {
             stage.show();
         }
     }
-
-
-
-
 
 }
