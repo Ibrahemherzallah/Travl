@@ -71,13 +71,14 @@ public class Hotel {
     }
 
 
-
     public List<BookingService> getBookingServices() {
         return bookingServices;
     }
 
     public void setBookingServices(List<BookingService> bookingServices) {
         this.bookingServices = bookingServices;
+    public void setImg(InputStream inputStream) throws IOException {
+        this.img = inputStream.readAllBytes();
     }
 
     public double getPricePerNight() {
