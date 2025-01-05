@@ -2,6 +2,7 @@ package com.example.travl.models;
 
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "booking_services")
@@ -27,6 +28,9 @@ public class BookingService {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @Column(name = "created_at")
+    private Date created_at;
 
 
     public Flight getFlight() {

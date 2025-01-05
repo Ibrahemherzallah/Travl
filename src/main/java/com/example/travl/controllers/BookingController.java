@@ -1,20 +1,52 @@
 package com.example.travl.controllers;
 
+import com.example.travl.models.BookingService;
+import com.example.travl.models.Flight;
+import com.example.travl.models.Hotel;
+import com.example.travl.models.services.BookingServiceDOAImp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import java.awt.*;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.query.NativeQuery;
+
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Objects;
 
 public class BookingController {
+
+    @FXML private Label ticket_type_v1;
+    @FXML private Label destination_history_name_v1;
+    @FXML private Label takeOf_date_v1;
+    @FXML private Label bookingID_v1;
+    @FXML private Label status_v1;
+    @FXML private Label ticketPrice_v1;
+
+    @FXML private Label ticket_type_v2;
+    @FXML private Label destination_history_name_v2;
+    @FXML private Label takeOf_date_v2;
+    @FXML private Label bookingID_v2;
+    @FXML private Label status_v2;
+    @FXML private Label ticketPrice_v2;
+
+
+
+
+
 
     @FXML private Button viewFlightBookBtn;
     @FXML private Button viewHotelBookBtn;
@@ -83,6 +115,84 @@ public class BookingController {
     @FXML private TextField numAdultsF;
     @FXML private TextField numKidsF;
     @FXML private TextField paymentMethodF;
+    private BookingServiceDOAImp bookingServiceDOA;
+    private SessionFactory sessionFactory;
+
+    @FXML
+    public void initialize() {
+        try {
+            bookingServiceDOA = new BookingServiceDOAImp();
+            loadBooking("FL123456789", 1);
+            loadBooking("FL456123789", 2);
+            loadBooking("HT987654321", 3);
+            loadBooking("HT1234567890", 4);
+            loadBooking("HT4561237890", 5);
+            loadBooking("FL9876543210", 6);
+        } catch (Exception e) {
+            e.printStackTrace();
+            showAlert("Initialization Error", "Failed to initialize booking service. Check logs for details.", Alert.AlertType.ERROR);
+        }
+    }
+
+
+    private void loadBooking(String bookingID, int id) {
+        try {
+            BookingService bookingService = bookingServiceDOA.findBooking(bookingID);
+            if (bookingService != null) {
+                // Check if the booking is for a flight or hotel and display accordingly
+                if (bookingService.getFlight() != null) {
+                    displayFlightBooking(bookingService, bookingID, id);
+                } else if (bookingService.getHotel() != null) {
+                    displayHotelBooking(bookingService, bookingID, id);
+                }
+            } else {
+                System.out.println("NO BOOKING FOUND WITH THIS ID: " + bookingID);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void displayFlightBooking(BookingService bookingService, String bookingID, int id) {
+        Flight flight = bookingService.getFlight();
+        if (flight != null) {
+            // Display flight booking details
+            if (id == 1) {
+                ticket_type_v1.setText("Flight Booking");
+                destination_history_name_v1.setText(flight.getDestination());
+                takeOf_date_v1.setText(flight.getDepartureDate().toString());
+                bookingID_v1.setText("Booking ID: " + bookingID);
+                status_v1.setText("Confirmed");
+                ticketPrice_v1.setText(flight.getTicketPrice() + "$");
+            }
+            // Repeat for other id checks if needed
+        }
+    }
+
+    private void displayHotelBooking(BookingService bookingService, String bookingID, int id) {
+        Hotel hotel = bookingService.getHotel();
+        if (hotel != null) {
+            // Display hotel booking details
+            if (id == 3) {
+                ticket_type_v1.setText("Hotel Booking");
+                destination_history_name_v1.setText(hotel.getLocation());
+                takeOf_date_v1.setText(hotel.getCreated_at().toString());
+                bookingID_v1.setText("Booking ID: " + bookingID);
+                status_v1.setText("Confirmed");
+                ticketPrice_v1.setText(hotel.getPricePerNight() + "$");
+            }
+            // Repeat for other id checks if needed
+        }
+    }
+
+
+    private void showAlert(String title, String content, Alert.AlertType alertType) {
+        Alert alert = new Alert(alertType);
+        alert.setTitle(title);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
 
     @FXML
     public void handleEditButtonClick() {
@@ -355,8 +465,8 @@ public class BookingController {
         if (event.getSource() == selectFlightBtn || event.getSource() == viewFlightDetailsBtn1 || event.getSource() == viewFlightDetailsBtn2) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-details.fxml")));
         }
-         else if (event.getSource() == viewHotelDetailsBtn || event.getSource() == viewHotelDetailsBtn1 || event.getSource() == viewHotelDetailsBtn2) {
-             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-details.fxml")));
+        else if (event.getSource() == viewHotelDetailsBtn || event.getSource() == viewHotelDetailsBtn1 || event.getSource() == viewHotelDetailsBtn2) {
+            newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-details.fxml")));
         } else if (event.getSource() == backFlightListingButton) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-listing.fxml")));
         }
