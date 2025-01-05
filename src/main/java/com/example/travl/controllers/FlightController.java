@@ -23,6 +23,18 @@ public class FlightController {
     private int promotionDuration;
     private UserController userController;
 
+    public FlightController(int id,String flightName,String airline,int ticketPrice,Date departureDate,Date arrivalDate,String stops,String destination,String duration){
+        this.id = id;
+        this.flightName = flightName;
+        this.airline = airline;
+        this.ticketPrice = ticketPrice;
+        this.DepartureDate = departureDate;
+        this.arrivalDate = arrivalDate;
+        this.stops = stops;
+        this.destination = destination;
+        this.duration = duration;
+    }
+
     public void addFlight(){}
     public void deleteFlight(){}
     public void editFlight(){}

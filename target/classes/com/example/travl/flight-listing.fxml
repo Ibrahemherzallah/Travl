@@ -209,17 +209,17 @@
                             </AnchorPane>
                             <AnchorPane layoutY="146.0" prefHeight="153.0" prefWidth="200.0">
                                 <children>
-                                    <CheckBox layoutX="20.0" layoutY="52.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="93.0" text="0-5 hours">
+                                    <CheckBox fx:id="fiveHours" onAction="#loadCheckBoxFlightData" layoutX="20.0" layoutY="52.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="93.0"  text="0-5 hours">
                                         <font>
                                             <Font size="14.0" />
                                         </font>
                                     </CheckBox>
-                                    <CheckBox layoutX="20.0" layoutY="80.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="93.0" text="5-10 hours">
+                                    <CheckBox fx:id="tenHours" onAction="#check" layoutX="20.0" layoutY="80.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="93.0" text="5-10 hours">
                                         <font>
                                             <Font size="14.0" />
                                         </font>
                                     </CheckBox>
-                                    <CheckBox layoutX="20.0" layoutY="108.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="93.0" text="10+ hours">
+                                    <CheckBox fx:id="moreThanTenHours" onAction="#check" layoutX="20.0" layoutY="108.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="93.0" text="10+ hours">
                                         <font>
                                             <Font size="14.0" />
                                         </font>
@@ -238,17 +238,17 @@
                                             <Font name="System Bold" size="15.0" />
                                         </font>
                                     </Label>
-                                    <CheckBox layoutX="14.0" layoutY="36.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="135.0" text="Emirates Airlines">
+                                    <CheckBox fx:id="emiratesAirlines" onAction="#check" layoutX="14.0" layoutY="36.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="135.0" text="Emirates Airlines">
                                         <font>
                                             <Font size="14.0" />
                                         </font>
                                     </CheckBox>
-                                    <CheckBox layoutX="14.0" layoutY="62.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="116.0" text="Qatar Airways">
+                                    <CheckBox fx:id="qatarAirways" onAction="#check" layoutX="14.0" layoutY="62.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="116.0" text="Qatar Airways">
                                         <font>
                                             <Font size="14.0" />
                                         </font>
                                     </CheckBox>
-                                    <CheckBox layoutX="14.0" layoutY="90.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="128.0" text="Turkish Airlines">
+                                    <CheckBox fx:id="turkishAirlines" onAction="#check" layoutX="14.0" layoutY="90.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="128.0" text="Turkish Airlines">
                                         <font>
                                             <Font size="14.0" />
                                         </font>

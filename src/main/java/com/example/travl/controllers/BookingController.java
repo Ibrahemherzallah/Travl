@@ -1,29 +1,33 @@
 package com.example.travl.controllers;
 
+import com.example.travl.models.Flight;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import java.awt.*;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
+//import java.awt.*;
+//import java.awt.image.ImageObserver;
+//import java.awt.image.ImageProducer;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+
 import javafx.scene.image.Image;
+
+import static java.lang.Integer.parseInt;
+import static javax.xml.bind.DatatypeConverter.parseDate;
 
 public class BookingController {
 
@@ -44,6 +48,14 @@ public class BookingController {
 
     @FXML
     private Label nameOfHotel_h1, nameOfHotel_h2, nameOfHotel_h3, nameOfHotel_h4;
+
+    @FXML private CheckBox fiveHours;
+    @FXML private CheckBox tenHours;
+    @FXML private CheckBox moreThanTenHours;
+    @FXML private CheckBox emiratesAirlines;
+    @FXML private CheckBox qatarAirways;
+    @FXML private CheckBox turkishAirlines;
+
 
     @FXML
     private Label location_h1, location_h2, location_h3, location_h4;
@@ -211,6 +223,7 @@ public class BookingController {
              ResultSet resultSet = statement.executeQuery(query)) {
 
             while (resultSet.next()) {
+                System.out.println("the data in initialize is : "+ resultSet.getString("id"));
                 String id = resultSet.getString("id");
                 String flightName = resultSet.getString("flight_name");
                 String airline = resultSet.getString("airline");
@@ -251,6 +264,86 @@ public class BookingController {
             System.err.println("Error loading flight data: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void loadCheckBoxFlightData() {
+        String query = "SELECT * FROM flight WHERE duration BETWEEN 20 AND 25";
+        clearUI();
+        List<FlightController> flights = new ArrayList<>();
+
+        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+
+            while (resultSet.next()) {
+                System.out.println("the data in checkk is : "+ resultSet.getString("id"));
+                String id = resultSet.getString("id");
+                String flightName = resultSet.getString("flight_name");
+                String airline = resultSet.getString("airline");
+                int ticketPrice = resultSet.getInt("ticket_price");
+                String departureDate = resultSet.getString("departure_date");
+                String arrivalDate = resultSet.getString("arrival_date");
+                String stops = resultSet.getString("stops");
+                String destination = resultSet.getString("destination");
+                String duration = resultSet.getString("duration");
+                FlightController flight = new FlightController(parseInt(id), flightName, airline, ticketPrice, parseDate(departureDate).getTime(), parseDate(arrivalDate).getTime(), stops, destination, duration);
+                flights.add(flight);
+                System.out.println("the array of flights is : " + flights.get(0).getFlightName());
+
+                switch (id) {
+
+                    case "7":
+                        airlineName_a1.setText(flights.get(0).getAirline());
+                        ticketNo_a1.setText(flights.get(0).getFlightName() + " - $" + flights.get(0).getTicketPrice());
+                        takeoffTime_a1.setText(String.valueOf(flights.get(0).getDepartureDate()));
+                        takeoffPlace_a1.setText("");
+                        arrivalTime_a1.setText(arrivalDate);
+                        destination_a1.setText(destination);
+                        timeToLand_a1.setText(duration);
+                        Stops_a1.setText(stops);
+                        break;
+
+                    case "2":
+                        airlineName_a2.setText(airline);
+                        ticketNo_a2.setText(flightName + " - $" + ticketPrice);
+                        takeoffTime_a2.setText(departureDate);
+                        takeoffPlace_a2.setText("");
+                        arrivalTime_a2.setText(arrivalDate);
+                        destination_a2.setText(destination);
+                        timeToLand_a2.setText(duration);
+                        Stops_a2.setText(stops);
+                        break;
+                    default:
+                        System.err.println("No matching UI element for flight ID: " + id);
+                        break;
+                }
+            }
+        } catch (Exception e) {
+            System.err.println("Error loading flight data: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+    private void clearUI() {
+        airlineName_a1.setText("");
+        ticketNo_a1.setText("");
+        takeoffTime_a1.setText("");
+        takeoffPlace_a1.setText("");
+        arrivalTime_a1.setText("");
+        destination_a1.setText("");
+        timeToLand_a1.setText("");
+        Stops_a1.setText("");
+
+        airlineName_a2.setText("");
+        ticketNo_a2.setText("");
+        takeoffTime_a2.setText("");
+        takeoffPlace_a2.setText("");
+        arrivalTime_a2.setText("");
+        destination_a2.setText("");
+        timeToLand_a2.setText("");
+        Stops_a2.setText("");
     }
 
 
@@ -407,6 +500,17 @@ public class BookingController {
 
 
 
+
+    @FXML protected void check(ActionEvent event) {
+        System.out.println("The event is : " + event);
+        System.out.println(fiveHours.isSelected());
+        System.out.println(tenHours.isSelected());
+        System.out.println(moreThanTenHours.isSelected());
+        System.out.println("//////////////////////////////////////");
+        System.out.println(emiratesAirlines.isSelected());
+        System.out.println(qatarAirways.isSelected());
+        System.out.println(turkishAirlines.isSelected());
+    }
 
 
 
