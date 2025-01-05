@@ -674,6 +674,21 @@ public class BookingController {
         }
     }
     @FXML
+    protected void navigateClientFlight(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/client-details-flight.fxml"));
+
+            Stage stage = (Stage) bookingBtn.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Flight details");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+    }
+    @FXML
     private void handleMenuButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent newScene = null;

@@ -34,6 +34,15 @@ public class Customer {
     @Column(name = "num_of_adults")
     private int num_of_adults;
 
+    @Column(name = "check_pay")
+    private boolean check_pay;
+
+    @Column(name = "paypal")
+    private boolean paypal;
+
+    @Column(name = "special_requests")
+    private String special_requests;
+
     public int getId() {
         return id;
     }
@@ -104,5 +113,29 @@ public class Customer {
 
     public void setNum_of_kids(int num_of_kids) {
         this.num_of_kids = num_of_kids;
+    }
+
+    public boolean isCheck_pay() {
+        return check_pay;
+    }
+
+    public void setCheck_pay(boolean check_pay) {
+        this.check_pay = check_pay;
+    }
+
+    public boolean isPaypal() {
+        return paypal;
+    }
+
+    public void setPaypal(boolean paypal) {
+        this.paypal = paypal;
+    }
+
+    public String getSpecial_requests() {
+        return special_requests;
+    }
+
+    public void setSpecial_requests(String special_requests) {
+        this.special_requests = special_requests;
     }
 }
