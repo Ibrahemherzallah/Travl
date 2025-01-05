@@ -1,28 +1,36 @@
 package com.example.travl.controllers;
 
+import com.example.travl.models.BookingService;
+import com.example.travl.models.Customer;
+import com.example.travl.models.Hotel;
+import com.example.travl.models.interfaces.HotelDOA;
+import com.example.travl.models.services.BookingServiceDOAImp;
+import com.example.travl.models.services.CustomerDOAImp;
+import com.example.travl.models.services.HotelDOAImp;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+
 import java.awt.*;
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
 import javafx.scene.image.Image;
 
 public class BookingController {
@@ -31,13 +39,13 @@ public class BookingController {
     public ImageView imageOfPromo_p2;
     public ImageView imageOfPromo_p1;
     @FXML
-    private Label price_h1 ;
+    private Label price_h1;
     @FXML
-    private Label price_h2 ;
+    private Label price_h2;
     @FXML
-    private Label price_h3 ;
+    private Label price_h3;
     @FXML
-    private Label price_h4 ;
+    private Label price_h4;
 
     @FXML
     private ImageView image_h1, image_h2, image_h3, image_h4;
@@ -58,78 +66,142 @@ public class BookingController {
     private Label nameOfPromo_p1, nameOfPromo_p2;
 
     @FXML
-    private Label descriptionOfPromo_p1,  descriptionOfPromo_p2;
-    @FXML private Button viewFlightBookBtn;
-    @FXML private Button viewHotelBookBtn;
-    @FXML private Button viewHotelDetailsBtn1;
-    @FXML private Button viewHotelDetailsBtn2;
-    @FXML private Button backTOFromHotel;
-    @FXML private Button backFlightListingButton;
-    @FXML private Button backToHistoryListing;
-    @FXML private Button bookingBtn;
-    @FXML private ImageView homeIcon;
-    @FXML private ImageView logoutIcon;
-    @FXML private ImageView flightIcon;
-    @FXML private ImageView hotelIcon;
-    @FXML private ImageView historyIcon;
-    @FXML private Button selectFlightBtn;
-    @FXML private Button viewHotelDetailsBtn;
-    @FXML private Button backHotelListingButton;
-    @FXML private Button viewFlightDetailsBtn1;
-    @FXML private Button viewFlightDetailsBtn2;
+    private Label descriptionOfPromo_p1, descriptionOfPromo_p2;
+    @FXML
+    private Button viewFlightBookBtn;
+    @FXML
+    private Button viewHotelBookBtn;
+    @FXML
+    private Button viewHotelDetailsBtn1;
+    @FXML
+    private Button viewHotelDetailsBtn2;
+    @FXML
+    private Button backTOFromHotel;
+    @FXML
+    private Button backFlightListingButton;
+    @FXML
+    private Button backToHistoryListing;
+    @FXML
+    private Button bookingBtn;
+    @FXML
+    private ImageView homeIcon;
+    @FXML
+    private ImageView logoutIcon;
+    @FXML
+    private ImageView flightIcon;
+    @FXML
+    private ImageView hotelIcon;
+    @FXML
+    private ImageView historyIcon;
+    @FXML
+    private Button selectFlightBtn;
+    @FXML
+    private Button viewHotelDetailsBtn;
+    @FXML
+    private Button backHotelListingButton;
+    @FXML
+    private Button viewFlightDetailsBtn1;
+    @FXML
+    private Button viewFlightDetailsBtn2;
 
-    @FXML private Label customerNameF;
-    @FXML private Label customerPhoneF;
-    @FXML private Label coustomerEmailF;
-    @FXML private Label customerAddF;
-    @FXML private Label checkinF;
-    @FXML private Label chekoutF;
-    @FXML private Label createAtF;
-    @FXML private Label NkidsF;
-    @FXML private Label paymentMF;
-    @FXML private Label statusF;
-    @FXML private Button editButton;
-    @FXML private TextField customerNameTextField, customerPhoneTextField, coustomerEmailTextField, customerAddTextField, checkinTextField, chekoutTextField, createAtTextField, NkidsTextField, paymentMTextField, statusTextField;
+    @FXML
+    private Label customerNameF;
+    @FXML
+    private Label customerPhoneF;
+    @FXML
+    private Label coustomerEmailF;
+    @FXML
+    private Label customerAddF;
+    @FXML
+    private Label checkinF;
+    @FXML
+    private Label chekoutF;
+    @FXML
+    private Label createAtF;
+    @FXML
+    private Label NkidsF;
+    @FXML
+    private Label paymentMF;
+    @FXML
+    private Label statusF;
+    @FXML
+    private Button editButton;
+    @FXML
+    private TextField customerNameTextField, customerPhoneTextField, coustomerEmailTextField, customerAddTextField, checkinTextField, chekoutTextField, createAtTextField, NkidsTextField, paymentMTextField, statusTextField;
     private boolean isEditing = false;
 
-    @FXML private Label flightRoute;
-    @FXML private Label flightTime;
-    @FXML private Label airlineName;
-    @FXML private Label flightNumber;
-    @FXML private Label passengerName;
-    @FXML private Label flightStatus;
-    @FXML private Label bookingDate;
-    @FXML private Label phoneNumber;
-    @FXML private Label checkinTime;
-    @FXML private Label checkoutTime;
-    @FXML private Label price;
-    @FXML private Label address;
-    @FXML private Label email;
-    @FXML private Label numAdults;
-    @FXML private Label numKids;
-    @FXML private Label paymentMethod;
-    ///
-    @FXML private TextField flightRouteF;
-    @FXML private TextField flightTimeF;
-    @FXML private TextField airlineNameF;
-    @FXML private TextField flightNumberF;
-    @FXML private TextField passengerNameF;
-    @FXML private TextField flightStatusF;
-    @FXML private TextField bookingDateF;
-    @FXML private TextField phoneNumberF;
-    @FXML private TextField checkinTimeF;
-    @FXML private TextField checkoutTimeF;
-    @FXML private TextField priceF;
-    @FXML private TextField addressF;
-    @FXML private TextField emailF;
-    @FXML private TextField numAdultsF;
-    @FXML private TextField numKidsF;
-    @FXML private TextField paymentMethodF;
     @FXML
-    private ImageView imagePromo1 ;
-    @FXML private ImageView imagePromo2 ;
-    @FXML private Label namePromo1;
-    @FXML private Label namePromo2;
+    private Label flightRoute;
+    @FXML
+    private Label flightTime;
+    @FXML
+    private Label airlineName;
+    @FXML
+    private Label flightNumber;
+    @FXML
+    private Label passengerName;
+    @FXML
+    private Label flightStatus;
+    @FXML
+    private Label bookingDate;
+    @FXML
+    private Label phoneNumber;
+    @FXML
+    private Label checkinTime;
+    @FXML
+    private Label checkoutTime;
+    @FXML
+    private Label price;
+    @FXML
+    private Label address;
+    @FXML
+    private Label email;
+    @FXML
+    private Label numAdults;
+    @FXML
+    private Label numKids;
+    @FXML
+    private Label paymentMethod;
+    @FXML
+    private TextField flightRouteF;
+    @FXML
+    private TextField flightTimeF;
+    @FXML
+    private TextField airlineNameF;
+    @FXML
+    private TextField flightNumberF;
+    @FXML
+    private TextField passengerNameF;
+    @FXML
+    private TextField flightStatusF;
+    @FXML
+    private TextField bookingDateF;
+    @FXML
+    private TextField phoneNumberF;
+    @FXML
+    private TextField checkinTimeF;
+    @FXML
+    private TextField checkoutTimeF;
+    @FXML
+    private TextField priceF;
+    @FXML
+    private TextField addressF;
+    @FXML
+    private TextField emailF;
+    @FXML
+    private TextField numAdultsF;
+    @FXML
+    private TextField numKidsF;
+    @FXML
+    private TextField paymentMethodF;
+    @FXML
+    private ImageView imagePromo1;
+    @FXML
+    private ImageView imagePromo2;
+    @FXML
+    private Label namePromo1;
+    @FXML
+    private Label namePromo2;
     @FXML
     private Label airlineName_a1;
     @FXML
@@ -176,9 +248,9 @@ public class BookingController {
     private Map<Integer, Label> locationLabels = new HashMap<>();
     private Map<Integer, Label> priceLabels = new HashMap<>();
     private Map<Integer, ImageView> imageViews = new HashMap<>();
-    private final String JDBC_URL = "jdbc:mysql://localhost:3306/newDB";
+    private final String JDBC_URL = "jdbc:mysql://localhost:3306/mydb";
     private final String DB_USERNAME = "root";
-    private final String DB_PASSWORD = "";
+    private final String DB_PASSWORD = "123456789";
 
     @FXML
     public void initialize() {
@@ -202,7 +274,9 @@ public class BookingController {
         loadHotelPromotionData();
         loadFlightData();
         loadFlightPromotionData();
+        updateDataForHotel();
     }
+
     private void loadFlightData() {
         String query = "SELECT * FROM flight";
 
@@ -404,12 +478,6 @@ public class BookingController {
         }
     }
 
-
-
-
-
-
-
     @FXML
     public void handleEditButtonClick() {
         if (isEditing) {
@@ -486,6 +554,7 @@ public class BookingController {
 
         isEditing = !isEditing;
     }
+
     @FXML
     public void handleEditButtonClickFly() {
         if (isEditing) {
@@ -534,6 +603,7 @@ public class BookingController {
 
         isEditing = !isEditing;
     }
+
     private void toggleVisibility(boolean showTextFields) {
         flightRoute.setVisible(!showTextFields);
         flightRouteF.setVisible(showTextFields);
@@ -583,8 +653,9 @@ public class BookingController {
         paymentMethod.setVisible(!showTextFields);
         paymentMethodF.setVisible(showTextFields);
     }
+
     @FXML
-    protected void navigateHome(){
+    protected void navigateHome() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/agent-dash.fxml"));
 
@@ -598,8 +669,9 @@ public class BookingController {
             System.out.println("Error");
         }
     }
+
     @FXML
-    protected void navigateFlight(){
+    protected void navigateFlight() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/flight-listing.fxml"));
 
@@ -613,8 +685,9 @@ public class BookingController {
             System.out.println("Error");
         }
     }
+
     @FXML
-    protected void navigateHotel(){
+    protected void navigateHotel() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/hotel-listing.fxml"));
 
@@ -628,8 +701,9 @@ public class BookingController {
             System.out.println("Error");
         }
     }
+
     @FXML
-    protected void navigateHistory(){
+    protected void navigateHistory() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/all-history-booking.fxml"));
 
@@ -643,8 +717,9 @@ public class BookingController {
             System.out.println("Error");
         }
     }
+
     @FXML
-    protected void navigateLogout(){
+    protected void navigateLogout() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/log-in.fxml"));
 
@@ -658,8 +733,9 @@ public class BookingController {
             System.out.println("Error");
         }
     }
+
     @FXML
-    protected void navigateClient(){
+    protected void navigateClient() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/client-details.fxml"));
 
@@ -673,31 +749,26 @@ public class BookingController {
             System.out.println("Error");
         }
     }
+
     @FXML
     private void handleMenuButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent newScene = null;
         if (event.getSource() == selectFlightBtn || event.getSource() == viewFlightDetailsBtn1 || event.getSource() == viewFlightDetailsBtn2) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-details.fxml")));
-        }
-        else if (event.getSource() == viewHotelDetailsBtn || event.getSource() == viewHotelDetailsBtn1 || event.getSource() == viewHotelDetailsBtn2) {
+        } else if (event.getSource() == viewHotelDetailsBtn || event.getSource() == viewHotelDetailsBtn1 || event.getSource() == viewHotelDetailsBtn2) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-details.fxml")));
         } else if (event.getSource() == backFlightListingButton) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-listing.fxml")));
-        }
-        else if (event.getSource() == backTOFromHotel) {
+        } else if (event.getSource() == backTOFromHotel) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/all-history-booking.fxml")));
-        }
-        else if (event.getSource() == backHotelListingButton) {
+        } else if (event.getSource() == backHotelListingButton) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-listing.fxml")));
-        }
-        else if (event.getSource() == viewHotelBookBtn) {
+        } else if (event.getSource() == viewHotelBookBtn) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-book-details.fxml")));
-        }
-        else if (event.getSource() == viewFlightBookBtn) {
+        } else if (event.getSource() == viewFlightBookBtn) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-book-details.fxml")));
-        }
-        else if (event.getSource() == backToHistoryListing) {
+        } else if (event.getSource() == backToHistoryListing) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/all-history-booking.fxml")));
         }
 
@@ -709,4 +780,61 @@ public class BookingController {
         }
     }
 
+    private void updateDataForHotel() {
+        String query_1 = "UPDATE customer SET first_name = ?, last_name = ?, address = ?, phone = ?, email = ?, num_of_kids = ? WHERE customer_id = ?";
+        String query_2 = "UPDATE hotel SET check_in = ?, check_out = ? WHERE hotel_id = ?";
+        String query_3 = "UPDATE booking_services SET status = ?, payment_method = ?, created_at = ? WHERE booking_id = ?";
+
+
+        String customerName = customerNameTextField.getText().trim();
+        String customerPhone = customerPhoneTextField.getText().trim();
+        String customerEmail = coustomerEmailTextField.getText().trim();
+        String customerAddress = customerAddF.getText().trim();
+        String checkIn = checkinTextField.getText().trim();
+        String checkout = chekoutTextField.getText().trim();
+        String createdAt = createAtTextField.getText().trim();
+        String numberOfKids = NkidsTextField.getText().trim();
+        String paymentMethod = paymentMTextField.getText().trim();
+        String status = statusF.getText().trim();
+
+        try (Connection conn = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD)) {
+            if (customerName.isEmpty() || customerPhone.isEmpty() || customerEmail.isEmpty() ||
+                    customerAddress.isEmpty() || checkIn.isEmpty() || checkout.isEmpty() ||
+                    createdAt.isEmpty() || numberOfKids.isEmpty() || paymentMethod.isEmpty() ||
+                    status.isEmpty()) {
+                throw new IllegalArgumentException("All fields must be filled out.");
+            }
+
+            try (PreparedStatement ps1 = conn.prepareStatement(query_1)) {
+                ps1.setString(1, customerName);
+                ps1.setString(2, "");
+                ps1.setString(3, customerAddress);
+                ps1.setString(4, customerPhone);
+                ps1.setString(5, customerEmail);
+                ps1.setInt(6, Integer.parseInt(numberOfKids));
+                ps1.executeUpdate();
+            }
+
+            try (PreparedStatement ps2 = conn.prepareStatement(query_2)) {
+                ps2.setDate(1, java.sql.Date.valueOf(checkIn));
+                ps2.setDate(2, java.sql.Date.valueOf(checkout));
+                ps2.executeUpdate();
+            }
+            try (PreparedStatement ps3 = conn.prepareStatement(query_3)) {
+                ps3.setString(1, status);
+                ps3.setString(2, paymentMethod);
+                ps3.setDate(3, java.sql.Date.valueOf(createdAt));
+                ps3.executeUpdate();
+            }
+            System.out.println("Data successfully inserted into all tables.");
+        } catch (NumberFormatException e) {
+            System.err.println("Invalid number format: " + e.getMessage());
+        } catch (IllegalArgumentException e) {
+            System.err.println("Validation error: " + e.getMessage());
+        } catch (SQLException e) {
+            System.err.println("Database error: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("An unexpected error occurred: " + e.getMessage());
+        }
+    }
 }

@@ -58,6 +58,12 @@ public class Hotel {
     @Column(name = "image")
     private byte[] img;
 
+    @Column(name = "check_in")
+    private Date checkIn;
+
+    @Column(name = "check_out")
+    private Date checkOut;
+
 
 
     public void setImg(InputStream inputStream) throws IOException {
@@ -177,5 +183,21 @@ public class Hotel {
 
     public byte[] getImg() {
         return img;
+    }
+
+    public Date getCheckIn() {
+        return checkIn;
+    }
+
+    public void setCheckIn(Date checkIn) {
+        this.checkIn = checkIn;
+    }
+
+    public Date getCheckOut() {
+        return checkOut;
+    }
+
+    public void setCheckOut(Date checkOut) {
+        this.checkOut = checkOut;
     }
 }

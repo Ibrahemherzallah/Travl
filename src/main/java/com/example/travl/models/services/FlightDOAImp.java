@@ -11,9 +11,14 @@ import java.util.List;
 public class FlightDOAImp implements FlightDOA {
 
 
+    HibernateUtil hibernateUtil;
+    SessionFactory sessionFactory;
+    public FlightDOAImp() {
+        hibernateUtil = HibernateUtil.getInstance();
+        sessionFactory = HibernateUtil.getSessionFactory();
+    }
     @Override
     public void insert(Flight flight) {
-        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(flight);
@@ -23,12 +28,20 @@ public class FlightDOAImp implements FlightDOA {
 
     @Override
     public void update(Flight flight) {
-
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.update(flight);
+        session.getTransaction().commit();
+        sessionFactory.openSession().close();
     }
 
     @Override
     public void delete(Flight flight) {
-
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.delete(flight);
+        session.getTransaction().commit();
+        sessionFactory.openSession().close();
     }
 
     @Override

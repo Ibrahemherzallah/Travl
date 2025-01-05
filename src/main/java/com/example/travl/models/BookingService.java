@@ -1,6 +1,5 @@
 package com.example.travl.models;
 
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -31,6 +30,12 @@ public class BookingService {
 
     @Column(name = "created_at")
     private Date created_at;
+
+    @Column(name = "payment_method")
+    private String payment_method;
+
+    @Column(name = "status")
+    private String status;
 
 
     public Flight getFlight() {
@@ -65,4 +70,27 @@ public class BookingService {
         this.id = id;
     }
 
+    public String getPayment_method() {
+        return payment_method;
+    }
+
+    public void setPayment_method(String payment_method) {
+        this.payment_method = payment_method;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public Date getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
 }

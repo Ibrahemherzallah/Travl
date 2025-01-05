@@ -1,55 +1,51 @@
 package com.example.travl.models.services;
 
-import com.example.travl.models.Hotel;
-import com.example.travl.models.interfaces.HotelDOA;
+import com.example.travl.models.BookingService;
+import com.example.travl.models.Customer;
+import com.example.travl.models.interfaces.BookingServiceDOA;
 import com.example.travl.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import java.util.List;
 
-public class HotelDOAImp implements HotelDOA {
-
+public class BookingServiceDOAImp implements BookingServiceDOA {
     HibernateUtil hibernateUtil;
     SessionFactory sessionFactory;
-    public HotelDOAImp() {
+    public BookingServiceDOAImp() {
         hibernateUtil = HibernateUtil.getInstance();
         sessionFactory = HibernateUtil.getSessionFactory();
     }
+
     @Override
-    public void insert(Hotel hotel) {
+    public void insert(BookingService bookingService) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.save(hotel);
+        session.save(bookingService);
         session.getTransaction().commit();
         session.close();
     }
 
     @Override
-    public void update(Hotel hotel) {
-        Session session=sessionFactory.openSession();
+    public void update(BookingService bookingService) {
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.update(hotel);
+        session.update(bookingService);
         session.getTransaction().commit();
         session.close();
     }
 
     @Override
-    public void delete(Hotel hotel) {
-        Session session=sessionFactory.openSession();
+    public void delete(BookingService bookingService) {
+        Session session = sessionFactory.openSession();
         session.beginTransaction();
-        session.delete(hotel);
+        session.delete(bookingService);
         session.getTransaction().commit();
         session.close();
     }
 
     @Override
-    public List<Hotel> getAll() {
+    public List<Customer> getAll() {
         return List.of();
-    }
-
-    @Override
-    public Hotel findAdmin(int id) {
-        return null; 
     }
 }
