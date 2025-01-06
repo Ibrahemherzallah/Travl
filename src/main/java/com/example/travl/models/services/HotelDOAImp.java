@@ -34,14 +34,62 @@ public class HotelDOAImp implements HotelDOA {
     public void delete(Hotel hotel) {
 
     }
-
     @Override
     public List<Hotel> getAll() {
-        return List.of();
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        List<Hotel> hotels = null;
+        try {
+            // Native SQL query
+            String sql = "SELECT * FROM hotel";
+            hotels = session.createNativeQuery(sql, Hotel.class).getResultList();
+
+            // Debugging output
+            for (Hotel hotel : hotels) {
+                System.out.println("Hotel Retrieved: " + hotel.getHotelName() + " -> " + hotel.getLocation());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return hotels;
     }
+
 
     @Override
     public Hotel findAdmin(int id) {
         return null;
     }
+
+    public List<Object[]> getPromotedHotels() {
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        List<Object[]> promotedHotels = null;
+        try {
+            // SQL query to fetch promoted hotels
+            String sql = "SELECT hotel_name, location, image FROM hotel WHERE promotion = true";
+            promotedHotels = session.createNativeQuery(sql).getResultList();
+
+            // Debugging output
+            for (Object[] row : promotedHotels) {
+                String hotelName = (String) row[0];
+                String location = (String) row[1];
+                byte[] imageBytes = (byte[]) row[2];
+
+                System.out.println("Promoted Hotel: " + hotelName + ", Location: " + location);
+                System.out.println("Image Bytes Length: " + (imageBytes != null ? imageBytes.length : "No Image"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return promotedHotels;
+    }
+
 }

@@ -66,7 +66,7 @@ public class AddFlightController {
                 flight.setFlightName(flightNameField.getText());
                 flight.setAirline(airlineField.getText());
                 flight.setDestination(destinationField.getText());
-                flight.setFrom(des_from.getText());
+               // flight.setFrom(des_from.getText());
                 flight.setDuration(durationField.getText());
                 flight.setNumberOfPassengers(Integer.parseInt(numberOfPassengersField.getText()));
                 flight.setStops(stopField.getText());

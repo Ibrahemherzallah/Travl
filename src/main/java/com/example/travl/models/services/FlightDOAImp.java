@@ -10,6 +10,33 @@ import java.util.List;
 
 public class FlightDOAImp implements FlightDOA {
 
+    public List<Object[]> getPromotedFlights() {
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        List<Object[]> promotedFlights = null;
+        try {
+            // SQL query to fetch promoted flights
+            String sql = "SELECT flight_name, airline, image FROM flight WHERE promotion = true";
+            promotedFlights = session.createNativeQuery(sql).getResultList();
+
+            // Debugging output
+            for (Object[] row : promotedFlights) {
+                String flightName = (String) row[0];
+                String airlineName = (String) row[1];
+                byte[] imageBytes = (byte[]) row[2];
+
+                System.out.println("Promoted Flight: " + flightName + ", Airline: " + airlineName);
+                System.out.println("Image Bytes Length: " + (imageBytes != null ? imageBytes.length : "No Image"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return promotedFlights;
+    }
 
     @Override
     public void insert(Flight flight) {
@@ -33,7 +60,26 @@ public class FlightDOAImp implements FlightDOA {
 
     @Override
     public List<Flight> getAll() {
-        return List.of();
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
+
+        List<Flight> flights = null;
+        try {
+            // Native SQL query
+            String sql = "SELECT * FROM flight";
+            flights = session.createNativeQuery(sql, Flight.class).getResultList();
+
+            // Debugging output
+            for (Flight flight : flights) {
+                System.out.println("Flight Retrieved: " + flight.getAirline() + " -> " + flight.getDestination());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return flights;
     }
 
     @Override
