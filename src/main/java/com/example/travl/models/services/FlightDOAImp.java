@@ -101,6 +101,7 @@ public class FlightDOAImp implements FlightDOA {
     }
 
     public Flight getFlightlByID(int ID) {
+        System.out.println("the function entereeeeeeeeeeeeed"  + ID);
         return session.get(Flight.class,ID);
     }
 

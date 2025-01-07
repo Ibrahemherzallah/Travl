@@ -47,6 +47,7 @@ public class BookingServiceDOAImp implements BookingServiceDOA {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM BookingService bs LEFT JOIN FETCH bs.flight LEFT JOIN FETCH bs.hotel", BookingService.class).list();
         } catch (Exception e) {
+            System.out.println("The exception is : " + e);
             e.printStackTrace();
             return null;
         }

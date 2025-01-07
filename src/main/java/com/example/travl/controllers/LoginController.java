@@ -3,6 +3,7 @@ package com.example.travl.controllers;
 import com.example.travl.models.User;
 import com.example.travl.models.services.AuthorizationService;
 import com.example.travl.models.services.UserDOAImp;
+import javafx.scene.Parent;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -15,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class LoginController {
 
@@ -101,6 +103,21 @@ public class LoginController {
             showAlert("Error", "Unable to navigate to the dashboard.", Alert.AlertType.ERROR);
         }
     }
+
+    @FXML
+    protected void handleClickForget(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Hyperlink) event.getSource()).getScene().getWindow();
+        Parent newScene = null;
+        newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/forget-password.fxml")));
+        if (newScene != null) {
+            Scene scene = new Scene(newScene);
+            stage.setScene(scene);
+            stage.setTitle("Admin Dash");
+            stage.show();
+        }
+    }
+
+
 
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);

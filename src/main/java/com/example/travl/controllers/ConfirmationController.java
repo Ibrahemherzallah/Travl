@@ -46,17 +46,17 @@ BookingService bookingService=new BookingService();
         int id = 22;
         int UserID= 1;
         Hotel hotel = hotelDOAImp.getHotelByID(id);
-        User user =userDOAImp.findUser(UserID);
+//        User user =userDOAImp.findUser(UserID);
         if(hotel.getAvailableRooms() > 0) {
             customerDOAImp.insert(customer);
             hotel.setAvailableRooms(hotel.getAvailableRooms() - 1);
             hotelDOAImp.update(hotel);
             bookingService.setHotel(hotel);
             bookingService.setBooking_type("Hotel");
-            bookingService.setUser(user);
+//            bookingService.setUser(user);
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
-            bookingService.setCreated_at(date);
+//            bookingService.setCreated_at(date);
             bookingServiceDOAImp.insert(bookingService);
 
 
@@ -73,15 +73,16 @@ BookingService bookingService=new BookingService();
         int id = 28;
         int UserID= 1;
         Flight flight = flightDOAImp.getFlightlByID(id);
-        User user =userDOAImp.findUser(UserID);
+        System.out.println("FLIghtttttttttttttttt listing" + flight);
+//        User user =userDOAImp.findUser(UserID);
             customerDOAImp.insert(customer);
             flight.setNumberOfPassengers(flight.getNumberOfPassengers() + 1);
             flightDOAImp.update(flight);
             Calendar cal = Calendar.getInstance();
             Date date = cal.getTime();
-            bookingService.setCreated_at(date);
+//            bookingService.setCreated_at(date);
             bookingService.setFlight(flight);
-            bookingService.setUser(user);
+//            bookingService.setUser(user);
             bookingService.setBooking_type("Flight");
             bookingServiceDOAImp.insert(bookingService);
 

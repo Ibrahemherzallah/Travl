@@ -247,7 +247,7 @@ public class BookingController {
     @FXML
     public void initialize() {
         List<BookingService> bookings = bookingServiceDAO.getAllBookings();
-
+        System.out.println("the bookings is  :" + bookings);
         if (bookings != null && bookings.size() >= 2) {
             populateBookingDetails(
                     bookings.get(0),
