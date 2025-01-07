@@ -81,8 +81,8 @@ public class LoginController {
 
             if ("Admin".equalsIgnoreCase(roleName)) {
                 fxmlPath = "/com/example/travl/admin-dash.fxml";
-            } else if ("User".equalsIgnoreCase(roleName)) {
-                fxmlPath = "/com/example/travl/user-dash.fxml";
+            } else if ("Agent".equalsIgnoreCase(roleName)) {
+                fxmlPath = "/com/example/travl/agent-dash.fxml";
             } else {
                 showAlert("Error", "Unknown role: " + roleName, Alert.AlertType.ERROR);
                 return;

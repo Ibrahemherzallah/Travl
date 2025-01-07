@@ -12,7 +12,7 @@ public class AuthorizationService {
 
     static {
         rolePermissions.put("Admin", List.of("View Dashboard", "Edit Users", "Manage Hotels", "Manage Flights"));
-        rolePermissions.put("User", List.of("View Dashboard"));
+        rolePermissions.put("Agent", List.of("View Dashboard"));
     }
 
     public boolean hasPermission(User user, String permission) {
