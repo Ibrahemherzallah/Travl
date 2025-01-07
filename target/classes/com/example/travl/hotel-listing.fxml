@@ -212,27 +212,27 @@
                            <Font name="System Bold" size="15.0" />
                         </font>
                      </Label>
-                     <CheckBox layoutX="21.0" layoutY="119.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="5 star">
+                     <CheckBox fx:id="fiveStartCeckBox" onAction="#getFiveStars" layoutX="21.0" layoutY="119.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="5 star">
                         <font>
                            <Font size="14.0" />
                         </font>
                      </CheckBox>
-                     <CheckBox layoutX="21.0" layoutY="148.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="4 star">
+                     <CheckBox fx:id="fourStartCeckBox" onAction="#getFourStars" layoutX="21.0" layoutY="148.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="4 star">
                         <font>
                            <Font size="14.0" />
                         </font>
                      </CheckBox>
-                     <CheckBox layoutX="21.0" layoutY="174.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="3 star">
+                     <CheckBox fx:id="threeStartCeckBox" onAction="#getThreeStars" layoutX="21.0" layoutY="174.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="3 star">
                         <font>
                            <Font size="14.0" />
                         </font>
                      </CheckBox>
-                     <CheckBox layoutX="21.0" layoutY="202.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="2 star">
+                     <CheckBox fx:id="twoStartCeckBox" onAction="#getTwoStars" layoutX="21.0" layoutY="202.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="2 star">
                         <font>
                            <Font size="14.0" />
                         </font>
                      </CheckBox>
-                     <CheckBox layoutX="21.0" layoutY="233.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="1 star">
+                     <CheckBox fx:id="oneStartCeckBox" onAction="#getOneStars" layoutX="21.0" layoutY="233.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="69.0" text="1 star">
                         <font>
                            <Font size="14.0" />
                         </font>

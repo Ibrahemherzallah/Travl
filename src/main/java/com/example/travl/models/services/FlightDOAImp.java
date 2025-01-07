@@ -17,7 +17,6 @@ public class FlightDOAImp implements FlightDOA {
 
         List<Object[]> promotedFlights = null;
         try {
-            // SQL query to fetch promoted flights
             String sql = "SELECT flight_name, airline, image FROM flight WHERE promotion = true";
             promotedFlights = session.createNativeQuery(sql).getResultList();
 
@@ -104,5 +103,87 @@ public class FlightDOAImp implements FlightDOA {
         return session.get(Flight.class,ID);
     }
 
+    public List<Flight> getFlightByHour(int num) {
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
+        String sql = null;
+        List<Flight> flights = null;
+        try {
+            if(num == 5){
+                sql = "SELECT * FROM flight WHERE duration BETWEEN 0 AND 5";
+            } else if (num == 10) {
+                sql = "SELECT * FROM flight WHERE duration BETWEEN 5 AND 10";
+            } else if (num == 15) {
+                 sql = "SELECT * FROM flight WHERE duration > 10";
+            }
+            flights = session.createNativeQuery(sql, Flight.class).getResultList();
+
+
+            for (Flight flight : flights) {
+                System.out.println("Flight Retrieved: " + flight.getAirline() + " -> " + flight.getDestination());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return flights;
+    }
+
+    public List<Flight> getFlightByAirline(String airline) {
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
+        String sql = null;
+        List<Flight> flights = null;
+        try {
+            if(airline == "Emirates Airlines"){
+                sql = "SELECT * FROM flight WHERE airline = 'Emirates Airlines'";
+            } else if (airline == "Qatar Airlines") {
+                sql = "SELECT * FROM flight WHERE airline = 'Qatar Airlines'";
+            } else if (airline == "Turkish Airlines") {
+                sql = "SELECT * FROM flight WHERE airline = 'Turkish Airlines'";
+            } else if (airline == "Etihad Airlines") {
+                sql = "SELECT * FROM flight WHERE airline = 'Etihad Airlines'";
+            }
+            flights = session.createNativeQuery(sql, Flight.class).getResultList();
+
+
+            for (Flight flight : flights) {
+                System.out.println("Flight Retrieved: " + flight.getAirline() + " -> " + flight.getDestination());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return flights;
+    }
+
+    public List<Flight> getSearchedFlight(String takeOff, String land, String dateIn, String dateOut) {
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
+        String sql = null;
+        List<Flight> flights = null;
+        try {
+            sql = "SELECT * FROM flight " +
+                    "WHERE des_from = :takeOff " +
+                    "AND destination = :land " +
+                    "AND departure_date = :dateIn " +
+                    "AND arrival_date = :dateOut";
+            flights = session.createNativeQuery(sql, Flight.class).setParameter("takeOff", takeOff)
+                    .setParameter("land", land)
+                    .setParameter("dateIn", dateIn)
+                    .setParameter("dateOut", dateOut)
+                    .getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return flights;
+    }
 }
 
