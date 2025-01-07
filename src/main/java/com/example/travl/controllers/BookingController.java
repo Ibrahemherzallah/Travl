@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -171,6 +172,9 @@ public class BookingController {
     @FXML
     private Label promoPlace_p2;
     @FXML
+    private ChoiceBox<String> myChoiceBox;
+
+    @FXML
     private ImageView promoImage_p2;
     private Map<Integer, Label> nameLabels = new HashMap<>();
     private Map<Integer, Label> locationLabels = new HashMap<>();
@@ -178,7 +182,7 @@ public class BookingController {
     private Map<Integer, ImageView> imageViews = new HashMap<>();
     private final String JDBC_URL = "jdbc:mysql://localhost:3306/newDB";
     private final String DB_USERNAME = "root";
-    private final String DB_PASSWORD = "";
+    private String[] priceSorted = {"High to Low " , "Low to High"};
 
     @FXML
     public void initialize() {
@@ -201,7 +205,8 @@ public class BookingController {
         loadHotelData();
         loadHotelPromotionData();
         loadFlightData();
-        loadFlightPromotionData();
+       loadFlightPromotionData();
+        loadChoiceBox();
     }
     private void loadFlightData() {
         String query = "SELECT * FROM flight";
@@ -707,6 +712,11 @@ public class BookingController {
             stage.setTitle("My New Scene");
             stage.show();
         }
+    }
+
+    private void loadChoiceBox(){
+        myChoiceBox.getItems().addAll(priceSorted);
+        myChoiceBox.setValue("Price");
     }
 
 }
