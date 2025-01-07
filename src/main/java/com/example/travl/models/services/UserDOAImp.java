@@ -48,4 +48,14 @@ public class UserDOAImp implements UserDOA {
         Session session = sessionFactory.openSession();
         return session.get(User.class, id);
     }
+    @Override
+    public User findByEmailAndPassword(String email, String password) {
+        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
+            String hql = "FROM User u WHERE u.email = :email AND u.password = :password";
+            return session.createQuery(hql, User.class)
+                    .setParameter("email", email)
+                    .setParameter("password", password)
+                    .uniqueResult();
+        }
+    }
 }

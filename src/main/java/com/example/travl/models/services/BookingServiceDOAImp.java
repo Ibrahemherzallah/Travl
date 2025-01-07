@@ -43,7 +43,14 @@ public class BookingServiceDOAImp implements BookingServiceDOA {
         session.getTransaction().commit();
         session.close();
     }
-
+    public List<BookingService> getAllBookings() {
+        try (Session session = sessionFactory.openSession()) {
+            return session.createQuery("FROM BookingService bs LEFT JOIN FETCH bs.flight LEFT JOIN FETCH bs.hotel", BookingService.class).list();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
     @Override
     public List<Customer> getAll() {
         return List.of();

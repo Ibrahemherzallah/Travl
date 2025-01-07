@@ -355,6 +355,7 @@
                             </Label>
                             <Label fx:id="destination_a2" layoutX="458.0" layoutY="102.0" text="" />
                             <Button id="btn" layoutX="61.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="477.0" style="-fx-background-color: #111827;" styleClass="selectFlightBtn" stylesheets="@../../../styles/style.css" text="Select Flight" textFill="WHITE" />
+
                             <Separator layoutX="200.0" layoutY="126.0" prefWidth="200.0" />
                             <Label fx:id="timeToLand_a2" layoutX="286.0" layoutY="102.0" text="" />
                             <Label fx:id="Stops_a2" layoutX="287.0" layoutY="137.0" text="" />
@@ -387,6 +388,7 @@
                         <TextArea   layoutX="45.0" layoutY="193.0" prefHeight="100.0" prefWidth="245.0" text="Enjoy a 4-day trip to Istanbul with &#10;round-trip flights &#10;and accommodation at a 4-star hotel in &#10;the Sultanahmet district. &#10;Prices start at $450 per person." />
                         <Separator layoutY="329.0" prefHeight="35.0" prefWidth="334.0" />
                         <ImageView fx:id="imagePromo2" fitHeight="109.0" fitWidth="180.0" layoutX="87.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
+
                         </ImageView>
                         <Label fx:id="namePromo2" layoutX="92.0" layoutY="347.0" prefHeight="26.0" prefWidth="157.0" text="">
                             <font>
@@ -398,6 +400,7 @@
                         <Button fx:id="viewFlightDetailsBtn2" layoutX="131.0" layoutY="297.0" mnemonicParsing="false" styleClass="viewHotelDetailsBtn" text="view offer" textFill="WHITE" />
                     </children>
                 </Pane>
+
             </HBox>
         </VBox>
 
