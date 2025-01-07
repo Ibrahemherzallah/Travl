@@ -1,12 +1,13 @@
 package com.example.travl.controllers;
 
 import com.example.travl.models.User;
+import com.example.travl.models.services.AuthorizationService;
 import com.example.travl.models.services.UserDOAImp;
-
-import com.example.travl.models.Role;
+import javafx.scene.Parent;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,11 +16,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
 import java.util.Objects;
-
 
 public class LoginController {
 
@@ -33,6 +30,7 @@ public class LoginController {
     private Button signInButton;
 
     private static SessionFactory sessionFactory;
+    private final AuthorizationService authorizationService = new AuthorizationService();
 
     @FXML
     public void initialize() {
@@ -56,14 +54,18 @@ public class LoginController {
         }
 
         try (Session session = sessionFactory.openSession()) {
-            String hql = "SELECT r.name FROM User u JOIN u.role r WHERE u.email = :email AND u.password = :password";
-            String roleName = session.createQuery(hql, String.class)
+            String hql = "FROM User u WHERE u.email = :email AND u.password = :password";
+            User user = session.createQuery(hql, User.class)
                     .setParameter("email", email)
                     .setParameter("password", password)
                     .uniqueResult();
 
-            if (roleName != null) {
-                navigateToDashboard(event, roleName);
+            if (user != null && user.getRole() != null) {
+                if (authorizationService.hasPermission(user, "View Dashboard")) {
+                    navigateToDashboard(event, user.getRole().getName());
+                } else {
+                    showAlert("Error", "You do not have permission to access the dashboard.", Alert.AlertType.ERROR);
+                }
             } else {
                 showAlert("Error", "Invalid email or password.", Alert.AlertType.ERROR);
             }
@@ -101,6 +103,21 @@ public class LoginController {
             showAlert("Error", "Unable to navigate to the dashboard.", Alert.AlertType.ERROR);
         }
     }
+
+    @FXML
+    protected void handleClickForget(ActionEvent event) throws IOException{
+        Stage stage = (Stage) ((Hyperlink) event.getSource()).getScene().getWindow();
+        Parent newScene = null;
+        newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/forget-password.fxml")));
+        if (newScene != null) {
+            Scene scene = new Scene(newScene);
+            stage.setScene(scene);
+            stage.setTitle("Admin Dash");
+            stage.show();
+        }
+    }
+
+
 
     private void showAlert(String title, String message, Alert.AlertType alertType) {
         Alert alert = new Alert(alertType);

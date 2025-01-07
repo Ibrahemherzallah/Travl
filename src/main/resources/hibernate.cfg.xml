@@ -11,10 +11,11 @@
         <property name="connection.password"></property>
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
+        <mapping class="com.example.travl.models.BookingService" />
+        <mapping class="com.example.travl.models.Hotel" />
+        <mapping class="com.example.travl.models.Flight" />
         <mapping class="com.example.travl.models.User"/>
         <mapping class="com.example.travl.models.Role"/>
-        <mapping class="com.example.travl.models.Hotel"/>
-        <mapping class="com.example.travl.models.Flight"/>
-        <mapping class="com.example.travl.models.BookingService"/>
+        <mapping class="com.example.travl.models.Permission"/>
     </session-factory>
 </hibernate-configuration>

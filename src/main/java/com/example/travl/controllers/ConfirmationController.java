@@ -1,17 +1,15 @@
 package com.example.travl.controllers;
 
-import com.example.travl.models.Customer;
-import com.example.travl.models.Flight;
-import com.example.travl.models.Hotel;
-import com.example.travl.models.services.CustomerDOAImp;
-import com.example.travl.models.services.FlightDOAImp;
-import com.example.travl.models.services.HotelDOAImp;
+import com.example.travl.models.*;
+import com.example.travl.models.services.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.util.Calendar;
+import java.util.Date;
 
 public class ConfirmationController {
 
@@ -20,7 +18,6 @@ public class ConfirmationController {
     @FXML private Label dateLabel;
     @FXML private Label hotelLabel;
     @FXML private Label totalPriceLabel;
-
     @FXML private Button confirmButton;
     @FXML private Button cancelButton;
     @FXML private Button cancelFlightButton;
@@ -29,7 +26,8 @@ public class ConfirmationController {
     CustomerDOAImp customerDOAImp = new CustomerDOAImp();
     HotelDOAImp hotelDOAImp = new HotelDOAImp();
     FlightDOAImp flightDOAImp = new FlightDOAImp();
-
+    BookingServiceDOAImp bookingServiceDOAImp = new BookingServiceDOAImp();
+    UserDOAImp userDOAImp = new UserDOAImp();
     @FXML
     public void initialize(Customer customer) {
         this.customer = customer;
@@ -40,16 +38,28 @@ public class ConfirmationController {
         dateLabel.setText(e_mail);
         hotelLabel.setText(phone);
     }
+BookingService bookingService=new BookingService();
 
     @FXML
     private void handleConfirm() {
         //static id
-        int id = 12;
+        int id = 22;
+        int UserID= 1;
         Hotel hotel = hotelDOAImp.getHotelByID(id);
+//        User user =userDOAImp.findUser(UserID);
         if(hotel.getAvailableRooms() > 0) {
             customerDOAImp.insert(customer);
             hotel.setAvailableRooms(hotel.getAvailableRooms() - 1);
             hotelDOAImp.update(hotel);
+            bookingService.setHotel(hotel);
+            bookingService.setBooking_type("Hotel");
+//            bookingService.setUser(user);
+            Calendar cal = Calendar.getInstance();
+            Date date = cal.getTime();
+//            bookingService.setCreated_at(date);
+            bookingServiceDOAImp.insert(bookingService);
+
+
             System.out.println("Booking Confirmed!");
         }
         else {
@@ -61,13 +71,23 @@ public class ConfirmationController {
     @FXML
     private void handleConfirmFlight() {
         int id = 28;
+        int UserID= 1;
         Flight flight = flightDOAImp.getFlightlByID(id);
-
+        System.out.println("FLIghtttttttttttttttt listing" + flight);
+//        User user =userDOAImp.findUser(UserID);
             customerDOAImp.insert(customer);
             flight.setNumberOfPassengers(flight.getNumberOfPassengers() + 1);
             flightDOAImp.update(flight);
+            Calendar cal = Calendar.getInstance();
+            Date date = cal.getTime();
+//            bookingService.setCreated_at(date);
+            bookingService.setFlight(flight);
+//            bookingService.setUser(user);
+            bookingService.setBooking_type("Flight");
+            bookingServiceDOAImp.insert(bookingService);
 
-            System.out.println("aadded Confirmed!");
+
+        System.out.println("added Confirmed!");
 
         closeFlightModal();
         }

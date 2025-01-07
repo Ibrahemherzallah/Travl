@@ -194,7 +194,6 @@ public class ClientDetailsController {
 
     @FXML
     private void handleBackButton(ActionEvent event) {
-        System.out.println("FROMM HTOELLLLLLLLLLLLLLLL");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/hotel-details.fxml"));
             Stage stage = (Stage) backButton.getScene().getWindow();
