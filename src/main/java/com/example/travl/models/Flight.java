@@ -1,7 +1,6 @@
 package com.example.travl.models;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.Date;
 import java.util.List;
 
@@ -57,8 +56,6 @@ public class Flight {
 //    private int availableFlight;
 
 
-    @Column(name = "des_from")
-    private String des_from;
 
 
     @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -187,4 +184,19 @@ public class Flight {
     public void setId(int id) {
         this.id = id;
     }
+
+    @Column(name = "des_from")
+    private String desFrom;
+
+    public String getDesFrom() {
+        return desFrom;
+    }
+
+    public void setDesFrom(String desFrom) {
+        this.desFrom = desFrom;
+    }
+
+
+
+
 }
