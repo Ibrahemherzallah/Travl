@@ -1,12 +1,12 @@
 package com.example.travl.controllers;
 
 import com.example.travl.models.User;
+import com.example.travl.models.services.AuthorizationService;
 import com.example.travl.models.services.UserDOAImp;
-
-import com.example.travl.models.Role;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,11 +15,6 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-
 
 public class LoginController {
 
@@ -33,6 +28,7 @@ public class LoginController {
     private Button signInButton;
 
     private static SessionFactory sessionFactory;
+    private final AuthorizationService authorizationService = new AuthorizationService();
 
     @FXML
     public void initialize() {
@@ -56,14 +52,18 @@ public class LoginController {
         }
 
         try (Session session = sessionFactory.openSession()) {
-            String hql = "SELECT r.name FROM User u JOIN u.role r WHERE u.email = :email AND u.password = :password";
-            String roleName = session.createQuery(hql, String.class)
+            String hql = "FROM User u WHERE u.email = :email AND u.password = :password";
+            User user = session.createQuery(hql, User.class)
                     .setParameter("email", email)
                     .setParameter("password", password)
                     .uniqueResult();
 
-            if (roleName != null) {
-                navigateToDashboard(event, roleName);
+            if (user != null && user.getRole() != null) {
+                if (authorizationService.hasPermission(user, "View Dashboard")) {
+                    navigateToDashboard(event, user.getRole().getName());
+                } else {
+                    showAlert("Error", "You do not have permission to access the dashboard.", Alert.AlertType.ERROR);
+                }
             } else {
                 showAlert("Error", "Invalid email or password.", Alert.AlertType.ERROR);
             }
@@ -81,8 +81,8 @@ public class LoginController {
 
             if ("Admin".equalsIgnoreCase(roleName)) {
                 fxmlPath = "/com/example/travl/admin-dash.fxml";
-            } else if ("Agent".equalsIgnoreCase(roleName)) {
-                fxmlPath = "/com/example/travl/agent-dash.fxml";
+            } else if ("User".equalsIgnoreCase(roleName)) {
+                fxmlPath = "/com/example/travl/user-dash.fxml";
             } else {
                 showAlert("Error", "Unknown role: " + roleName, Alert.AlertType.ERROR);
                 return;

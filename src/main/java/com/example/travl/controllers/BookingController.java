@@ -1,6 +1,8 @@
 package com.example.travl.controllers;
+import com.example.travl.models.BookingService;
 import com.example.travl.models.Flight;
 import com.example.travl.models.Hotel;
+import com.example.travl.models.services.BookingServiceDOAImp;
 import com.example.travl.models.services.FlightDOAImp;
 import com.example.travl.models.services.HotelDOAImp;
 import javafx.scene.image.Image;
@@ -226,8 +228,47 @@ public class BookingController {
     private Map<Integer, Label> timeToLandLabels = new HashMap<>();
     @FXML
     private Map<Integer, Label> stopsLabels = new HashMap<>();
+    @FXML private Label ticket_type_v1;
+    @FXML private Label destination_history_name_v1;
+    @FXML private Label takeOf_date_v1;
+    @FXML private Label bookingID_v1;
+    @FXML private Label status_v1;
+    @FXML private Label ticketPrice_v1;
+
+    @FXML private Label ticket_type_v2;
+    @FXML private Label destination_history_name_v2;
+    @FXML private Label takeOf_date_v2;
+    @FXML private Label bookingID_v2;
+    @FXML private Label status_v2;
+    @FXML private Label ticketPrice_v2;
+    private final BookingServiceDOAImp bookingServiceDAO = new BookingServiceDOAImp();
+    private final FlightDOAImp flightDAO = new FlightDOAImp();
+    private final HotelDOAImp hotelDAO = new HotelDOAImp();
     @FXML
     public void initialize() {
+        List<BookingService> bookings = bookingServiceDAO.getAllBookings();
+
+        if (bookings != null && bookings.size() >= 2) {
+            populateBookingDetails(
+                    bookings.get(0),
+                    ticket_type_v1,
+                    destination_history_name_v1,
+                    takeOf_date_v1,
+                    bookingID_v1,
+                    status_v1,
+                    ticketPrice_v1
+            );
+            populateBookingDetails(
+                    bookings.get(1),
+                    ticket_type_v2,
+                    destination_history_name_v2,
+                    takeOf_date_v2,
+                    bookingID_v2,
+                    status_v2,
+                    ticketPrice_v2
+
+            );
+        }
         nameLabels.put(1, nameOfHotel_h1);
         nameLabels.put(2, nameOfHotel_h2);
         nameLabels.put(3, nameOfHotel_h3);
@@ -275,6 +316,50 @@ public class BookingController {
         loadFlightData();
        loadFlightPromotionData();
 //        loadChoiceBox();
+    }
+    private void populateBookingDetails(BookingService booking, Label ticketType, Label destination, Label date, Label bookingId, Label status, Label price) {
+        ticketType = ticketType != null ? ticketType : new Label();
+        destination = destination != null ? destination : new Label();
+        date = date != null ? date : new Label();
+        bookingId = bookingId != null ? bookingId : new Label();
+        status = status != null ? status : new Label();
+        price = price != null ? price : new Label();
+
+        if (booking == null) {
+            ticketType.setText("Unknown Booking");
+            destination.setText("Destination: N/A");
+            date.setText("Date: N/A");
+            bookingId.setText("Booking ID: N/A");
+            status.setText("Status: N/A");
+            price.setText("Price: N/A");
+            return;
+        }
+
+        if (booking.getFlight() != null) {
+            ticketType.setText("Flight");
+            destination.setText("Destination: " + (booking.getFlight().getDestination() != null ? booking.getFlight().getDestination() : "N/A"));
+            date.setText("Take-Off: " + (booking.getFlight().getDepartureDate() != null ? booking.getFlight().getDepartureDate() : "N/A"));
+            bookingId.setText("Booking ID: " + booking.getId());
+            status.setText("Status: Active");
+
+
+            price.setText(" $" + (booking.getFlight().getTicketPrice() > 0 ? booking.getFlight().getTicketPrice() : "0.00"));
+
+        } else if (booking.getHotel() != null) {
+            ticketType.setText("Hotel");
+            destination.setText("Hotel: " + (booking.getHotel().getHotelName() != null ? booking.getHotel().getHotelName() : "N/A"));
+            date.setText("Check-In: " + (booking.getHotel().getCreated_at() != null ? booking.getHotel().getCreated_at() : "N/A"));
+            bookingId.setText("Booking ID: " + booking.getId());
+            status.setText("Status: Active");
+            price.setText(" $" + (booking.getHotel().getPricePerNight() != null ? booking.getHotel().getPricePerNight() : "0.00"));
+        } else {
+            ticketType.setText("Unknown Booking");
+            destination.setText("Destination: N/A");
+            date.setText("Date: N/A");
+            bookingId.setText("Booking ID: N/A");
+            status.setText("Status: N/A");
+            price.setText("Price: N/A");
+        }
     }
     private void loadFlightData() {
         FlightDOAImp flightDOA = new FlightDOAImp();

@@ -116,140 +116,122 @@
 
     <center>
         <VBox alignment="TOP_CENTER" layoutX="10" spacing="10" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
-         <HBox alignment="CENTER" prefHeight="58.0" prefWidth="954.0" style="-fx-background-color: white;">
-            <children>
-               <AnchorPane prefHeight="58.0" prefWidth="606.0">
-                  <children>
-                     <HBox alignment="CENTER_LEFT" layoutY="2.0" prefHeight="70.0" prefWidth="261.0">
+            <HBox alignment="CENTER" prefHeight="58.0" prefWidth="954.0" style="-fx-background-color: white;">
+                <children>
+                    <AnchorPane prefHeight="58.0" prefWidth="606.0">
                         <children>
-                           <Label prefHeight="54.0" prefWidth="82.0" text="History">
-                              <font>
-                                 <Font name="Franklin Gothic Heavy" size="21.0" />
-                              </font>
-                              <padding>
-                                 <Insets left="10.0" />
-                              </padding>
-                           </Label>
-                           <Separator maxHeight="20.0" orientation="VERTICAL" prefHeight="200.0">
-                              <padding>
-                                 <Insets left="10.0" />
-                              </padding></Separator>
+                            <HBox alignment="CENTER_LEFT" layoutY="2.0" prefHeight="70.0" prefWidth="261.0">
+                                <children>
+                                    <Label prefHeight="54.0" prefWidth="82.0" text="History">
+                                        <font>
+                                            <Font name="Franklin Gothic Heavy" size="21.0" />
+                                        </font>
+                                        <padding>
+                                            <Insets left="10.0" />
+                                        </padding>
+                                    </Label>
+                                    <Separator maxHeight="20.0" orientation="VERTICAL" prefHeight="200.0">
+                                        <padding>
+                                            <Insets left="10.0" />
+                                        </padding></Separator>
+                                </children>
+                            </HBox>
                         </children>
-                     </HBox>
-                  </children>
-               </AnchorPane>
-               <AnchorPane prefHeight="65.0" prefWidth="405.0">
-                  <children>
-                     <TextField alignment="CENTER" layoutY="12.0" prefHeight="39.0" prefWidth="211.0" />
-                  </children>
-               </AnchorPane>
-               <AnchorPane prefHeight="58.0" prefWidth="386.0">
-                  <children>
-                     <HBox alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="-1.0" prefHeight="65.0" prefWidth="385.0">
+                    </AnchorPane>
+                    <AnchorPane prefHeight="65.0" prefWidth="405.0">
                         <children>
-                           <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                              <HBox.margin>
-                                 <Insets right="10.0" />
-                              </HBox.margin>
-                              <image>
-                                 <Image url="@../../../images/message-icon.png" />
-                              </image>
-                           </ImageView>
-                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                <HBox.margin>
-                                    <Insets right="10.0" />
-                                </HBox.margin>
-                                <image>
-                                    <Image url="@../../../images/gmail-icon.png" />
-                                </image>
-                            </ImageView>
-                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
-                                <HBox.margin>
-                                    <Insets right="20.0" />
-                                </HBox.margin>
-                                <image>
-                                    <Image url="@../../../images/notification-icon.png" />
-                                </image>
-                            </ImageView>
-                            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-                                <HBox.margin>
-                                    <Insets right="40.0" />
-                                </HBox.margin>
-                                <image>
-                                    <Image url="@../../../images/prof-img.png" />
-                                </image>
-                            </ImageView>
+                            <TextField alignment="CENTER" layoutY="12.0" prefHeight="39.0" prefWidth="211.0" />
                         </children>
-                     </HBox>
-                  </children>
-               </AnchorPane>
-            </children>
-         </HBox>
-            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-alignment: center;" text="Booking History" />
-
-            <HBox alignment="CENTER" spacing="10">
-                <Button style="-fx-background-color: #111827; -fx-text-fill: white; -fx-font-size: 12px;" text="All Booking" />
-                <Button style="-fx-background-color: white; -fx-font-size: 12px;" text="Flights" />
-                <Button style="-fx-background-color: white; -fx-font-size: 12px;" text="Hotels" />
+                    </AnchorPane>
+                    <AnchorPane prefHeight="58.0" prefWidth="386.0">
+                        <children>
+                            <HBox alignment="CENTER_RIGHT" layoutX="-1.0" layoutY="-1.0" prefHeight="65.0" prefWidth="385.0">
+                                <children>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                        <HBox.margin>
+                                            <Insets right="10.0" />
+                                        </HBox.margin>
+                                        <image>
+                                            <Image url="@../../../images/message-icon.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                        <HBox.margin>
+                                            <Insets right="10.0" />
+                                        </HBox.margin>
+                                        <image>
+                                            <Image url="@../../../images/gmail-icon.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                        <HBox.margin>
+                                            <Insets right="20.0" />
+                                        </HBox.margin>
+                                        <image>
+                                            <Image url="@../../../images/notification-icon.png" />
+                                        </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                        <HBox.margin>
+                                            <Insets right="40.0" />
+                                        </HBox.margin>
+                                        <image>
+                                            <Image url="@../../../images/prof-img.png" />
+                                        </image>
+                                    </ImageView>
+                                </children>
+                            </HBox>
+                        </children>
+                    </AnchorPane>
+                </children>
             </HBox>
-            <VBox alignment="CENTER" prefWidth="817.0" spacing="10"  AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
-                <StackPane style="-fx-background-color: white; -fx-border-color: #d3d3d3; -fx-padding: 15; -fx-min-width: 390px; -fx-max-width: 250px;">
-                    <HBox alignment="CENTER_LEFT" spacing="15">
-                        <VBox prefHeight="90.0" prefWidth="237.0" spacing="5" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
-                            <Label style="-fx-text-fill: #96a0af;" text="Flight Booking" />
-                            <Label style="-fx-font-weight: bold; -fx-font-size: 15px;" text="New York (JFK) → London (LHR)" />
-                            <Label style="-fx-text-fill: #96a0af;" text="March 15, 2025 • 08:30 AM" />
-                            <Label style="-fx-text-fill: #96a0af;" text="Booking ID: FL789456123" />
-                        </VBox>
-                        <VBox alignment="TOP_RIGHT" spacing="5">
-                            <Label prefHeight="18.0" prefWidth="74.0" style="-fx-background-color: #eaeaea;" text="Upcoming" />
-                            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #125946;" text="850$" />
-                            <Button fx:id="viewFlightBookBtn" onAction="#handleMenuButtonAction" styleClass="viewDetailsBtn" style="-fx-background-color: white; -fx-text-fill: #96a0af; -fx-font-size: 13px;" text="View Details →" />
-                        </VBox>
-                    </HBox>
-                </StackPane>
+            <Label style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-alignment: center; -fx-text-fill: #000000;" text="Booking History" />
 
-                <StackPane maxWidth="343.0" prefHeight="139.0" prefWidth="343.0" style="-fx-background-color: white; -fx-border-color: #d3d3d3; -fx-padding: 15; -fx-min-width: 390px; -fx-max-width: 250px;">
+            <VBox alignment="CENTER" prefWidth="817.0" spacing="15" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+                <StackPane maxWidth="343.0" prefHeight="139.0" prefWidth="343.0"
+                           style="-fx-background-color: linear-gradient(to bottom, #ffffff, #f9f9f9);
+                  -fx-border-color: #d3d3d3;
+                  -fx-border-radius: 10;
+                  -fx-padding: 15;
+                  -fx-background-radius: 10;
+                  -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 2, 2);">
                     <HBox alignment="CENTER_LEFT" spacing="15">
-                        <VBox prefHeight="107.0" prefWidth="246.0" spacing="5" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
-                            <Label style="-fx-text-fill: #96a0af;" text="Hotel Booking" />
-                            <Label style="-fx-font-weight: bold; -fx-font-size: 15px;" text="Hilton Garden Inn" />
-                            <Label style="-fx-text-fill: #96a0af;" text="Feb 20-23, 2025" />
-                            <Label style="-fx-text-fill: #96a0af;" text="Booking ID: HT456789123" />
+                        <VBox prefHeight="107.0" prefWidth="246.0" spacing="5"
+                              AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+                            <Label fx:id="ticket_type_v1" style="-fx-text-fill: #96a0af;" text="" />
+                            <Label fx:id="destination_history_name_v1"
+                                   style="-fx-font-weight: bold; -fx-font-size: 15px; -fx-text-fill: #111827;" text="" />
+                            <Label fx:id="takeOf_date_v1" style="-fx-text-fill: #96a0af;" text="" />
+                            <Label fx:id="bookingID_v1" style="-fx-text-fill: #96a0af;" text="" />
                         </VBox>
                         <VBox alignment="TOP_RIGHT" prefHeight="107.0" prefWidth="120.0" spacing="5">
-                            <Label prefHeight="18.0" prefWidth="74.0" style="-fx-background-color: #f6f6f6;" text="Confirmed" />
-                            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #125946;" text="750$" />
-                            <Button fx:id="viewHotelBookBtn" onAction="#handleMenuButtonAction" styleClass="viewDetailsBtn" style="-fx-background-color: white; -fx-text-fill: #96a0af; -fx-font-size: 13px;" text="View Details →" />
+                            <Label fx:id="status_v1" prefHeight="18.0" prefWidth="74.0"
+                                   style="-fx-background-color: #f6f6f6; -fx-background-radius: 5;" text="" />
+                            <Label fx:id="ticketPrice_v1"
+                                   style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #125946;" text="" />
+                            <Button fx:id="viewFlightBookBtn" onAction="#handleMenuButtonAction" styleClass="viewDetailsBtn" style="-fx-background-color: linear-gradient(to bottom, #ffffff, #f5f5f5);-fx-text-fill: #96a0af;-fx-font-size: 13px;-fx-border-radius: 5;" text="View Details →" />
                         </VBox>
                     </HBox>
-
-
                 </StackPane>
-                <StackPane style="-fx-background-color: white; -fx-border-color: #d3d3d3; -fx-padding: 15; -fx-min-width: 390px; -fx-max-width: 250px;">
+                <StackPane maxWidth="343.0" prefHeight="139.0" prefWidth="343.0" style="-fx-background-color: linear-gradient(to bottom, #ffffff, #f9f9f9); -fx-border-color: #d3d3d3; -fx-border-radius: 10; -fx-padding: 15; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 5, 0, 2, 2);">
                     <HBox alignment="CENTER_LEFT" spacing="15">
-                        <VBox prefHeight="90.0" prefWidth="237.0" spacing="5" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
-                            <Label style="-fx-text-fill: #96a0af;" text="Flight Booking" />
-                            <Label style="-fx-font-weight: bold; -fx-font-size: 15px;" text="New York (JFK) → London (LHR)" />
-                            <Label style="-fx-text-fill: #96a0af;" text="March 15, 2025 • 08:30 AM" />
-                            <Label style="-fx-text-fill: #96a0af;" text="Booking ID: FL789456123" />
+
+                        <VBox prefHeight="107.0" prefWidth="246.0" spacing="5" AnchorPane.leftAnchor="10" AnchorPane.rightAnchor="10">
+                            <Label fx:id="ticket_type_v2" style="-fx-text-fill: #96a0af;" text="" />
+                            <Label fx:id="destination_history_name_v2" style="-fx-font-weight: bold; -fx-font-size: 15px; -fx-text-fill: #111827;" text="" />
+                            <Label fx:id="takeOf_date_v2" style="-fx-text-fill: #96a0af;" text="" />
+                            <Label fx:id="bookingID_v2" style="-fx-text-fill: #96a0af;" text="" />
                         </VBox>
-                        <VBox alignment="TOP_RIGHT" spacing="5">
-                            <Label prefHeight="18.0" prefWidth="74.0" style="-fx-background-color: #eaeaea;" text="Upcoming" />
-                            <Label style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #125946;" text="850$" />
-                            <Button fx:id="viewFlight2" onAction="#handleMenuButtonAction" styleClass="viewDetailsBtn" style="-fx-background-color: white; -fx-text-fill: #96a0af; -fx-font-size: 13px;" text="View Details →" />
+                        <VBox  alignment="TOP_RIGHT" prefHeight="107.0" prefWidth="120.0" spacing="5">
+                            <Label fx:id="status_v2" prefHeight="18.0" prefWidth="74.0" style="-fx-background-color: #f6f6f6; -fx-background-radius: 5;" text="" />
+                            <Label fx:id="ticketPrice_v2" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #125946;" text="" />
+                            <Button fx:id="viewHotelBookBtn" onAction="#handleMenuButtonAction" styleClass="viewDetailsBtn" style="-fx-background-color: linear-gradient(to bottom, #ffffff, #f5f5f5); -fx-text-fill: #96a0af; -fx-font-size: 13px; -fx-border-radius: 5;" text="View Details →" />
                         </VBox>
                     </HBox>
                 </StackPane>
             </VBox>
-            <HBox alignment="CENTER" spacing="10">
-                <Button style="-fx-background-color: #111827; -fx-text-fill: white;" text="Previous" />
-                <Button style="-fx-background-color: #111827; -fx-text-fill: white;" text="1" />
-                <Button style="-fx-background-color: white;" text="2" />
-                <Button style="-fx-background-color: white;" text="3" />
-                <Button style="-fx-background-color: #111827; -fx-text-fill: white;" text="Next" />
-            </HBox>
         </VBox>
 
     </center>
+
 </BorderPane>
