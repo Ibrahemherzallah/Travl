@@ -44,7 +44,7 @@ public class ConfirmationController {
     @FXML
     private void handleConfirm() {
         //static id
-        int id = 24;
+        int id = 12;
         Hotel hotel = hotelDOAImp.getHotelByID(id);
         if(hotel.getAvailableRooms() > 0) {
             customerDOAImp.insert(customer);

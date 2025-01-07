@@ -28,6 +28,7 @@ import javafx.scene.image.Image;
 
 public class BookingController {
 
+    private static final String DB_PASSWORD = "";
     @FXML
     public ImageView imageOfPromo_p2;
     public ImageView imageOfPromo_p1;
@@ -206,7 +207,7 @@ public class BookingController {
         loadHotelPromotionData();
         loadFlightData();
        loadFlightPromotionData();
-        loadChoiceBox();
+//        loadChoiceBox();
     }
     private void loadFlightData() {
         String query = "SELECT * FROM flight";
@@ -664,7 +665,7 @@ public class BookingController {
         }
     }
     @FXML
-    protected void navigateClient(){
+    protected void navigateHotelClient(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/client-details.fxml"));
 
@@ -729,9 +730,9 @@ public class BookingController {
         }
     }
 
-    private void loadChoiceBox(){
-        myChoiceBox.getItems().addAll(priceSorted);
-        myChoiceBox.setValue("Price");
-    }
+//    private void loadChoiceBox(){
+//        myChoiceBox.getItems().addAll(priceSorted);
+//        myChoiceBox.setValue("Price");
+//    }
 
 }

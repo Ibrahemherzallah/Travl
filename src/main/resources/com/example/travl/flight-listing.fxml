@@ -316,8 +316,7 @@
                                 </font>
                             </Label>
                             <Label fx:id="destination_a1" layoutX="458.0" layoutY="102.0" text="Dubai (DXB)" />
-                            <Button id="btn" fx:id="selectFlightBtn" layoutX="61.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="477.0" style="-fx-background-color: #111827;" styleClass="selectFlightBtn" stylesheets="@../../../styles/style.css" text="Select Flight" textFill="WHITE" />
-                            <Separator layoutX="200.0" layoutY="126.0" prefWidth="200.0" />
+                            <Button id="btn" fx:id="selectFlightBtn" onAction="#handleMenuButtonAction" layoutX="61.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="477.0" style="-fx-background-color: #111827;" styleClass="selectFlightBtn" stylesheets="@../../../styles/style.css" text="Select Flight" textFill="WHITE" />                            <Separator layoutX="200.0" layoutY="126.0" prefWidth="200.0" />
                             <Label fx:id="timeToLand_a1" layoutX="286.0" layoutY="102.0" text="4h 30m" />
                             <Label fx:id="Stops_a1" layoutX="287.0" layoutY="137.0" text=" 1 Stop" />
                         </children>

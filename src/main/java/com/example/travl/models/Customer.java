@@ -34,8 +34,8 @@ public class Customer {
     @Column(name = "num_of_adults")
     private int num_of_adults;
 
-    @Column(name = "check_pay")
-    private boolean check_pay;
+    @Column(name = "cash")
+    private boolean cash;
 
     @Column(name = "paypal")
     private boolean paypal;
@@ -73,6 +73,14 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isCash() {
+        return cash;
+    }
+
+    public void setCash(boolean cash) {
+        this.cash = cash;
     }
 
     public String getCity() {
@@ -115,13 +123,7 @@ public class Customer {
         this.num_of_kids = num_of_kids;
     }
 
-    public boolean isCheck_pay() {
-        return check_pay;
-    }
 
-    public void setCheck_pay(boolean check_pay) {
-        this.check_pay = check_pay;
-    }
 
     public boolean isPaypal() {
         return paypal;

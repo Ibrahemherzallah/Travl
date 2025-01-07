@@ -48,7 +48,7 @@
                         <TextField fx:id="numberOfKidsField" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <Label styleClass="form-label" text="Payment Method" GridPane.columnIndex="0" GridPane.rowIndex="8" />
                         <HBox spacing="10" GridPane.columnIndex="0" GridPane.columnSpan="2" GridPane.rowIndex="9">
-                            <CheckBox fx:id="paymentCheck" text="Check" />
+                            <CheckBox fx:id="paymentCheck" text="cash" />
                             <CheckBox fx:id="paymentPaypal" text="Paypal" />
                         </HBox>
 

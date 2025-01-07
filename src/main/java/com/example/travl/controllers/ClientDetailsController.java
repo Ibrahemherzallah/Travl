@@ -75,7 +75,6 @@ public class ClientDetailsController {
 
 
         else {
-
             customer.setFirst_name(firstNameField.getText());
             customer.setLast_name(lastNameField.getText());
             customer.setAddress(addressField.getText());
@@ -84,7 +83,7 @@ public class ClientDetailsController {
             customer.setEmail(emailField.getText());
             customer.setNum_of_adults(Integer.parseInt(numberOfAdultsField.getText()));
             customer.setNum_of_kids(Integer.parseInt(numberOfKidsField.getText()));
-            customer.setCheck_pay(paymentCheck.isSelected());
+            customer.setCash(paymentCheck.isSelected());
             customer.setPaypal(paymentPaypal.isSelected());
             customer.setSpecial_requests(specialRequestField.getText());
             openConfirmationModal();
@@ -140,7 +139,7 @@ public class ClientDetailsController {
             customer.setEmail(emailField.getText());
             customer.setNum_of_adults(Integer.parseInt(numberOfAdultsField.getText()));
             customer.setNum_of_kids(Integer.parseInt(numberOfKidsField.getText()));
-            customer.setCheck_pay(paymentCheck.isSelected());
+            customer.setCash(paymentCheck.isSelected());
             customer.setPaypal(paymentPaypal.isSelected());
             customer.setSpecial_requests(specialRequestField.getText());
             openConfirmationFlight();
@@ -195,6 +194,7 @@ public class ClientDetailsController {
 
     @FXML
     private void handleBackButton(ActionEvent event) {
+        System.out.println("FROMM HTOELLLLLLLLLLLLLLLL");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/hotel-details.fxml"));
             Stage stage = (Stage) backButton.getScene().getWindow();
@@ -209,6 +209,7 @@ public class ClientDetailsController {
     }
     @FXML
     private void handleBackButtonFlight(ActionEvent event) {
+        System.out.println("FROMM FLIGHT");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/flight-details.fxml"));
             Stage stage = (Stage) backButtonFlight.getScene().getWindow();

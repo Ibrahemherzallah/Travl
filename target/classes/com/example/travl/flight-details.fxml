@@ -80,7 +80,7 @@
                   </Pane>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <Button fx:id="bookingBtn" mnemonicParsing="false" stylesheets="@../../../styles/style.css" onAction="#navigateClient" prefHeight="26.0" prefWidth="166.0" styleClass="bookBtn" text="Book" textFill="WHITE" />
+                        <Button fx:id="bookingBtn" mnemonicParsing="false" stylesheets="@../../../styles/style.css" onAction="#navigateClientFlight" prefHeight="26.0" prefWidth="166.0" styleClass="bookBtn" text="Book" textFill="WHITE" />
                      </children>
                   </HBox>
                </children>
