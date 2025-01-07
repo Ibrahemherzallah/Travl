@@ -6,9 +6,9 @@
     <session-factory>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/travl_db</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/newDB</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">@@@Dy123321</property>
+        <property name="connection.password"></property>
         <property name="show_sql">true</property>
         <property name="hbm2ddl.auto">update</property>
         <mapping class="com.example.travl.models.User"/>
@@ -16,6 +16,5 @@
         <mapping class="com.example.travl.models.Hotel"/>
         <mapping class="com.example.travl.models.Flight"/>
         <mapping class="com.example.travl.models.BookingService"/>
-
     </session-factory>
 </hibernate-configuration>

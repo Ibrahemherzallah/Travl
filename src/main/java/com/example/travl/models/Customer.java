@@ -34,6 +34,15 @@ public class Customer {
     @Column(name = "num_of_adults")
     private int num_of_adults;
 
+    @Column(name = "cash")
+    private boolean cash;
+
+    @Column(name = "paypal")
+    private boolean paypal;
+
+    @Column(name = "special_requests")
+    private String special_requests;
+
     public int getId() {
         return id;
     }
@@ -64,6 +73,14 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isCash() {
+        return cash;
+    }
+
+    public void setCash(boolean cash) {
+        this.cash = cash;
     }
 
     public String getCity() {
@@ -104,5 +121,23 @@ public class Customer {
 
     public void setNum_of_kids(int num_of_kids) {
         this.num_of_kids = num_of_kids;
+    }
+
+
+
+    public boolean isPaypal() {
+        return paypal;
+    }
+
+    public void setPaypal(boolean paypal) {
+        this.paypal = paypal;
+    }
+
+    public String getSpecial_requests() {
+        return special_requests;
+    }
+
+    public void setSpecial_requests(String special_requests) {
+        this.special_requests = special_requests;
     }
 }

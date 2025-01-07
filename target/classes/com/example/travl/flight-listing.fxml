@@ -23,20 +23,19 @@
     <left>
         <AnchorPane prefHeight="905.0" prefWidth="69.0" styleClass="side-bar" stylesheets="@../../../styles/agent-dash.css" BorderPane.alignment="CENTER">
             <children>
-                <Pane layoutX="16.0" layoutY="120.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                <Pane layoutX="16.0" layoutY="120.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
                     <children>
-                        <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0"
-                                   onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="homeIcon" fitHeight="25.0" fitWidth="29.0" layoutX="7.0" layoutY="12.0" onMouseClicked="#navigateHome" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../images/home-icon.png" />
                             </image>
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="200.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                <Pane layoutX="13.0" layoutY="200.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -48,7 +47,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="16.0" layoutY="280.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                <Pane layoutX="16.0" layoutY="280.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -60,7 +59,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="360.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                <Pane layoutX="13.0" layoutY="360.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -72,7 +71,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="440.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                <Pane layoutX="13.0" layoutY="440.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -84,7 +83,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="520.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                <Pane layoutX="13.0" layoutY="520.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
@@ -96,12 +95,12 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="13.0" layoutY="600.0" styleClass="sideBarIcons" prefHeight="47.0" prefWidth="47.0">
+                <Pane layoutX="13.0" layoutY="600.0" prefHeight="47.0" prefWidth="47.0" styleClass="sideBarIcons">
                     <clip>
                         <Circle centerX="20" centerY="20" radius="20" />
                     </clip>
                     <children>
-                        <ImageView fx:id="logoutIcon" onMousePressed="#navigateLogout" fitHeight="25.0" fitWidth="29.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#navigateFlight" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="logoutIcon" fitHeight="25.0" fitWidth="29.0" layoutX="10.0" layoutY="12.0" onMouseClicked="#navigateFlight" onMousePressed="#navigateLogout" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../images/logout-icon.png" />
                             </image>
@@ -317,7 +316,7 @@
                                 </font>
                             </Label>
                             <Label fx:id="destination_a1" layoutX="458.0" layoutY="102.0" text="" />
-                            <Button id="btn" fx:id="selectFlightBtn" layoutX="61.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="477.0" style="-fx-background-color: #111827;" styleClass="selectFlightBtn" stylesheets="@../../../styles/style.css" text="Select Flight" textFill="WHITE" />
+                            <Button id="btn" fx:id="selectFlightBtn" onAction="#handleMenuButtonAction" layoutX="61.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="477.0" style="-fx-background-color: #111827;" styleClass="selectFlightBtn" stylesheets="@../../../styles/style.css" text="Select Flight" textFill="WHITE" />                            <Separator layoutX="200.0" layoutY="126.0" prefWidth="200.0" />
                             <Separator layoutX="200.0" layoutY="126.0" prefWidth="200.0" />
                             <Label fx:id="timeToLand_a1" layoutX="286.0" layoutY="102.0" text="" />
                             <Label fx:id="Stops_a1" layoutX="287.0" layoutY="137.0" text="" />
@@ -388,7 +387,6 @@
                         <TextArea   layoutX="45.0" layoutY="193.0" prefHeight="100.0" prefWidth="245.0" text="Enjoy a 4-day trip to Istanbul with &#10;round-trip flights &#10;and accommodation at a 4-star hotel in &#10;the Sultanahmet district. &#10;Prices start at $450 per person." />
                         <Separator layoutY="329.0" prefHeight="35.0" prefWidth="334.0" />
                         <ImageView fx:id="imagePromo2" fitHeight="109.0" fitWidth="180.0" layoutX="87.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
-
                         </ImageView>
                         <Label fx:id="namePromo2" layoutX="92.0" layoutY="347.0" prefHeight="26.0" prefWidth="157.0" text="">
                             <font>

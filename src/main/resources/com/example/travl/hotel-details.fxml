@@ -115,7 +115,7 @@
                         </AnchorPane>
                         <HBox alignment="CENTER_LEFT" prefHeight="63.0" prefWidth="446.0">
                            <children>
-                              <Button fx:id="bookingBtn" mnemonicParsing="false" onAction="#navigateClient" prefHeight="26.0" prefWidth="166.0" styleClass="bookBtn" text="Book" textFill="WHITE" />
+                              <Button fx:id="bookingBtn" mnemonicParsing="false" onAction="#navigateHotelClient" prefHeight="26.0" prefWidth="166.0" styleClass="bookBtn" text="Book" textFill="WHITE" />
                            </children>
                            <VBox.margin>
                               <Insets top="20.0" />

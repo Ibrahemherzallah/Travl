@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -42,6 +43,7 @@ import static org.hibernate.jpa.AvailableSettings.JDBC_URL;
 
 public class BookingController {
 
+    private static final String DB_PASSWORD = "";
     @FXML
     public ImageView imageOfPromo_p2;
     public ImageView imageOfPromo_p1;
@@ -187,6 +189,9 @@ public class BookingController {
     @FXML
     private Label promoPlace_p2;
     @FXML
+    private ChoiceBox<String> myChoiceBox;
+
+    @FXML
     private ImageView promoImage_p2;
 
 
@@ -195,6 +200,10 @@ public class BookingController {
     private Map<Integer, Label> locationLabels = new HashMap<>();
     private Map<Integer, Label> priceLabels = new HashMap<>();
     private Map<Integer, ImageView> imageViews = new HashMap<>();
+
+    private final String JDBC_URL = "jdbc:mysql://localhost:3306/newDB";
+    private final String DB_USERNAME = "root";
+    private String[] priceSorted = {"High to Low " , "Low to High"};
 
 
     //For Flight
@@ -260,7 +269,9 @@ public class BookingController {
         loadFlightData();
         loadHotelData();
         loadHotelPromotionData();
-        loadFlightPromotionData();
+        loadFlightData();
+       loadFlightPromotionData();
+//        loadChoiceBox();
     }
     private void loadFlightData() {
         FlightDOAImp flightDOA = new FlightDOAImp();
@@ -749,9 +760,24 @@ public class BookingController {
         }
     }
     @FXML
-    protected void navigateClient(){
+    protected void navigateHotelClient(){
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/client-details.fxml"));
+
+            Stage stage = (Stage) bookingBtn.getScene().getWindow();
+            Scene scene = new Scene(loader.load());
+            stage.setScene(scene);
+            stage.setTitle("Flight details");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error");
+        }
+    }
+    @FXML
+    protected void navigateClientFlight(){
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/client-details-flight.fxml"));
 
             Stage stage = (Stage) bookingBtn.getScene().getWindow();
             Scene scene = new Scene(loader.load());
@@ -800,7 +826,10 @@ public class BookingController {
     }
 
 
-
+//    private void loadChoiceBox(){
+//        myChoiceBox.getItems().addAll(priceSorted);
+//        myChoiceBox.setValue("Price");
+//    }
 
 
 }

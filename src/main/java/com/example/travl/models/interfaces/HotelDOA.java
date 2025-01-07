@@ -10,4 +10,5 @@ public interface HotelDOA {
     public void delete(Hotel hotel);
     public List<Hotel> getAll();
     public Hotel findAdmin(int id);
+    public Hotel getHotelByID(int id);
 }

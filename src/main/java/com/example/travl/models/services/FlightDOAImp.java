@@ -1,6 +1,7 @@
 package com.example.travl.models.services;
 
 import com.example.travl.models.Flight;
+import com.example.travl.models.Hotel;
 import com.example.travl.models.interfaces.FlightDOA;
 import com.example.travl.util.HibernateUtil;
 import org.hibernate.Session;
@@ -38,10 +39,19 @@ public class FlightDOAImp implements FlightDOA {
         return promotedFlights;
     }
 
+
+    HibernateUtil hibernateUtil;
+    SessionFactory sessionFactory;
+    Session session;
+
+    public FlightDOAImp() {
+        hibernateUtil = HibernateUtil.getInstance();
+        sessionFactory = HibernateUtil.getSessionFactory();
+        session = sessionFactory.openSession();
+    }
     @Override
     public void insert(Flight flight) {
-        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
-        Session session = sessionFactory.openSession();
+
         session.beginTransaction();
         session.save(flight);
         session.getTransaction().commit();
@@ -50,7 +60,10 @@ public class FlightDOAImp implements FlightDOA {
 
     @Override
     public void update(Flight flight) {
-
+        session.beginTransaction();
+        session.update(flight);
+        session.getTransaction().commit();
+        session.close();
     }
 
     @Override
@@ -86,4 +99,10 @@ public class FlightDOAImp implements FlightDOA {
     public Flight findAdmin(int id) {
         return null;
     }
+
+    public Flight getFlightlByID(int ID) {
+        return session.get(Flight.class,ID);
+    }
+
 }
+
