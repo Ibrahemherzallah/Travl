@@ -60,13 +60,12 @@ public class UserController {
         String jdbcURL = "jdbc:mysql://localhost:3306/newDB";
         String username = "root";
         String password = "";
-
         String query = """
-    SELECT u.first_name, u.last_name, u.email, u.phone, u.address
-    FROM newDB.user u
-    JOIN role r ON u.role_id = r.id
-    WHERE r.name = 'Agent'
-""";
+            SELECT u.first_name, u.last_name, u.email, u.phone, u.owner_address
+            FROM newDB.user u
+            JOIN role r ON u.role_id = r.id
+            WHERE r.name = 'Agent'
+        """;
 
         try (Connection connection = DriverManager.getConnection(jdbcURL, username, password);
              Statement statement = connection.createStatement();
@@ -77,7 +76,7 @@ public class UserController {
                 String lastName = resultSet.getString("last_name");
                 String email = resultSet.getString("email");
                 String phone = resultSet.getString("phone");
-                String address = resultSet.getString("address");
+                String address = resultSet.getString("owner_address");
 
                 User user = new User();
                 user.setFirstName(firstName);

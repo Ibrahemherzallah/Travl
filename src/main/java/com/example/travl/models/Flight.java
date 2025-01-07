@@ -63,6 +63,17 @@ public class Flight {
     @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookingService> bookingServices;
 
+    @Lob
+    @Column(name = "image")
+    private byte[] image;
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
 
     public int getPromotionDuration() {
         return promotionDuration;

@@ -61,9 +61,7 @@ public class Hotel {
 
 
     public void setImg(InputStream inputStream) throws IOException {
-
         this.img = inputStream.readAllBytes();
-
     }
 
     public double getPricePerNight() {
