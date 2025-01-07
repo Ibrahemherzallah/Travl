@@ -22,7 +22,7 @@ public class UserDOAImp implements UserDOA {
 
     @Override
     public void update(User User) {
-        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        SessionFactory sessionFactory = com.example.travl.util.HibernateUtil.getInstance().getSessionFactory();
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.save(User);
@@ -37,14 +37,14 @@ public class UserDOAImp implements UserDOA {
 
     @Override
     public List<User> getAll() {
-        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        SessionFactory sessionFactory = com.example.travl.util.HibernateUtil.getInstance().getSessionFactory();
         Session session = sessionFactory.openSession();
         return session.createQuery("select u from User u").list();
     }
 
     @Override
     public User findUser(int id) {
-        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        SessionFactory sessionFactory = com.example.travl.util.HibernateUtil.getInstance().getSessionFactory();
         Session session = sessionFactory.openSession();
         return session.get(User.class, id);
     }

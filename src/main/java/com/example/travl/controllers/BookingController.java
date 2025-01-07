@@ -1,5 +1,12 @@
 package com.example.travl.controllers;
-
+import com.example.travl.models.Flight;
+import com.example.travl.models.Hotel;
+import com.example.travl.models.interfaces.HotelDOA;
+import com.example.travl.models.services.FlightDOAImp;
+import com.example.travl.models.services.HotelDOAImp;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,25 +14,39 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import java.awt.*;
+
+import java.io.InputStream;
+import java.sql.*;
+import java.util.*;
+
 import java.awt.image.ImageObserver;
 import java.awt.image.ImageProducer;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
+
+import javafx.scene.image.Image;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import java.io.ByteArrayInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import javafx.scene.image.Image;
+
+import static org.hibernate.jpa.AvailableSettings.JDBC_URL;
+
 
 public class BookingController {
+
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/travlbr";
+    private final String DB_USERNAME = "root";
+    private final String DB_PASSWORD = "root";
+    private final HotelDOAImp hotelDAO = new HotelDOAImp();
 
     @FXML
     public ImageView imageOfPromo_p2;
@@ -89,6 +110,7 @@ public class BookingController {
     @FXML private Label paymentMF;
     @FXML private Label statusF;
     @FXML private Button editButton;
+    ///
     @FXML private TextField customerNameTextField, customerPhoneTextField, coustomerEmailTextField, customerAddTextField, checkinTextField, chekoutTextField, createAtTextField, NkidsTextField, paymentMTextField, statusTextField;
     private boolean isEditing = false;
 
@@ -172,13 +194,33 @@ public class BookingController {
     private Label promoPlace_p2;
     @FXML
     private ImageView promoImage_p2;
+
+
+    //For Hotel
     private Map<Integer, Label> nameLabels = new HashMap<>();
     private Map<Integer, Label> locationLabels = new HashMap<>();
     private Map<Integer, Label> priceLabels = new HashMap<>();
     private Map<Integer, ImageView> imageViews = new HashMap<>();
-    private final String JDBC_URL = "jdbc:mysql://localhost:3306/newDB";
-    private final String DB_USERNAME = "root";
-    private final String DB_PASSWORD = "";
+
+
+    //For Flight
+    @FXML
+    private Map<Integer, Label> airlineLabels = new HashMap<>();
+    @FXML
+    private Map<Integer, Label> ticketNoLabels = new HashMap<>();
+    @FXML
+    private Map<Integer, Label> takeoffTimeLabels = new HashMap<>();
+    @FXML
+    private Map<Integer, Label> takeoffPlaceLabels = new HashMap<>();
+    @FXML
+    private Map<Integer, Label> arrivalTimeLabels = new HashMap<>();
+    @FXML
+    private Map<Integer, Label> destinationLabels = new HashMap<>();
+    @FXML
+    private Map<Integer, Label> timeToLandLabels = new HashMap<>();
+    @FXML
+    private Map<Integer, Label> stopsLabels = new HashMap<>();
+    private Hotel selectedHotel;
 
     @FXML
     public void initialize() {
@@ -198,214 +240,357 @@ public class BookingController {
         imageViews.put(2, image_h2);
         imageViews.put(3, image_h3);
         imageViews.put(4, image_h4);
+
+
+        airlineLabels.put(1, airlineName_a1);
+        airlineLabels.put(2, airlineName_a2);
+
+
+        ticketNoLabels.put(1, ticketNo_a1);
+        ticketNoLabels.put(2, ticketNo_a2);
+
+
+        takeoffTimeLabels.put(1, takeoffTime_a1);
+        takeoffTimeLabels.put(2, takeoffTime_a2);
+
+
+        takeoffPlaceLabels.put(1, takeoffPlace_a1);
+        takeoffPlaceLabels.put(2, takeoffPlace_a2);
+
+
+        arrivalTimeLabels.put(1, arrivalTime_a1);
+        arrivalTimeLabels.put(2, arrivalTime_a2);
+
+
+        destinationLabels.put(1, destination_a1);
+        destinationLabels.put(2, destination_a2);
+
+
+        timeToLandLabels.put(1, timeToLand_a1);
+        timeToLandLabels.put(2, timeToLand_a2);
+
+        stopsLabels.put(1, Stops_a1);
+        stopsLabels.put(2, Stops_a2);
+        loadFlightData();
         loadHotelData();
         loadHotelPromotionData();
-        loadFlightData();
         loadFlightPromotionData();
+        populateHotelData();
     }
+
+
     private void loadFlightData() {
-        String query = "SELECT * FROM flight";
-
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
-
-            while (resultSet.next()) {
-                String id = resultSet.getString("id");
-                String flightName = resultSet.getString("flight_name");
-                String airline = resultSet.getString("airline");
-                int ticketPrice = resultSet.getInt("ticket_price");
-                String departureDate = resultSet.getString("departure_date");
-                String arrivalDate = resultSet.getString("arrival_date");
-                String stops = resultSet.getString("stops");
-                String destination = resultSet.getString("destination");
-                String duration = resultSet.getString("duration");
-
-                switch (id) {
-                    case "1":
-                        airlineName_a1.setText(airline);
-                        ticketNo_a1.setText(flightName + " - $" + ticketPrice);
-                        takeoffTime_a1.setText(departureDate);
-                        takeoffPlace_a1.setText("");
-                        arrivalTime_a1.setText(arrivalDate);
-                        destination_a1.setText(destination);
-                        timeToLand_a1.setText(duration);
-                        Stops_a1.setText(stops);
-                        break;
-                    case "2":
-                        airlineName_a2.setText(airline);
-                        ticketNo_a2.setText(flightName + " - $" + ticketPrice);
-                        takeoffTime_a2.setText(departureDate);
-                        takeoffPlace_a2.setText("");
-                        arrivalTime_a2.setText(arrivalDate);
-                        destination_a2.setText(destination);
-                        timeToLand_a2.setText(duration);
-                        Stops_a2.setText(stops);
-                        break;
-                    default:
-                        System.err.println("No matching UI element for flight ID: " + id);
-                        break;
+        FlightDOAImp flightDOA = new FlightDOAImp();
+        List<Flight> flights = flightDOA.getAll();
+        int maxFlights = Math.min(flights.size(), airlineLabels.size());
+        for (int i = 0; i < maxFlights; i++) {
+            Flight flight = flights.get(i);
+            int index = i + 1;
+            if (airlineLabels.containsKey(index)) {
+                Label airlineLabel = airlineLabels.get(index);
+                if (airlineLabel != null) {
+                    airlineLabel.setText(flight.getAirline());
+                } else {
+                    System.err.println("Airline label is null for index: " + index);
                 }
             }
-        } catch (Exception e) {
-            System.err.println("Error loading flight data: " + e.getMessage());
-            e.printStackTrace();
+            if (ticketNoLabels.containsKey(index)) {
+                Label ticketNoLabel = ticketNoLabels.get(index);
+                if (ticketNoLabel != null) {
+                    ticketNoLabel.setText("Ticket #" + flight.getId());
+                } else {
+                    System.err.println("Ticket number label is null for index: " + index);
+                }
+            }
+            if (takeoffTimeLabels.containsKey(index)) {
+                Label takeoffTimeLabel = takeoffTimeLabels.get(index);
+                if (takeoffTimeLabel != null) {
+                    takeoffTimeLabel.setText(flight.getDepartureDate().toString());
+                } else {
+                    System.err.println("Takeoff time label is null for index: " + index);
+                }
+            }
+            if (takeoffPlaceLabels.containsKey(index)) {
+                Label takeoffPlaceLabel = takeoffPlaceLabels.get(index);
+                if (takeoffPlaceLabel != null) {
+                    takeoffPlaceLabel.setText(flight.getDuration());
+                } else {
+                    System.err.println("Takeoff place label is null for index: " + index);
+                }
+            }
+            if (arrivalTimeLabels.containsKey(index)) {
+                Label arrivalTimeLabel = arrivalTimeLabels.get(index);
+                if (arrivalTimeLabel != null) {
+                    arrivalTimeLabel.setText(flight.getArrivalDate().toString());
+                } else {
+                    System.err.println("Arrival time label is null for index: " + index);
+                }
+            }
+            if (destinationLabels.containsKey(index)) {
+                Label destinationLabel = destinationLabels.get(index);
+                if (destinationLabel != null) {
+                    destinationLabel.setText(flight.getDestination());
+                } else {
+                    System.err.println("Destination label is null for index: " + index);
+                }
+            }
+            if (stopsLabels.containsKey(index)) {
+                Label stopsLabel = stopsLabels.get(index);
+                if (stopsLabel != null) {
+                    stopsLabel.setText(flight.getStops());
+                } else {
+                    System.err.println("Stops label is null for index: " + index);
+                }
+            }
+
+
+            if (timeToLandLabels.containsKey(index)) {
+                Label timeToLandLabel = timeToLandLabels.get(index);
+                if (timeToLandLabel != null) {
+                    timeToLandLabel.setText(flight.getDuration());
+                } else {
+                    System.err.println("Time to land label is null for index: " + index);
+                }
+            }
+        }
+        if (flights.size() > maxFlights) {
+            System.err.println("Warning: More flights exist in the database than UI slots. Only the first " + maxFlights + " flights are displayed.");
         }
     }
+    private void populateHotelData() {
+        Hotel hotel = hotelDAO.getHotelById(1); // Replace with actual ID logic
+        if (hotel != null) {
+            nameOfHotel_h1.setText(hotel.getHotelName());
+            location_h1.setText(hotel.getLocation());
+            price_h1.setText("$" + hotel.getPricePerNight());
+            if (hotel.getImg() != null) {
+                Image image = new Image(new ByteArrayInputStream(hotel.getImg()));
+                image_h1.setImage(image);
+            }
+        }
+    }
+
+
 
 
     private void loadFlightPromotionData() {
-        String query = "SELECT flight_name, image FROM flight WHERE promotion = true";
+        FlightDOAImp flightDOA = new FlightDOAImp();
+        List<Object[]> promotedFlights = flightDOA.getPromotedFlights();
 
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+        // Replace List.of with null-safe arrays
+        Label[] nameLabels = {namePromo1, namePromo2};
+        ImageView[] imageViews = {imagePromo1, imagePromo2};
 
-            int promoIndex = 1;
-            while (resultSet.next() && promoIndex <= 2) {
-                String flightName = resultSet.getString("flight_name");
-                byte[] imageBytes = resultSet.getBytes("image");
+        int maxSlots = Math.min(promotedFlights.size(), nameLabels.length);
+        for (int i = 0; i < maxSlots; i++) {
+            Object[] row = promotedFlights.get(i);
+            String flightName = (String) row[0];
+            String airlineName = (String) row[1];
+            byte[] imageBytes = (byte[]) row[2];
 
+            System.out.println("Flight Name: " + flightName);
+            System.out.println("Airline Name: " + airlineName);
+            System.out.println("Image Bytes Length: " + (imageBytes != null ? imageBytes.length : "No Image"));
 
-                System.out.println("Flight Name: " + flightName);
-                System.out.println("Image Bytes Length: " + (imageBytes != null ? imageBytes.length : "No Image"));
+            Label nameLabel = nameLabels[i];
+            ImageView imageView = imageViews[i];
 
-                try {
-
-                    Image promoImage = (imageBytes != null) ? new Image(new ByteArrayInputStream(imageBytes)) : null;
-
-                    switch (promoIndex) {
-                        case 1:
-                            namePromo1.setText(flightName);
-                            if (promoImage != null) {
-                                imagePromo1.setImage(promoImage);
-                            } else {
-                                imagePromo1.setImage(new Image(""));
-                            }
-                            break;
-
-                        case 2:
-                            namePromo2.setText(flightName);
-                            if (promoImage != null) {
-                                imagePromo2.setImage(promoImage);
-                            } else {
-                                imagePromo2.setImage(new Image(""));
-                            }
-                            break;
-
-                        default:
-                            System.err.println("No matching promotion UI element for index: " + promoIndex);
-                            break;
-                    }
-                } catch (IllegalArgumentException e) {
-                    System.err.println("Error loading promotion image for index " + promoIndex + ": " + e.getMessage());
-                }
-
-                promoIndex++;
+            if (nameLabel != null) {
+                nameLabel.setText(flightName + " (" + airlineName + ")");
             }
+            if (imageView != null) {
+                if (imageBytes != null) {
+                    imageView.setImage(new Image(new ByteArrayInputStream(imageBytes)));
+                } else {
+                    imageView.setImage(null); // Default or placeholder image
+                }
+            }
+        }
 
-        } catch (Exception e) {
-            System.err.println("Error loading flight promotion data: " + e.getMessage());
-            e.printStackTrace();
+        // Clear unused slots
+        for (int i = maxSlots; i < nameLabels.length; i++) {
+            if (nameLabels[i] != null) {
+                nameLabels[i].setText("");
+            }
+            if (imageViews[i] != null) {
+                imageViews[i].setImage(null);
+            }
         }
     }
+
 
     private void loadHotelData() {
-        String query = "SELECT * FROM hotel";
+        HotelDOAImp hotelDOA = new HotelDOAImp();
+        List<Hotel> hotels = hotelDOA.getAll();
+        int maxHotels = Math.min(hotels.size(), nameLabels.size());
 
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
-            while (resultSet.next()) {
-                int id = resultSet.getInt("id");
-                String name = resultSet.getString("hotel_name");
-                String location = resultSet.getString("location");
-                double pricePerNight = resultSet.getDouble("price_per_night");
-                byte[] imageBytes = resultSet.getBytes("image");
+        for (int i = 0; i < maxHotels; i++) {
+            Hotel hotel = hotels.get(i);
+            int index = i + 1;
 
-                try {
-
-                    Image image = (imageBytes != null) ? new Image(new ByteArrayInputStream(imageBytes)) : null;
-
-                    if (nameLabels.containsKey(id)) {
-                        nameLabels.get(id).setText(name);
-                        locationLabels.get(id).setText(location);
-                        priceLabels.get(id).setText("$" + pricePerNight);
-                        if (image != null) {
-                            imageViews.get(id).setImage(image);
-                        }
-                    } else {
-                        System.err.println("No matching  hotel ID: " + id);
-                    }
-                } catch (IllegalArgumentException e) {
-                    System.err.println("Error loading image ID " + id + ": " + e.getMessage());
+            if (nameLabels.containsKey(index)) {
+                Label nameLabel = nameLabels.get(index);
+                if (nameLabel != null) {
+                    nameLabel.setText(hotel.getHotelName());
+                } else {
+                    System.err.println("Name label is null for index: " + index);
                 }
             }
-        } catch (Exception e) {
-            System.err.println("Error loading hotel data: " + e.getMessage());
-            e.printStackTrace();
+
+            if (locationLabels.containsKey(index)) {
+                Label locationLabel = locationLabels.get(index);
+                if (locationLabel != null) {
+                    locationLabel.setText(hotel.getLocation());
+                } else {
+                    System.err.println("Location label is null for index: " + index);
+                }
+            }
+            if (priceLabels.containsKey(index)) {
+                Label priceLabel = priceLabels.get(index);
+                if (priceLabel != null) {
+                    priceLabel.setText("$" + hotel.getPricePerNight());
+                } else {
+                    System.err.println("Price label is null for index: " + index);
+                }
+            }
+
+            if (imageViews.containsKey(index)) {
+                ImageView imageView = imageViews.get(index);
+                if (imageView != null) {
+                    byte[] imageBytes = hotel.getImg();
+                    if (imageBytes != null) {
+                        Image image = new Image(new ByteArrayInputStream(imageBytes));
+                        imageView.setImage(image);
+                    } else {
+                        System.err.println("Image data is null for hotel index: " + index);
+                    }
+                } else {
+                    System.err.println("Image view is null for index: " + index);
+                }
+            }
+        }
+        if (hotels.size() > maxHotels) {
+            System.err.println("Warning: More hotels exist in the database than UI slots. Only the first " + maxHotels + " hotels are displayed.");
         }
     }
+    public void getHotelDetails(int bookingId) {
+        String query = """
+        SELECT h.hotel_name, h.location, h.price_per_night, h.description_with_amenities, h.image
+        FROM booking_services b
+        JOIN hotel h ON b.hotel_id = h.id
+        WHERE b.id = ?
+    """;
+
+        try (Connection connection = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
+             PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+
+            preparedStatement.setInt(1, bookingId);
+
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
+                if (resultSet.next()) {
+                    // Extract data from the result set
+                    String hotelName = resultSet.getString("hotel_name");
+                    String location = resultSet.getString("location");
+                    double pricePerNight = resultSet.getDouble("price_per_night");
+                    String description = resultSet.getString("description_with_amenities");
+                    byte[] imageBytes = resultSet.getBytes("image");
+
+                    // Populate the FXML fields
+                    nameOfHotel_h3.setText(hotelName);
+                    location_h3.setText(location);
+                    price_h3.setText("$" + pricePerNight);
+
+                    // Load and set the hotel image
+                    if (imageBytes != null) {
+                        InputStream imageStream = new ByteArrayInputStream(imageBytes);
+                        Image hotelImage = new Image(imageStream);
+                        image_h3.setImage(hotelImage);
+                    }
+
+                    // Additional FXML components can be populated as needed
+                } else {
+                    // Handle case where no results are found
+                    nameOfHotel_h3.setText("No details available");
+                    location_h3.setText("");
+                    price_h3.setText("");
+                    image_h3.setImage(null);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("Database access error: " + e.getMessage());
+            e.printStackTrace();
+            nameOfHotel_h3.setText("Error fetching data");
+            location_h3.setText("");
+            price_h3.setText("");
+            image_h3.setImage(null);
+        } catch (Exception e) {
+            System.err.println("Unexpected error: " + e.getMessage());
+            e.printStackTrace();
+            nameOfHotel_h3.setText("Unexpected error");
+            location_h3.setText("");
+            price_h3.setText("");
+            image_h3.setImage(null);
+        }
+    }
+
+
 
     private void loadHotelPromotionData() {
-        String query = "SELECT hotel_name, location, image FROM hotel WHERE promotion = true";
+        // Fetch promoted hotels from the database
+        HotelDOAImp hotelDOA = new HotelDOAImp();
+        List<Object[]> promotedHotels = hotelDOA.getPromotedHotels();
 
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, DB_USERNAME, DB_PASSWORD);
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+        // Replace List.of with null-safe arrays
+        Label[] nameLabels = {nameOfPromo_p1, nameOfPromo_p2};
+        ImageView[] imageViews = {imageOfPromo_p1, imageOfPromo_p2};
 
-            int promoIndex = 1;
-            while (resultSet.next() && promoIndex <= 2) {
-                String hotelName = resultSet.getString("hotel_name");
-                String location = resultSet.getString("location");
-                byte[] imageBytes = resultSet.getBytes("image");
+        // Ensure we don't exceed the available slots
+        int maxSlots = Math.min(promotedHotels.size(), nameLabels.length);
 
+        for (int i = 0; i < maxSlots; i++) {
+            Object[] row = promotedHotels.get(i);
+            String hotelName = (String) row[0];
+            String location = (String) row[1];
+            byte[] imageBytes = (byte[]) row[2];
 
-                System.out.println("Hotel Name: " + hotelName);
-                System.out.println("Location: " + location);
-                System.out.println("Image Bytes: " + (imageBytes != null ? imageBytes.length : "No Image"));
+            System.out.println("Hotel Name: " + hotelName);
+            System.out.println("Location: " + location);
+            System.out.println("Image Bytes Length: " + (imageBytes != null ? imageBytes.length : "No Image"));
 
-                try {
+            try {
+                // Get current UI components
+                Label nameLabel = nameLabels[i];
+                ImageView imageView = imageViews[i];
 
-                    Image promoImage = (imageBytes != null) ? new Image(new ByteArrayInputStream(imageBytes)) : null;
-
-                    switch (promoIndex) {
-                        case 1:
-                            nameOfPromo_p1.setText(hotelName);
-                            if (promoImage != null) {
-                                imageOfPromo_p1.setImage(promoImage);
-                            }
-
-                            break;
-
-                        case 2:
-                            nameOfPromo_p2.setText(hotelName);
-                            if (promoImage != null) {
-                                imageOfPromo_p2.setImage(promoImage);
-                            }
-
-
-                            break;
-
-                        default:
-                            System.err.println("No matching promotion UI element : " + promoIndex);
-                            break;
-                    }
-                } catch (IllegalArgumentException e) {
-                    System.err.println("Error loading promotion image for index " + promoIndex + ": " + e.getMessage());
+                // Set hotel name
+                if (nameLabel != null) {
+                    nameLabel.setText(hotelName + " - " + location); // Combine hotel name and location
                 }
 
-                promoIndex++;
+                // Set hotel image
+                if (imageView != null) {
+                    if (imageBytes != null) {
+                        Image promoImage = new Image(new ByteArrayInputStream(imageBytes));
+                        imageView.setImage(promoImage);
+                    } else {
+                        imageView.setImage(null); // Clear if no image available
+                    }
+                }
+            } catch (IllegalArgumentException e) {
+                System.err.println("Error loading promotion image for index " + i + ": " + e.getMessage());
             }
+        }
 
-        } catch (Exception e) {
-            System.err.println("Error loading  data: " + e.getMessage());
-            e.printStackTrace();
+        // Clear unused slots
+        for (int i = maxSlots; i < nameLabels.length; i++) {
+            if (nameLabels[i] != null) {
+                nameLabels[i].setText(""); // Clear unused labels
+            }
+            if (imageViews[i] != null) {
+                imageViews[i].setImage(null); // Clear unused images
+            }
         }
     }
-
-
-
 
 
 
@@ -423,7 +608,6 @@ public class BookingController {
             NkidsF.setText(NkidsTextField.getText());
             paymentMF.setText(paymentMTextField.getText());
             statusF.setText(statusTextField.getText());
-
             customerNameTextField.setVisible(false);
             customerPhoneTextField.setVisible(false);
             coustomerEmailTextField.setVisible(false);
@@ -434,7 +618,6 @@ public class BookingController {
             NkidsTextField.setVisible(false);
             paymentMTextField.setVisible(false);
             statusTextField.setVisible(false);
-
             customerNameF.setVisible(true);
             customerPhoneF.setVisible(true);
             coustomerEmailF.setVisible(true);
@@ -445,7 +628,6 @@ public class BookingController {
             NkidsF.setVisible(true);
             paymentMF.setVisible(true);
             statusF.setVisible(true);
-
             editButton.setText("Edit");
         } else {
             customerNameTextField.setText(customerNameF.getText());
@@ -583,6 +765,11 @@ public class BookingController {
         paymentMethod.setVisible(!showTextFields);
         paymentMethodF.setVisible(showTextFields);
     }
+
+
+
+
+
     @FXML
     protected void navigateHome(){
         try {
@@ -677,36 +864,70 @@ public class BookingController {
     private void handleMenuButtonAction(ActionEvent event) throws IOException {
         Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
         Parent newScene = null;
+
         if (event.getSource() == selectFlightBtn || event.getSource() == viewFlightDetailsBtn1 || event.getSource() == viewFlightDetailsBtn2) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-details.fxml")));
-        }
-        else if (event.getSource() == viewHotelDetailsBtn || event.getSource() == viewHotelDetailsBtn1 || event.getSource() == viewHotelDetailsBtn2) {
-            newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-details.fxml")));
+        } else if (event.getSource() == viewHotelDetailsBtn || event.getSource() == viewHotelDetailsBtn1 || event.getSource() == viewHotelDetailsBtn2) {
+            navigateToHotelDetails(event); // Navigate to hotel details
+            return; // Exit this method since navigation is already handled
         } else if (event.getSource() == backFlightListingButton) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-listing.fxml")));
-        }
-        else if (event.getSource() == backTOFromHotel) {
+        } else if (event.getSource() == backTOFromHotel) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/all-history-booking.fxml")));
-        }
-        else if (event.getSource() == backHotelListingButton) {
+        } else if (event.getSource() == backHotelListingButton) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-listing.fxml")));
-        }
-        else if (event.getSource() == viewHotelBookBtn) {
+        } else if (event.getSource() == viewHotelBookBtn) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/hotel-book-details.fxml")));
-        }
-        else if (event.getSource() == viewFlightBookBtn) {
+        } else if (event.getSource() == viewFlightBookBtn) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/flight-book-details.fxml")));
-        }
-        else if (event.getSource() == backToHistoryListing) {
+        } else if (event.getSource() == backToHistoryListing) {
             newScene = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/travl/all-history-booking.fxml")));
         }
 
         if (newScene != null) {
-            Scene scene = new Scene(newScene);
-            stage.setScene(scene);
+            stage.setScene(new Scene(newScene));
             stage.setTitle("My New Scene");
             stage.show();
         }
     }
 
+
+
+    @FXML
+    private void navigateToHotelDetails(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/travl/hotel-details.fxml"));
+            Parent root = loader.load();
+
+            // Get controller for hotel-details.fxml
+            HotelDetailsController detailsController = loader.getController();
+
+            // Fetch the selected hotel dynamically
+            if (selectedHotel == null) {
+                selectedHotel = hotelDAO.getHotelById(1); // Replace with actual ID fetching logic
+            }
+            detailsController.setSelectedHotel(selectedHotel);
+
+            // Switch scene
+            Stage stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+

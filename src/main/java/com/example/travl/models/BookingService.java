@@ -4,14 +4,15 @@ package com.example.travl.models;
 import javax.persistence.*;
 import java.util.Date;
 
+
 @Entity
-@Table(name = "booking_services")
+@Table(name = "booking_services")  // Ensure this matches the table name in the database
 public class BookingService {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private Long id;
 
     @Column(name = "booking_type")
     private String booking_type;

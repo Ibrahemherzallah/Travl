@@ -1,14 +1,12 @@
 package com.example.travl.controllers;
 import com.example.travl.models.Permission;
 import com.example.travl.models.Role;
-import javax.persistence.Column;
+
 import java.io.IOException;
 import java.sql.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
 import com.example.travl.models.User;
-import com.example.travl.util.HibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,7 +20,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
-import org.hibernate.Session;
+
 public class UserController {
     @FXML
     private ImageView img1;
