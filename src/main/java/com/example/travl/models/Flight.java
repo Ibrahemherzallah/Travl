@@ -52,8 +52,8 @@ public class Flight {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
-    @Column(name = "available_flight")
-    private int availableFlight;
+//    @Column(name = "available_flight")
+//    private int availableFlight;
 
 
     @Column(name = "des_from")
