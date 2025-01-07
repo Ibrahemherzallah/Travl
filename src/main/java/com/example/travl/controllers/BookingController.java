@@ -19,6 +19,9 @@ import javafx.stage.Stage;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import java.awt.image.ImageObserver;
@@ -285,7 +288,7 @@ public class BookingController {
                 if (airlineLabel != null) {
                     airlineLabel.setText(flight.getAirline());
                 } else {
-                    System.err.println("Airline label is null for index: " + index);
+                    System.err.println("The airline label null :) : " + index);
                 }
             }
             if (ticketNoLabels.containsKey(index)) {
@@ -293,31 +296,37 @@ public class BookingController {
                 if (ticketNoLabel != null) {
                     ticketNoLabel.setText("Ticket #" + flight.getId());
                 } else {
-                    System.err.println("Ticket number label is null for index: " + index);
+                    System.err.println("The Ticket label null :): " + index);
                 }
             }
             if (takeoffTimeLabels.containsKey(index)) {
                 Label takeoffTimeLabel = takeoffTimeLabels.get(index);
                 if (takeoffTimeLabel != null) {
-                    takeoffTimeLabel.setText(flight.getDepartureDate().toString());
+                    Date departureDate = flight.getDepartureDate();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    takeoffTimeLabel.setText(formatter.format(departureDate));
+
                 } else {
-                    System.err.println("Takeoff time label is null for index: " + index);
+                    System.err.println("The takeoff time  label null :): " + index);
                 }
             }
             if (takeoffPlaceLabels.containsKey(index)) {
                 Label takeoffPlaceLabel = takeoffPlaceLabels.get(index);
                 if (takeoffPlaceLabel != null) {
-                    takeoffPlaceLabel.setText(flight.getDuration());
+                    takeoffPlaceLabel.setText(flight.getDesFrom());
                 } else {
-                    System.err.println("Takeoff place label is null for index: " + index);
+                    System.err.println("Takeoff place  label null :) : " + index);
                 }
+
             }
             if (arrivalTimeLabels.containsKey(index)) {
                 Label arrivalTimeLabel = arrivalTimeLabels.get(index);
                 if (arrivalTimeLabel != null) {
-                    arrivalTimeLabel.setText(flight.getArrivalDate().toString());
+                    Date departureDate = flight.getDepartureDate();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    arrivalTimeLabel.setText(formatter.format(departureDate));
                 } else {
-                    System.err.println("Arrival time label is null for index: " + index);
+                    System.err.println("Arrival time label label null :) : " + index);
                 }
             }
             if (destinationLabels.containsKey(index)) {
@@ -325,7 +334,7 @@ public class BookingController {
                 if (destinationLabel != null) {
                     destinationLabel.setText(flight.getDestination());
                 } else {
-                    System.err.println("Destination label is null for index: " + index);
+                    System.err.println("Destination label null :) : " + index);
                 }
             }
             if (stopsLabels.containsKey(index)) {
@@ -333,7 +342,7 @@ public class BookingController {
                 if (stopsLabel != null) {
                     stopsLabel.setText(flight.getStops());
                 } else {
-                    System.err.println("Stops label is null for index: " + index);
+                    System.err.println("Stops label null :) : " + index);
                 }
             }
 
@@ -343,7 +352,7 @@ public class BookingController {
                 if (timeToLandLabel != null) {
                     timeToLandLabel.setText(flight.getDuration());
                 } else {
-                    System.err.println("Time to land label is null for index: " + index);
+                    System.err.println("Time to land label null :) : " + index);
                 }
             }
         }

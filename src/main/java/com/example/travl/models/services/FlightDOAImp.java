@@ -78,11 +78,11 @@ public class FlightDOAImp implements FlightDOA {
 
         List<Flight> flights = null;
         try {
-            // Native SQL query
+
             String sql = "SELECT * FROM flight";
             flights = session.createNativeQuery(sql, Flight.class).getResultList();
 
-            // Debugging output
+
             for (Flight flight : flights) {
                 System.out.println("Flight Retrieved: " + flight.getAirline() + " -> " + flight.getDestination());
             }

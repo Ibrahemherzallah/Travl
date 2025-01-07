@@ -46,11 +46,11 @@ public class HotelDOAImp implements HotelDOA {
 
         List<Hotel> hotels = null;
         try {
-            // Native SQL query
+
             String sql = "SELECT * FROM hotel";
             hotels = session.createNativeQuery(sql, Hotel.class).getResultList();
 
-            // Debugging output
+
             for (Hotel hotel : hotels) {
                 System.out.println("Hotel Retrieved: " + hotel.getHotelName() + " -> " + hotel.getLocation());
             }
@@ -69,17 +69,22 @@ public class HotelDOAImp implements HotelDOA {
         return null;
     }
 
+    @Override
+    public Hotel getHotelByID(int id) {
+        return null;
+    }
+
     public List<Object[]> getPromotedHotels() {
         SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
         Session session = sessionFactory.openSession();
 
         List<Object[]> promotedHotels = null;
         try {
-            // SQL query to fetch promoted hotels
+
             String sql = "SELECT hotel_name, location, image FROM hotel WHERE promotion = true";
             promotedHotels = session.createNativeQuery(sql).getResultList();
 
-            // Debugging output
+
             for (Object[] row : promotedHotels) {
                 String hotelName = (String) row[0];
                 String location = (String) row[1];
@@ -99,12 +104,12 @@ public class HotelDOAImp implements HotelDOA {
 
 }
 
-    public Hotel getHotelByID(int ID) {
-        return session.get(Hotel.class,ID);
-    }
+  //  public Hotel getHotelByID(int ID) {
+      //  return session.get(Hotel.class,ID);
+  //  }
 
 
 
 
 
-}
+
