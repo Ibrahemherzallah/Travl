@@ -11,4 +11,5 @@ public interface HotelDOA {
     public List<Hotel> getAll();
     public Hotel findAdmin(int id);
     public Hotel getHotelByID(int id);
+    public List<Object[]> getPromotedHotels();
 }

@@ -5,6 +5,8 @@ import com.example.travl.models.Hotel;
 import com.example.travl.models.services.BookingServiceDOAImp;
 import com.example.travl.models.services.FlightDOAImp;
 import com.example.travl.models.services.HotelDOAImp;
+import com.example.travl.util.HibernateUtil;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.event.ActionEvent;
@@ -12,14 +14,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -38,6 +36,9 @@ import javafx.scene.image.Image;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import java.io.ByteArrayInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -186,6 +187,19 @@ public class BookingController {
     private Label timeToLand_a2;
     @FXML
     private Label Stops_a2;
+    @FXML CheckBox getFive;
+    @FXML CheckBox getTen;
+    @FXML CheckBox getMore;
+    @FXML CheckBox emiratesCheckBox;
+    @FXML CheckBox qatarCheckBox;
+    @FXML CheckBox turkishCheckBox;
+    @FXML CheckBox etihadCheckBox;
+    @FXML CheckBox fiveStartCeckBox;
+    @FXML CheckBox fourStartCeckBox;
+    @FXML CheckBox threeStartCeckBox;
+    @FXML CheckBox twoStartCeckBox;
+    @FXML CheckBox oneStartCeckBox;
+
 
     @FXML
     private Label promoPlace_p1;
@@ -446,6 +460,257 @@ public class BookingController {
         }
     }
 
+    private void filteredData(List<Flight> flights){
+        int maxFlights = Math.min(flights.size(), airlineLabels.size());
+        for (int i = 0; i < maxFlights; i++) {
+            Flight flight = flights.get(i);
+            int index = i + 1;
+            if (airlineLabels.containsKey(index)) {
+                Label airlineLabel = airlineLabels.get(index);
+                if (airlineLabel != null) {
+                    airlineLabel.setText(flight.getAirline());
+                } else {
+                    System.err.println("The airline label null :) : " + index);
+                }
+            }
+            if (ticketNoLabels.containsKey(index)) {
+                Label ticketNoLabel = ticketNoLabels.get(index);
+                if (ticketNoLabel != null) {
+                    ticketNoLabel.setText("Ticket #" + flight.getId());
+                } else {
+                    System.err.println("The Ticket label null :): " + index);
+                }
+            }
+            if (takeoffTimeLabels.containsKey(index)) {
+                Label takeoffTimeLabel = takeoffTimeLabels.get(index);
+                if (takeoffTimeLabel != null) {
+                    Date departureDate = flight.getDepartureDate();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    takeoffTimeLabel.setText(formatter.format(departureDate));
+
+                } else {
+                    System.err.println("The takeoff time  label null :): " + index);
+                }
+            }
+            if (takeoffPlaceLabels.containsKey(index)) {
+                Label takeoffPlaceLabel = takeoffPlaceLabels.get(index);
+                if (takeoffPlaceLabel != null) {
+                    takeoffPlaceLabel.setText(flight.getDesFrom());
+                } else {
+                    System.err.println("Takeoff place  label null :) : " + index);
+                }
+
+            }
+            if (arrivalTimeLabels.containsKey(index)) {
+                Label arrivalTimeLabel = arrivalTimeLabels.get(index);
+                if (arrivalTimeLabel != null) {
+                    Date departureDate = flight.getArrivalDate();
+                    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                    arrivalTimeLabel.setText(formatter.format(departureDate));
+                } else {
+                    System.err.println("Arrival time label label null :) : " + index);
+                }
+            }
+            if (destinationLabels.containsKey(index)) {
+                Label destinationLabel = destinationLabels.get(index);
+                if (destinationLabel != null) {
+                    destinationLabel.setText(flight.getDestination());
+                } else {
+                    System.err.println("Destination label null :) : " + index);
+                }
+            }
+            if (stopsLabels.containsKey(index)) {
+                Label stopsLabel = stopsLabels.get(index);
+                if (stopsLabel != null) {
+                    stopsLabel.setText(flight.getStops());
+                } else {
+                    System.err.println("Stops label null :) : " + index);
+                }
+            }
+
+
+            if (timeToLandLabels.containsKey(index)) {
+                Label timeToLandLabel = timeToLandLabels.get(index);
+                if (timeToLandLabel != null) {
+                    timeToLandLabel.setText(flight.getDuration());
+                } else {
+                    System.err.println("Time to land label null :) : " + index);
+                }
+            }
+        }
+        if (flights.size() > maxFlights) {
+            System.err.println("Warning: More flights exist in the database than UI slots. Only the first " + maxFlights + " flights are displayed.");
+        }
+    }
+
+    @FXML
+    private void getFiveHours(){
+        if(getFive.isSelected()){
+            clearFlightData();
+            FlightDOAImp flightDOA = new FlightDOAImp();
+            List<Flight> flights = flightDOA.getFlightByHour(5);
+            filteredData(flights);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+    @FXML
+    private void getTenHours(){
+        if(getTen.isSelected()) {
+            clearFlightData();
+            FlightDOAImp flightDOA = new FlightDOAImp();
+            List<Flight> flights = flightDOA.getFlightByHour(10);
+            filteredData(flights);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+    @FXML
+    private void getMoreHours(){
+        if(getMore.isSelected()) {
+            clearFlightData();
+            FlightDOAImp flightDOA = new FlightDOAImp();
+            List<Flight> flights = flightDOA.getFlightByHour(15);
+            filteredData(flights);
+        }
+        else {
+            loadFlightData();
+        }
+
+    }
+    @FXML
+    private void getEmiratesFlight(){
+        if(emiratesCheckBox.isSelected()){
+            clearFlightData();
+            FlightDOAImp flightDOA = new FlightDOAImp();
+            List<Flight> flights = flightDOA.getFlightByAirline("Emirates Airlines");
+            filteredData(flights);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+    @FXML
+    private void getQatarFlight(){
+        if(qatarCheckBox.isSelected()){
+            clearFlightData();
+            FlightDOAImp flightDOA = new FlightDOAImp();
+            List<Flight> flights = flightDOA.getFlightByAirline("Qatar Airlines");
+            filteredData(flights);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+    @FXML
+    private void getTurkishFlight(){
+        if(turkishCheckBox.isSelected()){
+            clearFlightData();
+            FlightDOAImp flightDOA = new FlightDOAImp();
+            List<Flight> flights = flightDOA.getFlightByAirline("Turkish Airlines");
+            filteredData(flights);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+    @FXML
+    private void getEtihadFlight(){
+        if(etihadCheckBox.isSelected()){
+            clearFlightData();
+            FlightDOAImp flightDOA = new FlightDOAImp();
+            List<Flight> flights = flightDOA.getFlightByAirline("Etihad Airlines");
+            filteredData(flights);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+
+    private void clearFlightData() {
+        for (Label airlineLabel : airlineLabels.values()) {
+            if (airlineLabel != null) {
+                airlineLabel.setText("");
+            }
+        }
+
+        for (Label ticketNoLabel : ticketNoLabels.values()) {
+            if (ticketNoLabel != null) {
+                ticketNoLabel.setText("");
+            }
+        }
+
+        for (Label takeoffTimeLabel : takeoffTimeLabels.values()) {
+            if (takeoffTimeLabel != null) {
+                takeoffTimeLabel.setText("");
+            }
+        }
+
+        for (Label takeoffPlaceLabel : takeoffPlaceLabels.values()) {
+            if (takeoffPlaceLabel != null) {
+                takeoffPlaceLabel.setText("");
+            }
+        }
+
+        for (Label arrivalTimeLabel : arrivalTimeLabels.values()) {
+            if (arrivalTimeLabel != null) {
+                arrivalTimeLabel.setText("");
+            }
+        }
+
+        for (Label destinationLabel : destinationLabels.values()) {
+            if (destinationLabel != null) {
+                destinationLabel.setText("");
+            }
+        }
+
+        for (Label stopsLabel : stopsLabels.values()) {
+            if (stopsLabel != null) {
+                stopsLabel.setText("");
+            }
+        }
+
+        for (Label timeToLandLabel : timeToLandLabels.values()) {
+            if (timeToLandLabel != null) {
+                timeToLandLabel.setText("");
+            }
+        }
+
+        System.out.println("All flight data labels have been cleared.");
+    }
+
+    @FXML
+    private TextField takeOffCountryInput;
+    @FXML
+    private TextField landCountryInput;
+    @FXML
+    private DatePicker DateIn;
+    @FXML
+    private DatePicker DateOut;
+
+    @FXML
+    private void handleFlightSearch(){
+        clearFlightData();
+        String takeOff = takeOffCountryInput.getText();
+        String land = landCountryInput.getText();
+        String dateIn = String.valueOf(DateIn.getValue());
+        String dateOut = String.valueOf(DateOut.getValue());
+        FlightDOAImp flightDOAImp = new FlightDOAImp();
+        List<Flight> flights = flightDOAImp.getSearchedFlight(takeOff,land,dateIn,dateOut);
+        filteredData(flights);
+        System.out.println("entererd data iss : " + takeOffCountryInput.getText() + landCountryInput.getText() + DateIn.getValue() + DateOut.getValue());
+    }
+
+
+
+
+
+
+
+
+
     private void loadFlightPromotionData() {
         FlightDOAImp flightDOA = new FlightDOAImp();
         List<Object[]> promotedFlights = flightDOA.getPromotedFlights();
@@ -546,6 +811,129 @@ public class BookingController {
             System.err.println("Warning: More hotels exist in the database than UI slots. Only the first " + maxHotels + " hotels are displayed.");
         }
     }
+
+
+    private void filteredHotel(List<Hotel> hotels){
+        int maxHotels = Math.min(hotels.size(), nameLabels.size());
+
+        for (int i = 0; i < maxHotels; i++) {
+            Hotel hotel = hotels.get(i);
+            int index = i + 1;
+
+            if (nameLabels.containsKey(index)) {
+                Label nameLabel = nameLabels.get(index);
+                if (nameLabel != null) {
+                    nameLabel.setText(hotel.getHotelName());
+                } else {
+                    System.err.println("Name label is null for index: " + index);
+                }
+            }
+
+            if (locationLabels.containsKey(index)) {
+                Label locationLabel = locationLabels.get(index);
+                if (locationLabel != null) {
+                    locationLabel.setText(hotel.getLocation());
+                } else {
+                    System.err.println("Location label is null for index: " + index);
+                }
+            }
+            if (priceLabels.containsKey(index)) {
+                Label priceLabel = priceLabels.get(index);
+                if (priceLabel != null) {
+                    priceLabel.setText("$" + hotel.getPricePerNight());
+                } else {
+                    System.err.println("Price label is null for index: " + index);
+                }
+            }
+
+            if (imageViews.containsKey(index)) {
+                ImageView imageView = imageViews.get(index);
+                if (imageView != null) {
+                    byte[] imageBytes = hotel.getImg();
+                    if (imageBytes != null) {
+                        Image image = new Image(new ByteArrayInputStream(imageBytes));
+                        imageView.setImage(image);
+                    } else {
+                        System.err.println("Image data is null for hotel index: " + index);
+                    }
+                } else {
+                    System.err.println("Image view is null for index: " + index);
+                }
+            }
+        }
+        if (hotels.size() > maxHotels) {
+            System.err.println("Warning: More hotels exist in the database than UI slots. Only the first " + maxHotels + " hotels are displayed.");
+        }
+    }
+
+    @FXML
+    private void getFiveStars(){
+        if(fiveStartCeckBox.isSelected()) {
+            clearFlightData();
+            HotelDOAImp hotelDOAImp = new HotelDOAImp();
+            List<Hotel> hotels = hotelDOAImp.getHotelByStar(5);
+            filteredHotel(hotels);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+
+    @FXML
+    private void getFourStars(){
+        if(fourStartCeckBox.isSelected()) {
+            clearFlightData();
+            HotelDOAImp hotelDOAImp = new HotelDOAImp();
+            List<Hotel> hotels = hotelDOAImp.getHotelByStar(4);
+            filteredHotel(hotels);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+
+
+    @FXML
+    private void getThreeStars(){
+        if(threeStartCeckBox.isSelected()) {
+            clearFlightData();
+            HotelDOAImp hotelDOAImp = new HotelDOAImp();
+            List<Hotel> hotels = hotelDOAImp.getHotelByStar(3);
+            filteredHotel(hotels);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+
+
+    @FXML
+    private void getTwoStars(){
+        if(twoStartCeckBox.isSelected()) {
+            clearFlightData();
+            HotelDOAImp hotelDOAImp = new HotelDOAImp();
+            List<Hotel> hotels = hotelDOAImp.getHotelByStar(2);
+            filteredHotel(hotels);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+
+    @FXML
+    private void getOneStars(){
+        if(oneStartCeckBox.isSelected()) {
+            clearFlightData();
+            HotelDOAImp hotelDOAImp = new HotelDOAImp();
+            List<Hotel> hotels = hotelDOAImp.getHotelByStar(1);
+            filteredHotel(hotels);
+        }
+        else {
+            loadFlightData();
+        }
+    }
+
+
 
 
     private void loadHotelPromotionData() {

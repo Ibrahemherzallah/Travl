@@ -3,6 +3,7 @@ import com.example.travl.controllers.UserController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import java.io.IOException;
 public class HelloApplication extends Application {
@@ -12,7 +13,8 @@ public class HelloApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("agent-dash.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Hello!");
-//        stage.setFullScreen(true);
+        Image icon = new Image(HelloApplication.class.getResourceAsStream("/images/icon.png"));
+        stage.getIcons().add(icon);
         stage.setScene(scene);
         stage.show();
     }

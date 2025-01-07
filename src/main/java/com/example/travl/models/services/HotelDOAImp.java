@@ -64,6 +64,7 @@ public class HotelDOAImp implements HotelDOA {
     }
 
 
+
     @Override
     public Hotel findAdmin(int id) {
         return null;
@@ -102,11 +103,42 @@ public class HotelDOAImp implements HotelDOA {
         return promotedHotels;
     }
 
+    public List<Hotel> getHotelByStar(int numOfStar){
+        SessionFactory sessionFactory = HibernateUtil.getInstance().getSessionFactory();
+        Session session = sessionFactory.openSession();
+        String sql = null;
+        List<Hotel> hotels = null;
+        try {
+            if(numOfStar == 5){
+                sql = "SELECT * FROM hotel WHERE num_of_star = 5";
+            }else if (numOfStar == 4){
+                sql = "SELECT * FROM hotel WHERE num_of_star = 4";
+            }else if (numOfStar == 3){
+                sql = "SELECT * FROM hotel WHERE num_of_star = 3";
+            }else if (numOfStar == 2){
+                sql = "SELECT * FROM hotel WHERE num_of_star = 2";
+            }else if (numOfStar == 1){
+                sql = "SELECT * FROM hotel WHERE num_of_star = 1";
+            }
+            hotels = session.createNativeQuery(sql, Hotel.class).getResultList();
+
+
+            for (Hotel hotel : hotels) {
+                System.out.println("Hotel Retrieved: " + hotel.getHotelName() + " -> " + hotel.getLocation());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return hotels;
+    }
+
+
 }
 
-  //  public Hotel getHotelByID(int ID) {
-      //  return session.get(Hotel.class,ID);
-  //  }
+
 
 
 
