@@ -61,15 +61,9 @@ public class Hotel {
 
 
     public void setImg(InputStream inputStream) throws IOException {
+
         this.img = inputStream.readAllBytes();
-    }
 
-    public double getPricePerNight() {
-        return pricePerNight;
-    }
-
-    public void setPricePerNight(double pricePerNight) {
-        this.pricePerNight = pricePerNight;
     }
 
     public int getId() {
@@ -178,4 +172,10 @@ public class Hotel {
     public byte[] getImg() {
         return img;
     }
+
+    public String getPricePerNight() {
+        return String.valueOf(pricePerNight);
+    }
+
+
 }

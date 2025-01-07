@@ -299,26 +299,27 @@
                                     <Font name="System Bold" size="15.0" />
                                 </font>
                             </Label>
-                            <Label fx:id="ticketNo_a1" layoutX="78.0" layoutY="35.0" text="flight TA345">
+                            <Label fx:id="ticketNo_a1" layoutX="78.0" layoutY="35.0" text="">
                                 <font>
                                     <Font size="14.0" />
                                 </font>
                             </Label>
-                            <Label fx:id="takeoffTime_a1" layoutX="60.0" layoutY="80.0" text="9:00 AM">
+                            <Label fx:id="takeoffTime_a1" layoutX="60.0" layoutY="80.0" text="">
                                 <font>
                                     <Font name="System Bold" size="14.0" />
                                 </font>
                             </Label>
-                            <Label fx:id="takeoffPlace_a1" layoutX="55.0" layoutY="100.0" text="Istanbul (IST)" />
+                            <Label fx:id="takeoffPlace_a1" layoutX="55.0" layoutY="100.0" text="" />
                             <Label fx:id="arrivalTime_a1" layoutX="458.0" layoutY="82.0" text="12:30 PM">
                                 <font>
                                     <Font name="System Bold" size="14.0" />
                                 </font>
                             </Label>
-                            <Label fx:id="destination_a1" layoutX="458.0" layoutY="102.0" text="Dubai (DXB)" />
+                            <Label fx:id="destination_a1" layoutX="458.0" layoutY="102.0" text="" />
                             <Button id="btn" fx:id="selectFlightBtn" onAction="#handleMenuButtonAction" layoutX="61.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="477.0" style="-fx-background-color: #111827;" styleClass="selectFlightBtn" stylesheets="@../../../styles/style.css" text="Select Flight" textFill="WHITE" />                            <Separator layoutX="200.0" layoutY="126.0" prefWidth="200.0" />
-                            <Label fx:id="timeToLand_a1" layoutX="286.0" layoutY="102.0" text="4h 30m" />
-                            <Label fx:id="Stops_a1" layoutX="287.0" layoutY="137.0" text=" 1 Stop" />
+                            <Separator layoutX="200.0" layoutY="126.0" prefWidth="200.0" />
+                            <Label fx:id="timeToLand_a1" layoutX="286.0" layoutY="102.0" text="" />
+                            <Label fx:id="Stops_a1" layoutX="287.0" layoutY="137.0" text="" />
                         </children>
                         <VBox.margin>
                             <Insets top="20.0" />
@@ -331,32 +332,32 @@
                                     <Image url="@../../../images/black-plane.png" />
                                 </image>
                             </ImageView>
-                            <Label fx:id="airlineName_a2" layoutX="69.0" layoutY="9.0" prefHeight="21.0" prefWidth="128.0" text="Turkish Airlines">
+                            <Label fx:id="airlineName_a2" layoutX="69.0" layoutY="9.0" prefHeight="21.0" prefWidth="128.0" text="">
                                 <font>
                                     <Font name="System Bold" size="15.0" />
                                 </font>
                             </Label>
-                            <Label fx:id="ticketNo_a2" layoutX="78.0" layoutY="35.0" text="flight TA345">
+                            <Label fx:id="ticketNo_a2" layoutX="78.0" layoutY="35.0" text="">
                                 <font>
                                     <Font size="14.0" />
                                 </font>
                             </Label>
-                            <Label fx:id="takeoffTime_a2" layoutX="60.0" layoutY="80.0" text="9:00 AM">
+                            <Label fx:id="takeoffTime_a2" layoutX="60.0" layoutY="80.0" text="">
                                 <font>
                                     <Font name="System Bold" size="14.0" />
                                 </font>
                             </Label>
-                            <Label fx:id="takeoffPlace_a2" layoutX="55.0" layoutY="100.0" text="Istanbul (IST)" />
-                            <Label fx:id="arrivalTime_a2" layoutX="458.0" layoutY="82.0" text="12:30 PM">
+                            <Label fx:id="takeoffPlace_a2" layoutX="55.0" layoutY="100.0" text="" />
+                            <Label fx:id="arrivalTime_a2" layoutX="458.0" layoutY="82.0" text="">
                                 <font>
                                     <Font name="System Bold" size="14.0" />
                                 </font>
                             </Label>
-                            <Label fx:id="destination_a2" layoutX="458.0" layoutY="102.0" text="Dubai (DXB)" />
-                            <Button id="btn" layoutX="61.0" layoutY="170.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="477.0" style="-fx-background-color: #111827;" styleClass="selectFlightBtn" stylesheets="@../../../styles/style.css" text="Select Flight" textFill="WHITE" />
+                            <Label fx:id="destination_a2" layoutX="458.0" layoutY="102.0" text="" />
+                            <Button id="btn" layoutX="61.0" layoutY="170.0" mnemonicParsing="false"  prefHeight="25.0" prefWidth="477.0" style="-fx-background-color: #111827;" styleClass="selectFlightBtn" stylesheets="@../../../styles/style.css" text="Select Flight" textFill="WHITE" />
                             <Separator layoutX="200.0" layoutY="126.0" prefWidth="200.0" />
-                            <Label fx:id="timeToLand_a2" layoutX="286.0" layoutY="102.0" text="4h 30m" />
-                            <Label fx:id="Stops_a2" layoutX="287.0" layoutY="137.0" text=" 1 Stop" />
+                            <Label fx:id="timeToLand_a2" layoutX="286.0" layoutY="102.0" text="" />
+                            <Label fx:id="Stops_a2" layoutX="287.0" layoutY="137.0" text="" />
                         </children>
                         <VBox.margin>
                             <Insets top="20.0" />
@@ -386,19 +387,17 @@
                         <TextArea   layoutX="45.0" layoutY="193.0" prefHeight="100.0" prefWidth="245.0" text="Enjoy a 4-day trip to Istanbul with &#10;round-trip flights &#10;and accommodation at a 4-star hotel in &#10;the Sultanahmet district. &#10;Prices start at $450 per person." />
                         <Separator layoutY="329.0" prefHeight="35.0" prefWidth="334.0" />
                         <ImageView fx:id="imagePromo2" fitHeight="109.0" fitWidth="180.0" layoutX="87.0" layoutY="384.0" pickOnBounds="true" preserveRatio="true">
-
-                  </ImageView>
-                  <Label fx:id="promoPlace_p2" layoutX="68.0" layoutY="348.0" prefHeight="26.0" prefWidth="198.0" text="Rome Romantic Getaway">
-                     <font>
-                        <Font size="17.0" />
-                     </font>
-                  </Label>
-                  <TextArea layoutX="42.0" layoutY="502.0" prefHeight="87.0" prefWidth="261.0" text="Spend 5 days in Rome with this package &#10;offering flights and accommodation at &#10;a 4-star hotel near the Colosseum. &#10;Starting at $850 per person." />
-                  <Button fx:id="viewFlightDetailsBtn1" layoutX="131.0" layoutY="598.0" mnemonicParsing="false" styleClass="viewHotelDetailsBtn" text="view offer" textFill="WHITE" />
-                  <Button fx:id="viewFlightDetailsBtn2" layoutX="131.0" layoutY="297.0" mnemonicParsing="false" styleClass="viewHotelDetailsBtn" text="view offer" textFill="WHITE" />
-               </children>
-            </Pane>
-
+                        </ImageView>
+                        <Label fx:id="namePromo2" layoutX="92.0" layoutY="347.0" prefHeight="26.0" prefWidth="157.0" text="">
+                            <font>
+                                <Font size="17.0" />
+                            </font>
+                        </Label>
+                        <TextArea layoutX="42.0" layoutY="502.0" prefHeight="87.0" prefWidth="261.0" text="Spend 5 days in Rome with this package &#10;offering flights and accommodation at &#10;a 4-star hotel near the Colosseum. &#10;Starting at $850 per person." />
+                        <Button fx:id="viewFlightDetailsBtn1" layoutX="131.0" layoutY="598.0" mnemonicParsing="false"  styleClass="viewHotelDetailsBtn" text="view offer" textFill="WHITE" />
+                        <Button fx:id="viewFlightDetailsBtn2" layoutX="131.0" layoutY="297.0" mnemonicParsing="false" styleClass="viewHotelDetailsBtn" text="view offer" textFill="WHITE" />
+                    </children>
+                </Pane>
             </HBox>
         </VBox>
 

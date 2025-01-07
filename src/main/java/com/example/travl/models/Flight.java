@@ -52,6 +52,7 @@ public class Flight {
     @Column(name = "promotion_duration")
     private int promotionDuration;
 
+
 //    @Column(name = "available_flight")
 //    private int availableFlight;
 
@@ -62,7 +63,6 @@ public class Flight {
 
     @OneToMany(mappedBy = "flight", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BookingService> bookingServices;
-
     @Lob
     @Column(name = "image")
     private byte[] image;
@@ -75,16 +75,11 @@ public class Flight {
         this.image = image;
     }
 
+
     public int getPromotionDuration() {
         return promotionDuration;
     }
-    public String getFrom() {
-        return des_from;
-    }
 
-    public void setFrom(String from) {
-        this.des_from = from;
-    }
     public void setPromotionDuration(int promotionDuration) {
         this.promotionDuration = promotionDuration;
     }
